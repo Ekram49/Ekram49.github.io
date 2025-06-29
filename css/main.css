@@ -193,8 +193,8 @@ img {
 
 @media only screen and (min-width: 768px) {
   .navbar-custom .avatar-container {
-    width: 150px;
-    margin-top: -60px;
+    width: 130px;
+    margin-top: -70px;
   }
 
   .navbar-custom .avatar-container .avatar-img-border {

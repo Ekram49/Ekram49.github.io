@@ -80,7 +80,7 @@ author:
 # You can reorder the items to define the link order.
 # If you want to add a new link that isn't here, you'll need to also edit the file _data/SocialNetworks.yml
 social-network-links:
-  rss: true
+  rss: false
   email: "ekramullahzaki@gmail.com"
   facebook: ekram.zaki
   github: Ekram49
@@ -88,7 +88,7 @@ social-network-links:
 #  reddit: yourname
   linkedin: ekram-ullah-ahmed
 #  xing: yourname
-  stackoverflow: "12875430/Ekram49"
+  #stackoverflow: "12875430/Ekram49"
 #  snapchat: deanat78
   instagram: ekram_ahmed_49
 #  youtube: user/deanat78

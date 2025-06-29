@@ -55,7 +55,7 @@ navbar-text-col: "#f9fafb"     # Almost white - great contrast on dark navbar
 navbar-children-col: "#1f2937" # Dark slate gray
 page-col: "#ffffff"            # Keep white for clean reading experience
 link-col: "#3b82f6"            # Modern soft blue (Tailwind's blue-500)
-hover-col: "#0f172a"           # Royal Navy
+hover-col: "#243b6b"           # Royal Navy (Custom)
 footer-col: "#1f2937"          # Dark slate gray - modern, clean, professional
 footer-text-col: "#9ca3af"     # Soft gray (good contrast, not too harsh)
 footer-link-col: "#e5e7eb"     # Light gray-blue for links
@@ -82,7 +82,7 @@ author:
 social-network-links:
   rss: true
   email: "ekramullahzaki@gmail.com"
-  facebook: facebook.com/ekram.zaki
+  facebook: ekram.zaki
   github: Ekram49
   #twitter: @EkramAh56552843
 #  reddit: yourname
@@ -93,7 +93,7 @@ social-network-links:
   instagram: ekram_ahmed_49
 #  youtube: user/deanat78
 #  spotify: yourname
-  telephone: +1 (929) 459-9555
+  telephone: +19294599555
 #  steam: deanat78
 #  twitch: yourname
 #  yelp: yourname

@@ -232,6 +232,19 @@ img {
   display: none;
   word-break: break-word;
 }
+
+.navbar-custom .nav .navlinks-children a {
+  display: block;
+  width: 100%;
+  padding: 10px 20px; /* uniform padding */
+  border-radius: 0; /* remove corner rounding */
+}
+
+.navbar-custom .nav .navlinks-children a:hover {
+  background-color: #f0f0f0;
+  color: {{ site.hover-col }};
+  border-radius: 0;
+}
 .navbar-custom .nav .navlinks-container .navlinks-children a {
   display: block;
   padding: 10px;

@@ -128,9 +128,9 @@ img {
 }
 
 .navbar-custom .navbar-brand:hover,
-.navbar-custom .navbar-brand:focus ,
-.navbar-custom .nav li a:hover,
-.navbar-custom .nav li a:focus {
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .nav li a:hover:not(.social-icon),
+.navbar-custom .nav li a:focus:not(.social-icon) {
   color: {{ site.hover-col }};
   background-color: #f0f0f0; /* light grey box */
 }

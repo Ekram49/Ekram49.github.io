@@ -231,11 +231,12 @@ img {
   word-break: break-word;
 }
 
+/*
 .navbar-custom .nav .navlinks-children a {
   display: block;
   width: 100%;
-  padding: 10px 20px; /* uniform padding */
-  border-radius: 0; /* remove corner rounding */
+  padding: 10px 20px;
+  border-radius: 0;
 }
 
 .navbar-custom .nav .navlinks-children a:hover {
@@ -243,6 +244,8 @@ img {
   color: {{ site.hover-col }};
   border-radius: 0;
 }
+
+*/
 .navbar-custom .nav .navlinks-container .navlinks-children a {
   display: block;
   padding: 10px;

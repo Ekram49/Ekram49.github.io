@@ -230,7 +230,7 @@ img {
 .navbar-custom .nav .navlinks-children a:focus {
   background-color: #f0f0f0;
   display: block;
-  height: 100%;
+  width: 100%;
   color: {{ site.hover-col }};
 }
 

@@ -759,6 +759,16 @@ pre {
   transition: background-color 0.3s ease;
 }
 
+#social-share-section a {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+#social-share-section a:hover {
+  transform: scale(1.2); /* Grows 20% on hover */
+}
+
+
 
 /* --- Notification boxes --- */
 .box-note, .box-warning, .box-error, .box-success {

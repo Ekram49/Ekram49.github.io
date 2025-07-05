@@ -3,6 +3,10 @@ layout: page
 title: Ekram Ahmed 
 subtitle: Maritime Data Analyst
 ---
+[About Me](https://ekram49.github.io/aboutme/)  
+[Resume](https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link)  
+[LinkedIn](https://www.linkedin.com/in/ekram-ullah-ahmed/)  
+[Email](mailto:ekramullahzaki@gmail.com)
 
 Hey, this is Ekram—a maritime data analyst with a background that spans marine engineering, pharmaceutical retail, maritime tech startups, and a lot of time spent diving deep into data. I started my journey as a trainee marine engineer, working on ocean-going vessels, and over the years shifted toward data and tech, especially in the maritime and shipping space. Along the way, I’ve worked at early-stage startups, explored how data can make shipping smarter, and developed tools and insights around voyage simulation and optimization, vessel performance, process automation, weather routing, post-voyage reporting, and more.
 

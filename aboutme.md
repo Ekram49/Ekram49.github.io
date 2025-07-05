@@ -3,10 +3,13 @@ layout: page
 title: Ekram Ahmed 
 subtitle: Maritime Data Analyst
 ---
-[Portfolio](https://ekram49.github.io/)  
-[Resume](https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link)  
-[LinkedIn](https://www.linkedin.com/in/ekram-ullah-ahmed/)  
-[Email](mailto:ekramullahzaki@gmail.com)
+
+<div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
+  <a href="https://ekram49.github.io/" style="display: inline-block; margin: 5px 10px; padding: 8px 16px; background-color: #004080; color: white; text-decoration: none; border-radius: 6px;">Portfolio</a>
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link" style="display: inline-block; margin: 5px 10px; padding: 8px 16px; background-color: #004080; color: white; text-decoration: none; border-radius: 6px;">Resume</a>
+  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" style="display: inline-block; margin: 5px 10px; padding: 8px 16px; background-color: #004080; color: white; text-decoration: none; border-radius: 6px;">LinkedIn</a>
+  <a href="mailto:ekramullahzaki@gmail.com" style="display: inline-block; margin: 5px 10px; padding: 8px 16px; background-color: #004080; color: white; text-decoration: none; border-radius: 6px;">Email</a>
+</div>
 
 Hey, this is Ekram—a maritime data analyst with a background that spans marine engineering, pharmaceutical retail, maritime tech startups, and a lot of time spent diving deep into data. I started my journey as a trainee marine engineer, working on ocean-going vessels, and over the years shifted toward data and tech, especially in the maritime and shipping space. Along the way, I’ve worked at early-stage startups, explored how data can make shipping smarter, and developed tools and insights around voyage simulation and optimization, vessel performance, process automation, weather routing, post-voyage reporting, and more.
 

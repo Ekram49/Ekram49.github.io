@@ -750,6 +750,16 @@ pre {
   margin-bottom: 30px;
 }
 
+/* --- Social media icon hover color fix --- */
+#social-share-section a:hover {
+  background-color: {{ site.navbar-col }};
+  color: {{ site.hover-col }};
+  border-radius: 4px;
+  padding: 4px 6px;
+  transition: background-color 0.3s ease;
+}
+
+
 /* --- Notification boxes --- */
 .box-note, .box-warning, .box-error, .box-success {
   padding: 15px 15px 15px 10px;

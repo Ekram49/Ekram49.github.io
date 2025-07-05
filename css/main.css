@@ -289,6 +289,15 @@ footer a {
   color: {{site.footer-link-col}};
 }
 
+footer a:hover {
+  background-color: #f0f0f0;
+  color: {{ site.hover-col }};
+  border-radius: 4px;
+  text-decoration: none;
+  padding: 2px 4px;
+  transition: background-color 0.3s ease;
+}
+
 footer .list-inline {
   margin: 0;
   padding: 0;

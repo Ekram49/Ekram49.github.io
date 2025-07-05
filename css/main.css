@@ -125,6 +125,8 @@ img {
 .navbar-custom .nav li a {
   font-weight: 800;
   color: {{ site.navbar-text-col }};
+  display: block;
+  padding: 12px 20px; /* adjust for spacing */
 }
 
 .navbar-custom .navbar-brand:hover,

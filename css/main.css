@@ -132,6 +132,8 @@ img {
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
   color: {{ site.hover-col }};
+  background-color: #f0f0f0; /* light grey box */
+  border-radius: 4px; /* optional: to soften the edges */
 }
 
 .navbar-custom .navbar-brand-logo {

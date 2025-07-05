@@ -1,9 +1,29 @@
 ---
 layout: page
-title: Ekram's Blog
-subtitle: This is where I will tell my friends way too much about me
+title: Ekram’s Logbook
+subtitle: Curious dives into maritime tech—or whatever else I’m into this week!
 use-site-title: true
 ---
+
+# Link to my contact info
+
+<style>
+  .link-button {
+    display: inline-block;
+    margin: 5px 10px;
+    padding: 8px 16px;
+    background-color:#d3d3d3;
+    color: #003366;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .link-button:hover {
+    background-color: #a9a9a9; /* darker shade */
+    transform: scale(1.05);    /* optional: slight zoom */
+  }
+</style>
 
 <div class="posts-list">
   {% for post in paginator.posts %}

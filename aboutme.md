@@ -3,7 +3,7 @@ layout: page
 title: Ekram Ahmed 
 subtitle: Maritime Data Analyst
 ---
-[About Me](https://ekram49.github.io/aboutme/)  
+[Portfolio](https://ekram49.github.io/)  
 [Resume](https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link)  
 [LinkedIn](https://www.linkedin.com/in/ekram-ullah-ahmed/)  
 [Email](mailto:ekramullahzaki@gmail.com)

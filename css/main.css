@@ -133,6 +133,8 @@ img {
 .navbar-custom .nav li a:focus{
   color: {{ site.hover-col }};
   background-color: #f0f0f0; /* light grey box */
+  display: block;
+  height: 100%;
 }
 
 

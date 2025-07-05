@@ -226,12 +226,10 @@ img {
   word-break: break-word;
 }
 
-.navbar-custom .nav .navlinks-children a:hover,
-.navbar-custom .nav .navlinks-children a:focus {
-  background-color: #f0f0f0;
-  display: block;
-  width: 100%;
-  color: {{ site.hover-col }};
+.navbar-custom .nav .navlinks-container .navlinks-children a:hover,
+.navbar-custom .nav .navlinks-container .navlinks-children a:focus {
+  background-color: #f0f0f0 !important;
+  color: {{ site.hover-col }} !important;
 }
 
 .navbar-custom .nav .navlinks-container .navlinks-children a {

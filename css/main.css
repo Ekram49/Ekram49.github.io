@@ -750,25 +750,18 @@ pre {
   margin-bottom: 30px;
 }
 
-/* --- Social media icon hover color fix --- */
 #social-share-section a:hover {
-  background-color: {{ site.navbar-col }};
   color: {{ site.hover-col }};
-  border-radius: 4px;
-  padding: 4px 6px;
-  transition: background-color 0.3s ease;
 }
 
-#social-share-section a {
-  display: inline-block;
+#social-share-section a i {
   transition: transform 0.2s ease;
+  display: inline-block;
 }
 
-#social-share-section a:hover {
-  transform: scale(1.2); /* Grows 20% on hover */
+#social-share-section a:hover i {
+  transform: scale(1.2);
 }
-
-
 
 /* --- Notification boxes --- */
 .box-note, .box-warning, .box-error, .box-success {

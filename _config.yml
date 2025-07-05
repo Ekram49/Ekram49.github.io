@@ -6,14 +6,6 @@ title: Home
 # Short description of your site
 description: "Ekram's Blog"
 
-<div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
-  <a href="https://ekram49.github.io/aboutme/" class="link-button">Who Dis?</a>
-  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link" class="link-button">Resume</a>
-  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="link-button">LinkedIn</a>
-  <a href="mailto:ekramullahzaki@gmail.com" class="link-button">Email</a>
-</div>
-
-
 # --- Local development options ---
 # If your website is hosted locally rather than on GitHub, then you need to uncomment the next two parameters to set the url and baseurl
 # *** If you're not sure what this mean, then leave this section as it is. Only modify the url and baseurl if you know what you're doing!***

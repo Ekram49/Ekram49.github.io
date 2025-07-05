@@ -837,27 +837,20 @@ pre {
   font-size: 16px;
 }
 
-/* Fix social media icon hover completely */
-#social-share-section a {
-  background-color: transparent !important;
-  text-decoration: none;
-  display: inline-block;
-  transition: transform 0.2s ease, color 0.2s ease;
+/* Make social media icons grow and remove background on hover */
+.footer-links a:hover .fa-circle {
+  fill: none;
+  background: transparent;
+  color: transparent;
 }
 
-#social-share-section a:hover {
-  background-color: transparent !important;
-  color: {{ site.hover-col }} !important;
-  transform: scale(1.2);
+.footer-links a:hover .fa-inverse {
+  transform: scale(1.3);
+  transition: transform 0.3s ease;
 }
 
-#social-share-section a i,
-#social-share-section a svg {
-  transition: transform 0.2s ease;
+.footer-links .fa-inverse {
+  transition: transform 0.3s ease;
 }
-
-#social-share-section a:hover i,
-#social-share-section a:hover svg {
-  transform: scale(1.2);
 }
 

@@ -242,6 +242,22 @@ img {
   font-weight: normal;
 }
 
+/* Initial hidden state */
+.navbar-custom .nav .navlinks-children {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+/* When shown on hover */
+.navbar-custom .nav .navlinks-container:hover .navlinks-children {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+
 @media only screen and (max-width: 767px) {
   .navbar-custom .nav .navlinks-container.show-children {
     background: rgba(0, 0, 0, 0.2);

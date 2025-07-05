@@ -226,6 +226,14 @@ img {
   word-break: break-word;
 }
 
+.navbar-custom .nav .navlinks-children a:hover,
+.navbar-custom .nav .navlinks-children a:focus {
+  background-color: #f0f0f0;
+  display: block;
+  height: 100%;
+  color: {{ site.hover-col }};
+}
+
 .navbar-custom .nav .navlinks-container .navlinks-children a {
   display: block;
   padding: 10px;

@@ -9,15 +9,15 @@ subtitle: Maritime Data Analyst
     display: inline-block;
     margin: 5px 10px;
     padding: 8px 16px;
-    background-color: #004080;
-    color: white;
+    background-color:#d3d3d3;
+    color: #003366;
     text-decoration: none;
     border-radius: 6px;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
   .link-button:hover {
-    background-color: #002b5c; /* darker shade */
+    background-color: #a9a9a9; /* darker shade */
     transform: scale(1.05);    /* optional: slight zoom */
   }
 </style>
@@ -28,7 +28,6 @@ subtitle: Maritime Data Analyst
   <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="link-button">LinkedIn</a>
   <a href="mailto:ekramullahzaki@gmail.com" class="link-button">Email</a>
 </div>
-
 
 Hey, this is Ekram—a maritime data analyst with a background that spans marine engineering, pharmaceutical retail, maritime tech startups, and a lot of time spent diving deep into data. I started my journey as a trainee marine engineer, working on ocean-going vessels, and over the years shifted toward data and tech, especially in the maritime and shipping space. Along the way, I’ve worked at early-stage startups, explored how data can make shipping smarter, and developed tools and insights around voyage simulation and optimization, vessel performance, process automation, weather routing, post-voyage reporting, and more.
 

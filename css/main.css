@@ -232,6 +232,13 @@ img {
   border-width: 0 1px 1px 1px;
   font-weight: normal;
 }
+
+.navbar-custom .nav .navlinks-container .navlinks-children a:hover {
+  background-color: #f0f0f0; /* light grey hover */
+  color: {{ site.hover-col }}; /* match the hover color */
+  border-radius: 4px; /* optional for rounded corners */
+}
+
 @media only screen and (max-width: 767px) {
   .navbar-custom .nav .navlinks-container.show-children {
     background: rgba(0, 0, 0, 0.2);

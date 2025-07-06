@@ -393,12 +393,17 @@ footer .theme-by {
 .post-preview-link {
   display: block;
   transition: transform 0.3s ease;
+  color: inherit;         /* preserve text color */
+  text-decoration: none;  /* remove underline */
+  user-select: text;      /* allow text selection inside */
 }
 
 .post-preview-link:hover {
   transform: scale(1.03);
   z-index: 1;
   position: relative;
+  color: inherit;
+  text-decoration: none;
 }
 
 

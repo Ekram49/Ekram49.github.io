@@ -432,11 +432,17 @@ footer .theme-by {
   display: inline-block; /* for transform */
   transition: transform 0.3s ease, color 0.3s ease;
 }
-
 .post-preview .post-title a:hover,
 .post-preview .post-subtitle a:hover {
   transform: scale(1.05);
   color: {{ site.hover-col }};
+}
+.post-preview .post-title:hover,
+.post-preview .post-subtitle:hover {
+  transform: scale(1.05);
+  color: {{ site.hover-col }};
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
 }
 .post-preview .post-meta,
 .post-heading .post-meta {

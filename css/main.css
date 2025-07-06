@@ -139,23 +139,21 @@ img {
   background-color: #f0f0f0;
 }
 
-/* Text-only zoom on hover */
 .navbar-custom .nav li a span,
-.navbar-custom .navbar-brand span,
-.navbar-custom .nav .navlinks-container .navlinks-children a span {
+.navbar-custom .nav .navlinks-children a span,
+.navbar-custom .navbar-brand span {
   display: inline-block;
   transition: transform 0.3s ease;
 }
 
 .navbar-custom .nav li a:hover span,
 .navbar-custom .nav li a:focus span,
+.navbar-custom .nav .navlinks-children a:hover span,
+.navbar-custom .nav .navlinks-children a:focus span,
 .navbar-custom .navbar-brand:hover span,
-.navbar-custom .navbar-brand:focus span,
-.navbar-custom .nav .navlinks-container .navlinks-children a:hover span,
-.navbar-custom .nav .navlinks-container .navlinks-children a:focus span {
+.navbar-custom .navbar-brand:focus span {
   transform: scale(1.1);
 }
-
 
 /* Brand logo transitions */
 .navbar-custom .navbar-brand-logo {

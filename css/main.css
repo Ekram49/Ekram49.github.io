@@ -495,8 +495,9 @@ footer .theme-by {
   margin-top: -35px;
   filter: grayscale(90%);
 }
-.post-image:hover {
+.post-preview-link:hover .post-image {
   filter: grayscale(0%);
+  transition: filter 0.3s ease;
 }
 .post-image img {
   border-radius: 100px;

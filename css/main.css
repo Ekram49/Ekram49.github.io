@@ -323,12 +323,11 @@ footer a:hover {
   padding: 0 !important;
 }
 
-/* Icon grow effect */
-.footer-links .fa-inverse {
+.footer-links .fa-stack {
   transition: transform 0.3s ease;
 }
 
-.footer-links a:hover .fa-inverse {
+.footer-links a:hover .fa-stack {
   transform: scale(1.3);
 }
 

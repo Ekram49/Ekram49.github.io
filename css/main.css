@@ -131,11 +131,7 @@ img {
 .navbar-custom .navbar-brand:focus,
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a {
-  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
-}
-
-.navbar-custom .nav li a {
-  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-custom .nav li a:hover,
@@ -144,7 +140,7 @@ img {
   background-color: #f0f0f0; /* light grey box */
   display: block;
   height: 100%;
-  transform: scale(1.05);
+  transform: scale(1.15);
 }
 
 

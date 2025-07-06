@@ -1,72 +1,42 @@
 ---
 layout: post
-title: Fishing predictor
-subtitle: A web app to predict fishing activity of vessels
+title: Fishing Predictor
+subtitle: A Web App to Predict Fishing Activity of Vessels
 image: https://eco-business.imgix.net/uploads/ebmedia/fileuploads/shutterstock_126712838.jpg?fit=crop&h=960&ixlib=django-1.2.0&w=1440
 ---
 
-This web app is built to predict fishing activity of Pole and Line vessels using the vessels position,
-speed and the time of the year. The data was collected from “Global Fishing Watch” – a non-profit 
-that does scientific research using data and analysis to make fishing activity more sustainable.
-
-
+This web app predicts the fishing activity of Pole and Line vessels based on their position, speed, and the time of year. The data comes from Global Fishing Watch, a non-profit organization that uses data and scientific analysis to promote more sustainable fishing practices.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/gfw/master/Images/map%20of%20fishing.png)
 
 
 
-## Data analysis and Feature Engineering
+## Data Analysis and Feature Engineering
 
-The dataset has various features like 'Longitude', 'Latitude', 'Speed' etc which is used to predict 
-the vessels fishing activity.
-
-
+The dataset includes various features such as Longitude, Latitude, and Speed, which are used to predict the fishing activity of vessels.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/gfw/master/Images/Features.png)
 
-
-
-Features like speed, distance from port, Longitude and Latitude was taken directly from the data. 
-The feature “Area” as created from calculating Longitude and Latitude, and Month was extracted from 
-Timestamp data.
-
-
+Features such as speed, distance from port, longitude, and latitude were taken directly from the dataset. Additionally, the feature “Area” was created by calculating values based on longitude and latitude, and month was extracted from the timestamp data.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/gfw/master/Images/Area.png)
 
-
-
 ## Predictive Model
 
-For prediction “Random Forest Classifier” model was used since it is suitable for both numerical and 
-categorical variables.
-
-
+For prediction, we used a Random Forest Classifier model because it handles both numerical and categorical variables effectively.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/gfw/master/Images/Model.png)
 
+## Model Accuracy and Precision
 
-
-## Model accuracy and Precision
-
-After running and testing the model it was found that the model had a test score of 96%, which is a 
-pretty good score. But since the data was imbalanced, I decided that a high accuracy score may not be 
-a good metric for the model. So, I also checked precision, recall and f1 score of the model. All of 
-them had scored over 90%.
-
-
+After running and testing the model, we found it achieved a 96% test accuracy, which is impressive. However, since the dataset was imbalanced, accuracy alone wasn’t a reliable metric. To get a better understanding, I also evaluated the model’s precision, recall, and F1 score—all of which scored above 90%, indicating strong overall performance.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/gfw/master/Images/Confusion%20Matrix.png)
 ![Crepe](https://raw.githubusercontent.com/Ekram49/gfw/master/Images/Classification%20report.png)
 
+## Web App
 
-
-## Web app
-
-Finally, I created a web app using Heroku and integrated the model. Now anyone can with the necessary 
-information can use the app to predict fishing activity.
-
-
+Finally, I created a web app hosted on Heroku that integrates the predictive model. Now, anyone with the necessary information can use the app to predict fishing activity.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/gfw/master/Images/Prediction%20page.png)
 
@@ -75,15 +45,15 @@ information can use the app to predict fishing activity.
 
 
 
-## Future plan for the project
+## Future Plans for the Project
 
-I’m really proud of being able to complete this whole project by myself. The app is perfectly working 
-as planned, but I believe there is always room for improvement. Some of the things I might try in the 
-future includes:
+I’m really proud to have completed this entire project on my own. The app works exactly as planned, but I believe there’s always room to improve. Some of the future enhancements I’m considering include:
 
-1.	Tune the parameters of the model for better accuracy/precision
-2.	Try different predictive models.
-3.	Try to create and use new features
+•	Tune the model’s parameters to improve accuracy and precision
+
+•	Experiment with different predictive models
+
+•	Develop and incorporate new features to enhance predictions
 
 
 [Notebook and data](https://github.com/Ekram49/gfw)

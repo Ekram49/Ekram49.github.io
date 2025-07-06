@@ -392,19 +392,25 @@ footer .theme-by {
 
 .post-preview-link {
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease; 
   color: inherit;         /* preserve text color */
   text-decoration: none;  /* remove underline */
   user-select: text;      /* allow text selection inside */
+  border-radius: 0;       /* no rounding normally */
+  box-shadow: none;       /* no shadow normally */
+  background-color: white; /* optional: better card background */
 }
 
 .post-preview-link:hover {
   transform: scale(1.03);
   z-index: 1;
   position: relative;
+  border-radius: 12px;    /* rounded corners on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* subtle shadow */
   color: inherit;
   text-decoration: none;
 }
+
 
 
 @media only screen and (min-width: 768px) {
@@ -421,6 +427,14 @@ footer .theme-by {
   text-decoration: none;
   color: #404040;
 }
+
+.post-preview {
+  overflow: hidden;
+  border-radius: inherit;
+  background-color: white;
+  transition: inherit;
+}
+
 
 .post-preview a:focus,
 .post-preview a:hover {

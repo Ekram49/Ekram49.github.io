@@ -134,15 +134,19 @@ img {
   transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-.navbar-custom .nav li a:hover {
-  transform: scale(1.05);
+.navbar-custom .nav li a {
+  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
 }
-.navbar-custom .nav li a:focus{
+
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li a:focus {
   color: {{ site.hover-col }};
   background-color: #f0f0f0; /* light grey box */
   display: block;
   height: 100%;
+  transform: scale(1.05);
 }
+
 
 
 .navbar-custom .navbar-brand-logo {

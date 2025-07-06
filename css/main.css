@@ -395,6 +395,12 @@ footer .theme-by {
 .post-preview {
   padding: 20px 0;
   border-bottom: 1px solid #eee;
+  transition: transform 0.3s ease; /* <-- add this */
+}
+.post-preview:hover {
+  transform: scale(1.03);
+  z-index: 1;
+  position: relative;
 }
 
 @media only screen and (min-width: 768px) {

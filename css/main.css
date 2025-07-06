@@ -127,13 +127,15 @@ img {
   color: {{ site.navbar-text-col }};
 }
 
-.navbar-custom .navbar-brand:hover,
-.navbar-custom .navbar-brand:focus,
-.navbar-custom .nav li a:hover,
+.navbar-custom .navbar-brand,
 .navbar-custom .nav li a {
+  font-weight: 800;
+  color: {{ site.navbar-text-col }};
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus,
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
   color: {{ site.hover-col }};
@@ -142,6 +144,7 @@ img {
   height: 100%;
   transform: scale(1.15);
 }
+
 
 
 

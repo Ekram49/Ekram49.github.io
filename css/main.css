@@ -142,11 +142,24 @@ img {
   background-color: #f0f0f0; /* light grey box */
   display: block;
   height: 100%;
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
+.navbar-custom .navbar-brand,
+.navbar-custom .nav li a,
+.navbar-custom .nav .navlinks-container .navlinks-children a {
+  border-radius: 6px;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+}
 
-
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav .navlinks-container .navlinks-children a:hover,
+.navbar-custom .nav .navlinks-container .navlinks-children a:focus {
+  border-radius: 6px;
+}
 
 .navbar-custom .navbar-brand-logo {
   padding-top: 0;

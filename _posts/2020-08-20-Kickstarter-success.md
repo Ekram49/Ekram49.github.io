@@ -1,57 +1,60 @@
 ---
 layout: post
-title: Building a web app to predict Kickstarter campaign success
+title: Building a Web App to Predict Kickstarter Campaign Success
 image: https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/kickstarter-logo.jpg
 ---
-As a Lamdaschool data science student, me along with other data science students was tasked to create a web app that would predict the success/failure of a Kickstarter campaign. It was a fun project to do and it felt great to create a fully functioning useful web app within just four days!
-Investing in a Kickstarter campaign is not risk free. If a campaign fails, the investors loose all the money. So, you have to look at a campaign to determine the possibility of the campaign being successful before putting your money on a campaign. Only if there was someone who has a great intuition of determining which one’s will succeed! Lucky for you our app can do exactly that. 
+As a Lambda School data science student, I, along with my peers, was tasked with creating a web app to predict the success or failure of Kickstarter campaigns. It was a fun and rewarding project—building a fully functional, useful app from scratch in just four days felt amazing!
+
+Investing in a Kickstarter campaign isn’t without risks. If a campaign fails, investors lose their money. That’s why it’s important to evaluate the likelihood of success before backing any project. Wouldn’t it be great if someone had a sixth sense for spotting winning campaigns?
+
+Well, lucky for you, our app does exactly that.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/thinking.jpg)
 
-We have taken the data of all the Kickstarter campaigns from a website named [Web Robots](https://webrobots.io/kickstarter-datasets/) Which contains all the information we needed to create a predictive model, that would facilitate our app with the power to predict the success/failure of a Kickstarter campaign based on some features of the given campaign.
+We used data from [Web Robots](https://webrobots.io/kickstarter-datasets/), which provides comprehensive information on Kickstarter campaigns. This dataset gave us all the features needed to build a predictive model, empowering our app to forecast the success or failure of any given campaign based on its characteristics.
 
-## The features we used to create our model was:
+## The Features We Used to Create Our Model Were:
 
 •	Category
 
-•	Description length
+•	Description Length
 
-•	Campaign goal (in USD)
+•	Campaign Goal (in USD)
 
-•	Campaign length (days)
+•	Campaign Length (Days)
 
-•	Staff pick
+•	Staff Pick
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/feature%20importances.PNG)
 
-## Exploring the datasets, we found out that out of 209,445 Kickstarter campaigns:
+## Exploring the Dataset, We Found That Out of 209,445 Kickstarter Campaigns:
 
 
-•	121,651 were successful
+•	121,651 campaigns were successful
 
-•	73,683 failed
+•	73,683 campaigns failed
 
-•	8,904 were cancelled
+•	8,904 campaigns were cancelled
 
-•	5,207 are live
+•	5,207 campaigns are still live
 
 ![creep](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/state.PNG)
 
-After some more Exploratory data analysis, we Used “Random Forest Classifier” to create our predictive model which gave us around 75.3% test accuracy which we were pretty satisfied with considering how many different variables can affect the success of a campaign which makes creating a super accurate model impossible.
+After further exploratory data analysis, we used a Random Forest Classifier to build our predictive model. It achieved approximately **75.3%** accuracy on the test data, which we were quite satisfied with—especially considering the many variables that can influence a campaign’s success, making a perfectly accurate model nearly impossible.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/app-1.PNG)
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/app-2.PNG)
 
-To use our predictive model, we developed a [Flask app](https://ds-15-ks-2.herokuapp.com/) which allows you to put the features as input and spit out the probability of your campaign being successful.
+To make our predictive model accessible, we developed a [Flask app](https://ds-15-ks-2.herokuapp.com/ that lets you input your campaign’s features and outputs the probability of its success.
 
-After spending a good amount of time analyzing the data, creating model and app, we would suggest if you want to start a Kickstarter campaign, or you want to invest in one, make sure:
+After spending significant time analyzing the data, building the model, and developing the app, we suggest that if you’re planning to start a Kickstarter campaign or invest in one, make sure to:
 
-•	Have a reasonable goal
+•	Set a reasonable campaign goal
 
-•	Don’t have too long campaign
+•	Keep the campaign length short
 
-•	Have a good description about the campaign
+•	Write a clear and compelling campaign description
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/best-of-luck-picture-with-thumb.jpg)
 
@@ -65,7 +68,7 @@ After spending a good amount of time analyzing the data, creating model and app,
 
 •	Luis Urene - Machine Learning Engineer
 
-•	Ekram Ahmed(Myself) - Machine Learning Engineer
+•	Ekram Ahmed (Myself) - Machine Learning Engineer
 
 ## Resources:
 

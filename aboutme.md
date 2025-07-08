@@ -80,8 +80,8 @@ My journey as a maritime professional began in 2013 when I joined the prestigiou
 <h2>👨‍🎓 Academy Life </h2>
 
 <div class="image-gallery">
-  <img src="https://raw.githubusercontent.com/Ekram49/img/About Me/Academy 1.png" alt="Academy 1">
-  <img src="https://raw.githubusercontent.com/Ekram49/img/About Me/Academy 2.png" alt="Academy 2">
+  <img src="https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%201.png">
+  <img src="https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%202.png">
 </div>
 
 But beyond the technical curriculum, the Academy was where I learned the value of discipline, leadership, and resilience—qualities deeply rooted in maritime and regimental life. The daily routine, the drills, the inspections, and the unspoken codes of conduct shaped not just how I worked but who I was becoming.

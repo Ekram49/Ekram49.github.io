@@ -22,56 +22,28 @@ subtitle: Maritime Data Analyst
     transform: scale(1.05);
   }
 
-<!-- Slider CSS -->
-<style>
+  /* Slider container */
   #image-slider {
     position: relative;
     width: 80%; /* Adjust width */
-    max-width: 700px; /* Limit maximum size */
+    max-width: 800px; /* Limit maximum size */
     margin: 20px auto;
     height: 400px; /* Adjust height */
     overflow: hidden;
     border-radius: 12px;
-    background-color: #f0f0f0;
-    text-align: center;
+    background-color: #f0f0f0; /* Optional: background for visual contrast */
   }
 
+  /* Main image styles */
   .slider-main-image {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensures no cropping */
-    border-radius: 12px;
-    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
+    object-fit: contain; /* Ensure no cropping, keep aspect ratio */
+    border-radius: 12px; /* Rounded corners */
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
   }
 
-  /* Thumbnail container */
-  .slider-thumbnails {
-    position: absolute;
-    bottom: -60px; /* Space between main image and thumbnails */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    z-index: 10;
-  }
-
-  /* Thumbnail styles */
-  .slider-thumbnails img {
-    width: 60px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0.7;
-  }
-
-  .slider-thumbnails img:hover {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-
+  /* Arrow button styles */
   .arrow {
     position: absolute;
     top: 50%;
@@ -99,14 +71,10 @@ subtitle: Maritime Data Analyst
     right: 10px;
   }
 
+  /* Hover zoom effect on main image */
   #image-slider:hover .slider-main-image {
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Smooth transition for the images */
-  .slider-main-image {
-    transition: transform 0.5s ease-in-out;
+    transform: scale(1.05); /* Slight zoom */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for "card-like" effect */
   }
 </style>
 
@@ -118,9 +86,6 @@ subtitle: Maritime Data Analyst
 
     const sliderHTML = `
       <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
-      <div class="slider-thumbnails">
-        ${imageLinks.map((link, index) => `<img src="${link}" alt="Thumbnail ${index + 1}" data-index="${index}">`).join('')}
-      </div>
       <div class="arrow arrow-left">&#8592;</div>
       <div class="arrow arrow-right">&#8594;</div>
     `;
@@ -128,39 +93,20 @@ subtitle: Maritime Data Analyst
 
     let currentIndex = 0;
     const mainImage = document.querySelector(".slider-main-image");
-    const thumbnails = document.querySelectorAll(".slider-thumbnails img");
     const leftArrow = document.querySelector(".arrow-left");
     const rightArrow = document.querySelector(".arrow-right");
 
     // Function to update the main image with sliding animation
     function updateMainImage(index) {
-      // Apply smooth transition from left to right
       mainImage.style.transition = "transform 0.5s ease-in-out";
       mainImage.style.transform = `translateX(-100%)`; // Slide out old image
 
       setTimeout(() => {
         mainImage.src = imageLinks[index]; // Update image
-        mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset transition
+        mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset animation
         mainImage.style.transform = `translateX(0)`; // Slide in new image
-      }, 500); // Wait for slide-out transition
+      }, 500); // Wait for the slide-out transition to complete
     }
-
-    // Thumbnail click event with animation from thumbnail to main image
-    thumbnails.forEach((thumbnail) => {
-      thumbnail.addEventListener("click", () => {
-        const thumbnailIndex = parseInt(thumbnail.getAttribute("data-index"));
-
-        // Animate image coming from the thumbnail
-        mainImage.style.transition = "transform 0.5s ease-in-out";
-        mainImage.style.transform = `translateX(-100%)`;
-
-        setTimeout(() => {
-          mainImage.src = imageLinks[thumbnailIndex];
-          mainImage.style.transition = "transform 0.5s ease-in-out";
-          mainImage.style.transform = `translateX(0)`;
-        }, 500);
-      });
-    });
 
     // Arrow navigation with smooth slide
     leftArrow.addEventListener("click", () => {
@@ -185,6 +131,12 @@ subtitle: Maritime Data Analyst
     autoSlide();
   });
 </script>
+
+<!-- Main Content Starts Here -->
+<div id="image-slider" 
+  data-images='["https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%201.png", 
+  "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%202.png"]'>
+</div>
 
 <!-- Main Content Starts Here -->
 <div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">

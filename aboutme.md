@@ -22,12 +22,6 @@ subtitle: Maritime Data Analyst
     transform: scale(1.05);
   }
 
-<!-- Slider Section -->
-<div id="image-slider" 
-  data-images='["https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%201.png", 
-  "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%202.png"]'>
-</div>
-
 <!-- Slider CSS -->
 <style>
   #image-slider {

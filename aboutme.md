@@ -5,103 +5,86 @@ subtitle: Maritime Data Analyst
 ---
 
 <style>
-  /* Your link button styles */
-  .link-button {
-    display: inline-block;
-    margin: 5px 10px;
-    padding: 8px 16px;
-    background-color: #d3d3d3;
-    color: #003366;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  .link-button:hover {
-    background-color: #a9a9a9; /* darker shade */
-    transform: scale(1.05);
-  }
+    /* Slider container */
+    #image-slider {
+        position: relative;
+        width: 80%; /* Adjust width */
+        max-width: 800px; /* Limit maximum size */
+        margin: 20px auto;
+        height: 400px; /* Adjust height */
+        overflow: hidden;
+        background-color: transparent; /* Transparent background */
+    }
 
-/* Slider container */
-#image-slider {
-  position: relative;
-  width: 80%; /* Adjust width */
-  max-width: 800px; /* Limit maximum size */
-  margin: 20px auto;
-  height: 400px; /* Adjust height */
-  overflow: hidden;
-  background-color: transparent; /* Transparent background */
-}
+    /* Main image styles */
+    .slider-main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Ensure no cropping, keep aspect ratio */
+        transition: transform 0.5s ease; /* Smooth transition */
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 
-/* Main image styles */
-.slider-main-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Ensure no cropping, keep aspect ratio */
-  transition: transform 0.5s ease; /* Smooth transition */
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+    /* Arrow button styles */
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 15px;
+        border-radius: 50%;
+        font-size: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
 
-/* Arrow button styles */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 15px;
-  border-radius: 50%;
-  font-size: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-}
+    .arrow-left {
+        left: 10px;
+    }
 
-.arrow-left {
-  left: 10px;
-}
+    .arrow-right {
+        right: 10px;
+    }
 
-.arrow-right {
-  right: 10px;
-}
+    .arrow:hover {
+        transform: translateY(-50%) scale(1.2);
+        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+    }
 
-.arrow:hover {
-  transform: translateY(-50%) scale(1.2);
-  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
-}
+    /* Dots for navigation */
+    .dots-container {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+    }
 
-/* Dots for navigation */
-.dots-container {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 10;
-}
+    .dot {
+        width: 10px;
+        height: 10px;
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+    }
 
-.dot {
-  width: 10px;
-  height: 10px;
-  background-color: white;
-  border-radius: 50%;
-  cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-}
+    .dot:hover {
+        opacity: 1;
+    }
 
-.dot:hover {
-  opacity: 1;
-}
-
-.dot.active {
-  opacity: 1; /* Active dot */
-}
-
+    .dot.active {
+        opacity: 1; /* Active dot */
+    }
 </style>
-
+    
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const sliderDiv = document.querySelector("#image-slider");
@@ -116,6 +99,7 @@ subtitle: Maritime Data Analyst
         sliderDiv.innerHTML = sliderHTML;
 
         let currentIndex = 0;
+        let autoSlideInterval; // Store the interval ID
         const mainImage = document.querySelector(".slider-main-image");
         const leftArrow = document.querySelector(".arrow-left");
         const rightArrow = document.querySelector(".arrow-right");
@@ -128,7 +112,7 @@ subtitle: Maritime Data Analyst
                 dot.classList.add("dot");
                 dot.addEventListener("click", () => {
                     currentIndex = index;
-                    updateMainImage(currentIndex);
+                    updateMainImage(currentIndex, 'manual');
                 });
                 dotsContainer.appendChild(dot);
             });
@@ -147,13 +131,13 @@ subtitle: Maritime Data Analyst
         }
 
         // Update the main image with a smooth transition
-        function updateMainImage(index) {
-            const isNext = index > currentIndex; // Check if it's the next image or previous
-            const direction = isNext ? "100%" : "-100%"; // Move right for next, left for previous
+        function updateMainImage(index, direction = 'auto') {
+            const isNext = direction === 'manual' ? index > currentIndex : true; // Check if it's the next image or previous
+            const moveDirection = isNext ? "100%" : "-100%"; // Move right for next, left for previous
 
             // Slide current image out
             mainImage.style.transition = "transform 0.5s ease";
-            mainImage.style.transform = `translateX(${direction})`;
+            mainImage.style.transform = `translateX(${moveDirection})`;
 
             // After the current image moves out, update the image source and position the new image off-screen
             setTimeout(() => {
@@ -167,43 +151,45 @@ subtitle: Maritime Data Analyst
                     mainImage.style.transform = "translateX(0)"; // Slide the new image into the center
                 }, 10);
             }, 500); // Wait for the old image to finish sliding out
+
+            // Update the current index
+            currentIndex = index;
+            updateDots(); // Update dot active state
         }
 
         // Arrow navigation (manual sliding)
         leftArrow.addEventListener("click", () => {
-            currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
-            updateMainImage(currentIndex);
-            updateDots(); // Update dot active state
+            const newIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
+            updateMainImage(newIndex, 'manual');
         });
 
         rightArrow.addEventListener("click", () => {
-            currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-            updateMainImage(currentIndex);
-            updateDots(); // Update dot active state
+            const newIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+            updateMainImage(newIndex, 'manual');
         });
 
         // Dot navigation (manual sliding)
         createDots();
 
         // Auto sliding functionality (slides right to left automatically)
-        function autoSlide() {
-            setInterval(() => {
-                currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-                updateMainImage(currentIndex);
-                updateDots(); // Update dot active state
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                const newIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+                updateMainImage(newIndex, 'auto');
             }, 5000); // Change image every 5 seconds
         }
 
-        // Start auto-sliding
-        autoSlide();
+        // Start auto-sliding when the page loads
+        startAutoSlide();
 
         // Pause auto-slide when hovering over the slider (including arrows)
         sliderDiv.addEventListener("mouseenter", () => {
-            clearInterval(autoSlide);
+            clearInterval(autoSlideInterval);
         });
 
+        // Resume auto-slide when the mouse leaves the slider area
         sliderDiv.addEventListener("mouseleave", () => {
-            autoSlide();
+            startAutoSlide();
         });
     });
 </script>

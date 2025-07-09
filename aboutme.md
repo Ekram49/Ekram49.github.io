@@ -5,6 +5,22 @@ subtitle: Maritime Data Analyst
 ---
 
 <style>
+    /* Your link button styles */
+  .link-button {
+    display: inline-block;
+    margin: 5px 10px;
+    padding: 8px 16px;
+    background-color: #d3d3d3;
+    color: #003366;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  .link-button:hover {
+    background-color: #a9a9a9; /* darker shade */
+    transform: scale(1.05);
+  }
+
   /* Slider Styles */
   .slider-container {
     position: relative;

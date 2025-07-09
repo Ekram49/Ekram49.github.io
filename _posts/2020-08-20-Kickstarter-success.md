@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a Web App to Predict Kickstarter Campaign Success
-image: https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/kickstarter-logo.jpg
+image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/kickstarter-logo.jpg
 ---
 As a Lambda School data science student, I, along with my peers, was tasked with creating a web app to predict the success or failure of Kickstarter campaigns. It was a fun and rewarding project—building a fully functional, useful app from scratch in just four days felt amazing!
 
@@ -9,7 +9,7 @@ Investing in a Kickstarter campaign isn’t without risks. If a campaign fails, 
 
 Well, lucky for you, our app does exactly that.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/thinking.jpg)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/thinking.jpg)
 
 We used data from [Web Robots](https://webrobots.io/kickstarter-datasets/), which provides comprehensive information on Kickstarter campaigns. This dataset gave us all the features needed to build a predictive model, empowering our app to forecast the success or failure of any given campaign based on its characteristics.
 
@@ -25,7 +25,7 @@ We used data from [Web Robots](https://webrobots.io/kickstarter-datasets/), whic
 
 •	Staff Pick
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/feature%20importances.PNG)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/feature%20importances.jpg)
 
 ## Exploring the Dataset, We Found That Out of 209,445 Kickstarter Campaigns:
 
@@ -38,13 +38,13 @@ We used data from [Web Robots](https://webrobots.io/kickstarter-datasets/), whic
 
 •	5,207 campaigns are still live
 
-![creep](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/state.PNG)
+![creep](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/feature%state.jpg)
 
 After further exploratory data analysis, we used a Random Forest Classifier to build our predictive model. It achieved approximately **75.3%** accuracy on the test data, which we were quite satisfied with—especially considering the many variables that can influence a campaign’s success, making a perfectly accurate model nearly impossible.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/app-1.PNG)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/app-1.jpg)
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/app-2.PNG)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/feature%20importances.jpg/app-2.jpg)
 
 To make our predictive model accessible, we developed a [Flask app](https://ds-15-ks-2.herokuapp.com/ that lets you input your campaign’s features and outputs the probability of its success.
 
@@ -56,7 +56,7 @@ After spending significant time analyzing the data, building the model, and deve
 
 •	Write a clear and compelling campaign description
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Kickstarter-blogpost/master/Images/best-of-luck-picture-with-thumb.jpg)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/best-of-luck-picture-with-thumb.jpg)
 
 ## Credits:
 

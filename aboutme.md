@@ -38,7 +38,7 @@ subtitle: Maritime Data Analyst
         border-radius: 50%;
         font-size: 25px;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
     }
 
@@ -73,7 +73,7 @@ subtitle: Maritime Data Analyst
         border-radius: 50%;
         cursor: pointer;
         opacity: 0.6;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.2s ease;
     }
 
     .dot:hover {

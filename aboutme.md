@@ -4,46 +4,28 @@ title: Ekram Ahmed
 subtitle: Maritime Data Analyst
 ---
 
-<style>
-    /* Your link button styles */
-  .link-button {
-    display: inline-block;
-    margin: 5px 10px;
-    padding: 8px 16px;
-    background-color: #d3d3d3;
-    color: #003366;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  .link-button:hover {
-    background-color: #a9a9a9; /* darker shade */
-    transform: scale(1.05);
-  }
-
 <!-- Slider CSS -->
 <style>
   #image-slider {
     position: relative;
     width: 80%; /* Adjust width */
-    max-width: 800px; /* Limit maximum size */
+    max-width: 700px; /* Limit maximum size */
     margin: 20px auto;
     height: 400px; /* Adjust height */
     overflow: hidden;
     border-radius: 12px;
-    background-color: #f0f0f0; /* Optional: background for visual contrast */
+    background-color: #f0f0f0;
+    text-align: center;
   }
 
-  /* Main image styles */
   .slider-main-image {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensure no cropping, keep aspect ratio */
-    border-radius: 12px; /* Rounded corners */
-    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    object-fit: contain; /* Ensures no cropping */
+    border-radius: 12px;
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
   }
 
-  /* Thumbnail container */
   .slider-thumbnails {
     position: absolute;
     bottom: -60px; /* Space between main image and thumbnails */
@@ -66,11 +48,10 @@ subtitle: Maritime Data Analyst
   }
 
   .slider-thumbnails img:hover {
-    transform: scale(1.1); /* Enlarge on hover */
+    transform: scale(1.1);
     opacity: 1;
   }
 
-  /* Arrow button styles */
   .arrow {
     position: absolute;
     top: 50%;
@@ -98,10 +79,14 @@ subtitle: Maritime Data Analyst
     right: 10px;
   }
 
-  /* Hover zoom effect on main image */
   #image-slider:hover .slider-main-image {
-    transform: scale(1.05); /* Slight zoom */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for "card-like" effect */
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Smooth transition for the images */
+  .slider-main-image {
+    transition: transform 0.5s ease-in-out;
   }
 </style>
 
@@ -129,15 +114,15 @@ subtitle: Maritime Data Analyst
 
     // Function to update the main image with sliding animation
     function updateMainImage(index) {
-      // Smooth sliding animation
+      // Apply smooth transition from left to right
       mainImage.style.transition = "transform 0.5s ease-in-out";
       mainImage.style.transform = `translateX(-100%)`; // Slide out old image
 
       setTimeout(() => {
         mainImage.src = imageLinks[index]; // Update image
-        mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset animation
+        mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset transition
         mainImage.style.transform = `translateX(0)`; // Slide in new image
-      }, 500); // Wait for the slide-out transition to complete
+      }, 500); // Wait for slide-out transition
     }
 
     // Thumbnail click event with animation from thumbnail to main image
@@ -146,7 +131,7 @@ subtitle: Maritime Data Analyst
         const thumbnailIndex = parseInt(thumbnail.getAttribute("data-index"));
         const thumbnailRect = thumbnail.getBoundingClientRect();
 
-        // Animate the main image to appear from the thumbnail
+        // Animate image coming from the thumbnail
         mainImage.style.transition = "transform 0.5s ease-in-out";
         mainImage.style.transform = `translateX(-100%)`;
 

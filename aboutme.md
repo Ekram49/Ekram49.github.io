@@ -21,7 +21,7 @@ subtitle: Maritime Data Analyst
         width: 100%;
         height: 100%;
         object-fit: contain; /* Ensure no cropping, keep aspect ratio */
-        transition: transform 0.5s ease; /* Smooth transition */
+        transition: transform 0.2s ease; /* Smooth transition */
         position: absolute;
         top: 0;
         left: 0;
@@ -136,7 +136,7 @@ subtitle: Maritime Data Analyst
             const moveDirection = isNext ? "100%" : "-100%"; // Move right for next, left for previous
 
             // Slide current image out
-            mainImage.style.transition = "transform 0.5s ease";
+            mainImage.style.transition = "transform 0.2s ease";
             mainImage.style.transform = `translateX(${moveDirection})`;
 
             // After the current image moves out, update the image source and position the new image off-screen
@@ -147,7 +147,7 @@ subtitle: Maritime Data Analyst
 
                 // Trigger the new image to slide in from the opposite direction
                 setTimeout(() => {
-                    mainImage.style.transition = "transform 0.5s ease"; // Enable smooth transition
+                    mainImage.style.transition = "transform 0.2s ease"; // Enable smooth transition
                     mainImage.style.transform = "translateX(0)"; // Slide the new image into the center
                 }, 10);
             }, 500); // Wait for the old image to finish sliding out

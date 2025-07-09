@@ -25,32 +25,33 @@ subtitle: Maritime Data Analyst
 <style>
   #image-slider {
     position: relative;
-    width: 80%; /* Adjust the width as needed */
-    max-width: 800px; /* Adjust width for smaller space */
+    width: 80%; /* Adjust width */
+    max-width: 800px; /* Limit maximum size */
     margin: 20px auto;
-    height: 400px; /* Adjust the height to fit your layout */
+    height: 400px; /* Adjust height */
     overflow: hidden;
     border-radius: 12px;
+    background-color: #f0f0f0; /* Optional: background for visual contrast */
   }
 
-  /* Main slider image */
+  /* Main image styles */
   .slider-main-image {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensures the whole image is visible */
+    object-fit: contain; /* Ensure no cropping, keep aspect ratio */
+    border-radius: 12px; /* Rounded corners */
     transition: transform 0.5s ease, box-shadow 0.3s ease;
-    border-radius: 12px; /* Rounded corners for the main image */
   }
 
-  /* Slider thumbnail container */
+  /* Thumbnail container */
   .slider-thumbnails {
     position: absolute;
-    bottom: -50px; /* Keep space between the slider and the thumbnails */
+    bottom: -60px; /* Space between main image and thumbnails */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
     z-index: 10;
   }
 
@@ -59,17 +60,17 @@ subtitle: Maritime Data Analyst
     height: 40px;
     object-fit: cover;
     border-radius: 8px;
-    opacity: 0.7;
     cursor: pointer;
     transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
   }
 
   .slider-thumbnails img:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); /* Enlarge on hover */
     opacity: 1;
   }
 
-  /* Slider navigation arrows */
+  /* Arrow button styles */
   .arrow {
     position: absolute;
     top: 50%;
@@ -89,7 +90,6 @@ subtitle: Maritime Data Analyst
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
   }
 
-  /* Positioning left and right arrows */
   .arrow-left {
     left: 10px;
   }
@@ -100,19 +100,17 @@ subtitle: Maritime Data Analyst
 
   /* Hover zoom effect on main image */
   #image-slider:hover .slider-main-image {
-    transform: scale(1.05); /* Slight zoom on hover */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow effect for card-like effect */
+    transform: scale(1.05); /* Slight zoom */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for "card-like" effect */
   }
 </style>
 
 <!-- Slider JavaScript -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    // Get the image links from the data-images attribute
     const sliderDiv = document.querySelector("#image-slider");
     const imageLinks = JSON.parse(sliderDiv.getAttribute("data-images"));
 
-    // Dynamically create slider components
     const sliderHTML = `
       <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
       <div class="slider-thumbnails">
@@ -129,17 +127,17 @@ subtitle: Maritime Data Analyst
     const leftArrow = document.querySelector(".arrow-left");
     const rightArrow = document.querySelector(".arrow-right");
 
-    // Function to update the main image
+    // Function to update the main image with sliding animation
     function updateMainImage(index) {
-      // Apply sliding animation (left to right)
+      // Smooth sliding animation
       mainImage.style.transition = "transform 0.5s ease-in-out";
-      mainImage.style.transform = `translateX(-100%)`; // Slide out the old image
+      mainImage.style.transform = `translateX(-100%)`; // Slide out old image
 
       setTimeout(() => {
         mainImage.src = imageLinks[index]; // Update image
-        mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset animation on image change
-        mainImage.style.transform = `translateX(0)`; // Slide in the new image
-      }, 500); // Wait for the transition before changing the image
+        mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset animation
+        mainImage.style.transform = `translateX(0)`; // Slide in new image
+      }, 500); // Wait for the slide-out transition to complete
     }
 
     // Thumbnail click event with animation from thumbnail to main image
@@ -148,7 +146,7 @@ subtitle: Maritime Data Analyst
         const thumbnailIndex = parseInt(thumbnail.getAttribute("data-index"));
         const thumbnailRect = thumbnail.getBoundingClientRect();
 
-        // Animate the thumbnail to the main image position
+        // Animate the main image to appear from the thumbnail
         mainImage.style.transition = "transform 0.5s ease-in-out";
         mainImage.style.transform = `translateX(-100%)`;
 

@@ -44,7 +44,7 @@ After further exploratory data analysis, we used a Random Forest Classifier to b
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/app-1.PNG)
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/feature%20importances.jpg/app-2.PNG)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/app-2.PNG)
 
 To make our predictive model accessible, we developed a [Flask app](https://ds-15-ks-2.herokuapp.com/ that lets you input your campaign’s features and outputs the probability of its success.
 

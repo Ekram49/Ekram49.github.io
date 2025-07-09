@@ -21,175 +21,192 @@ subtitle: Maritime Data Analyst
     transform: scale(1.05);
   }
 
-  /* Slider container */
-  #image-slider {
-    position: relative;
-    width: 80%; /* Adjust width */
-    max-width: 800px; /* Limit maximum size */
-    margin: 20px auto;
-    height: 400px; /* Adjust height */
-    overflow: hidden;
-    border-radius: 12px;
-    background-color: transparent; /* Transparent background */
-  }
+/* Slider container */
+#image-slider {
+  position: relative;
+  width: 80%; /* Adjust width */
+  max-width: 800px; /* Limit maximum size */
+  margin: 20px auto;
+  height: 400px; /* Adjust height */
+  overflow: hidden;
+  background-color: transparent; /* Transparent background */
+}
 
-  /* Main image styles */
-  .slider-main-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Ensure no cropping, keep aspect ratio */
-    border-radius: 12px; /* Rounded corners */
-    transition: transform 0.5s ease, box-shadow 0.3s ease;
-  }
+/* Main image styles */
+.slider-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure no cropping, keep aspect ratio */
+  transition: transform 0.5s ease; /* Smooth transition */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
-  /* Arrow button styles */
-  .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 15px;
-    border-radius: 50%;
-    font-size: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-  }
+/* Arrow button styles */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
 
-  .arrow:hover {
-    transform: translateY(-50%) scale(1.2);
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
-  }
+.arrow-left {
+  left: 10px;
+}
 
-  .arrow-left {
-    left: 10px;
-  }
+.arrow-right {
+  right: 10px;
+}
 
-  .arrow-right {
-    right: 10px;
-  }
+.arrow:hover {
+  transform: translateY(-50%) scale(1.2);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+}
 
-  /* Hover zoom effect on main image */
-  #image-slider:hover .slider-main-image {
-    transform: scale(1.05); /* Slight zoom */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for "card-like" effect */
-  }
+/* Dots for navigation */
+.dots-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
 
-  /* Dots navigation */
-  .slider-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 20;
-  }
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
 
-  .slider-dots span {
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: white; /* Solid white color */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+.dot:hover {
+  opacity: 1;
+}
 
-  .slider-dots span.active {
-    background-color: rgba(0, 0, 0, 0.8); /* Darker shade for active dot */
-  }
+.dot.active {
+  opacity: 1; /* Active dot */
+}
+
 </style>
 
-<!-- Slider JavaScript -->
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const sliderDiv = document.querySelector("#image-slider");
-    const imageLinks = JSON.parse(sliderDiv.getAttribute("data-images"));
+    document.addEventListener("DOMContentLoaded", function() {
+        const sliderDiv = document.querySelector("#image-slider");
+        const imageLinks = JSON.parse(sliderDiv.getAttribute("data-images"));
 
-    const sliderHTML = `
-      <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
-      <div class="arrow arrow-left">&#8592;</div>
-      <div class="arrow arrow-right">&#8594;</div>
-      <div class="slider-dots">
-        ${imageLinks.map((_, index) => `<span data-index="${index}"></span>`).join('')}
-      </div>
-    `;
-    sliderDiv.innerHTML = sliderHTML;
+        const sliderHTML = `
+            <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
+            <div class="arrow arrow-left">&#8592;</div>
+            <div class="arrow arrow-right">&#8594;</div>
+            <div class="dots-container"></div>
+        `;
+        sliderDiv.innerHTML = sliderHTML;
 
-    let currentIndex = 0;
-    const mainImage = document.querySelector(".slider-main-image");
-    const leftArrow = document.querySelector(".arrow-left");
-    const rightArrow = document.querySelector(".arrow-right");
-    const dots = document.querySelectorAll(".slider-dots span");
+        let currentIndex = 0;
+        const mainImage = document.querySelector(".slider-main-image");
+        const leftArrow = document.querySelector(".arrow-left");
+        const rightArrow = document.querySelector(".arrow-right");
 
-    // Function to update the main image with sliding animation (new image comes from the right)
-    function updateMainImage(index) {
-      // Move current image to the left
-      mainImage.style.transition = "transform 0.5s ease-in-out";
-      mainImage.style.transform = `translateX(-100%)`; // Slide out old image
+        // Create dots for manual navigation
+        function createDots() {
+            const dotsContainer = document.querySelector(".dots-container");
+            imageLinks.forEach((link, index) => {
+                const dot = document.createElement("span");
+                dot.classList.add("dot");
+                dot.addEventListener("click", () => {
+                    currentIndex = index;
+                    updateMainImage(currentIndex);
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+        
+        // Update dots' active state
+        function updateDots() {
+            const dots = document.querySelectorAll(".dot");
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add("active");
+                } else {
+                    dot.classList.remove("active");
+                }
+            });
+        }
 
-      setTimeout(() => {
-        mainImage.src = imageLinks[index]; // Update image
-        mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset animation
-        mainImage.style.transform = `translateX(100%)`; // Position new image to the right
-      }, 500); // Wait for the slide-out transition to complete
+        // Update the main image with a smooth transition
+        function updateMainImage(index) {
+            const isNext = index > currentIndex; // Check if it's the next image or previous
+            const direction = isNext ? "100%" : "-100%"; // Move right for next, left for previous
 
-      // Animate the new image coming from the right
-      setTimeout(() => {
-        mainImage.style.transform = `translateX(0)`; // Slide in new image from the right
-      }, 10); // Small delay for the new image to appear smoothly
+            // Slide current image out
+            mainImage.style.transition = "transform 0.5s ease";
+            mainImage.style.transform = `translateX(${direction})`;
 
-      // Update the dots
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[index].classList.add('active');
-    }
+            // After the current image moves out, update the image source and position the new image off-screen
+            setTimeout(() => {
+                mainImage.src = imageLinks[index]; // Update the image source
+                mainImage.style.transition = "none"; // Disable transition for instant movement
+                mainImage.style.transform = `translateX(${isNext ? "-100%" : "100%"})`; // Move new image off-screen
 
-    // Thumbnail dot click event
-    dots.forEach((dot) => {
-      dot.addEventListener("click", () => {
-        const dotIndex = parseInt(dot.getAttribute("data-index"));
-        currentIndex = dotIndex;
-        updateMainImage(currentIndex);
-      });
+                // Trigger the new image to slide in from the opposite direction
+                setTimeout(() => {
+                    mainImage.style.transition = "transform 0.5s ease"; // Enable smooth transition
+                    mainImage.style.transform = "translateX(0)"; // Slide the new image into the center
+                }, 10);
+            }, 500); // Wait for the old image to finish sliding out
+        }
+
+        // Arrow navigation (manual sliding)
+        leftArrow.addEventListener("click", () => {
+            currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
+            updateMainImage(currentIndex);
+            updateDots(); // Update dot active state
+        });
+
+        rightArrow.addEventListener("click", () => {
+            currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+            updateMainImage(currentIndex);
+            updateDots(); // Update dot active state
+        });
+
+        // Dot navigation (manual sliding)
+        createDots();
+
+        // Auto sliding functionality (slides right to left automatically)
+        function autoSlide() {
+            setInterval(() => {
+                currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+                updateMainImage(currentIndex);
+                updateDots(); // Update dot active state
+            }, 5000); // Change image every 5 seconds
+        }
+
+        // Start auto-sliding
+        autoSlide();
+
+        // Pause auto-slide when hovering over the slider (including arrows)
+        sliderDiv.addEventListener("mouseenter", () => {
+            clearInterval(autoSlide);
+        });
+
+        sliderDiv.addEventListener("mouseleave", () => {
+            autoSlide();
+        });
     });
-
-    // Arrow navigation with smooth slide
-    leftArrow.addEventListener("click", () => {
-      currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
-      updateMainImage(currentIndex);
-    });
-
-    rightArrow.addEventListener("click", () => {
-      currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-      updateMainImage(currentIndex);
-    });
-
-    // Auto sliding functionality
-    let slideInterval;
-
-    function autoSlide() {
-      slideInterval = setInterval(() => {
-        currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-        updateMainImage(currentIndex);
-      }, 5000); // Change image every 5 seconds
-    }
-
-    // Stop auto-slide when hovering over the slider
-    function stopAutoSlide() {
-      clearInterval(slideInterval);
-    }
-
-    // Start auto-sliding images
-    autoSlide();
-
-    // Pause auto slide when hovering over the slider
-    sliderDiv.addEventListener("mouseenter", stopAutoSlide);
-    sliderDiv.addEventListener("mouseleave", autoSlide);
-  });
 </script>
-
 <!-- Main Content Starts Here -->
 <div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
   <a href="https://ekram49.github.io/" class="link-button">Portfolio</a>

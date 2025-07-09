@@ -22,7 +22,14 @@ subtitle: Maritime Data Analyst
     transform: scale(1.05);
   }
 
-  
+<!-- Slider Section -->
+<div id="image-slider" 
+  data-images='["https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%201.png", 
+  "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%202.png"]'>
+</div>
+
+<!-- Slider CSS -->
+<style>
   #image-slider {
     position: relative;
     width: 80%; /* Adjust width */
@@ -43,6 +50,7 @@ subtitle: Maritime Data Analyst
     transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
   }
 
+  /* Thumbnail container */
   .slider-thumbnails {
     position: absolute;
     bottom: -60px; /* Space between main image and thumbnails */
@@ -54,6 +62,7 @@ subtitle: Maritime Data Analyst
     z-index: 10;
   }
 
+  /* Thumbnail styles */
   .slider-thumbnails img {
     width: 60px;
     height: 40px;
@@ -146,7 +155,6 @@ subtitle: Maritime Data Analyst
     thumbnails.forEach((thumbnail) => {
       thumbnail.addEventListener("click", () => {
         const thumbnailIndex = parseInt(thumbnail.getAttribute("data-index"));
-        const thumbnailRect = thumbnail.getBoundingClientRect();
 
         // Animate image coming from the thumbnail
         mainImage.style.transition = "transform 0.5s ease-in-out";

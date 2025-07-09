@@ -124,21 +124,25 @@ subtitle: Maritime Data Analyst
     const rightArrow = document.querySelector(".arrow-right");
     const dots = document.querySelectorAll(".slider-dots span");
 
-    // Function to update the main image with sliding animation (new image comes from the right)
-    function updateMainImage(index) {
-      mainImage.style.transition = "transform 0.5s ease-in-out";
-      mainImage.style.transform = `translateX(100%)`; // Move old image to the right
+// Function to update the main image with sliding animation (new image comes from the right)
+function updateMainImage(index) {
+  // Move current image to the left
+  mainImage.style.transition = "transform 0.5s ease-in-out";
+  mainImage.style.transform = `translateX(-100%)`; // Slide out old image
 
-      setTimeout(() => {
-        mainImage.src = imageLinks[index]; // Update image
-        mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset animation
-        mainImage.style.transform = `translateX(0)`; // Slide in new image from the right
-      }, 500); // Wait for the slide-out transition to complete
+  setTimeout(() => {
+    mainImage.src = imageLinks[index]; // Update image
 
-      // Update the dots
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[index].classList.add('active');
-    }
+    // Ensure the new image starts off-screen to the right
+    mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset animation
+    mainImage.style.transform = `translateX(100%)`; // Position new image to the right (off-screen)
+  }, 500); // Wait for the slide-out transition to complete
+
+  // Animate the new image coming from the right
+  setTimeout(() => {
+    mainImage.style.transform = `translateX(0)`; // Slide in new image from the right
+  }, 10); // Small delay for the new image to appear smoothly
+}
 
     // Thumbnail dot click event
     dots.forEach((dot) => {

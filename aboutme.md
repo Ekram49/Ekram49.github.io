@@ -4,7 +4,6 @@ title: Ekram Ahmed
 subtitle: Maritime Data Analyst
 ---
 
-<!-- Slider CSS -->
 <style>
   /* Your link button styles */
   .link-button {
@@ -31,7 +30,7 @@ subtitle: Maritime Data Analyst
     height: 400px; /* Adjust height */
     overflow: hidden;
     border-radius: 12px;
-    background-color: #f0f0f0; /* Optional: background for visual contrast */
+    background-color: transparent; /* Transparent background */
   }
 
   /* Main image styles */
@@ -76,6 +75,31 @@ subtitle: Maritime Data Analyst
     transform: scale(1.05); /* Slight zoom */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for "card-like" effect */
   }
+
+  /* Dots navigation */
+  .slider-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+  }
+
+  .slider-dots span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .slider-dots span.active {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 </style>
 
 <!-- Slider JavaScript -->
@@ -88,6 +112,9 @@ subtitle: Maritime Data Analyst
       <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
       <div class="arrow arrow-left">&#8592;</div>
       <div class="arrow arrow-right">&#8594;</div>
+      <div class="slider-dots">
+        ${imageLinks.map((_, index) => `<span data-index="${index}"></span>`).join('')}
+      </div>
     `;
     sliderDiv.innerHTML = sliderHTML;
 
@@ -95,6 +122,7 @@ subtitle: Maritime Data Analyst
     const mainImage = document.querySelector(".slider-main-image");
     const leftArrow = document.querySelector(".arrow-left");
     const rightArrow = document.querySelector(".arrow-right");
+    const dots = document.querySelectorAll(".slider-dots span");
 
     // Function to update the main image with sliding animation
     function updateMainImage(index) {
@@ -106,7 +134,20 @@ subtitle: Maritime Data Analyst
         mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset animation
         mainImage.style.transform = `translateX(0)`; // Slide in new image
       }, 500); // Wait for the slide-out transition to complete
+
+      // Update the dots
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
     }
+
+    // Thumbnail dot click event
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const dotIndex = parseInt(dot.getAttribute("data-index"));
+        currentIndex = dotIndex;
+        updateMainImage(currentIndex);
+      });
+    });
 
     // Arrow navigation with smooth slide
     leftArrow.addEventListener("click", () => {
@@ -120,15 +161,26 @@ subtitle: Maritime Data Analyst
     });
 
     // Auto sliding functionality
+    let slideInterval;
+
     function autoSlide() {
-      setInterval(() => {
+      slideInterval = setInterval(() => {
         currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
         updateMainImage(currentIndex);
       }, 5000); // Change image every 5 seconds
     }
 
+    // Stop auto-slide when hovering over the slider
+    function stopAutoSlide() {
+      clearInterval(slideInterval);
+    }
+
     // Start auto-sliding images
     autoSlide();
+
+    // Pause auto slide when hovering over the slider
+    sliderDiv.addEventListener("mouseenter", stopAutoSlide);
+    sliderDiv.addEventListener("mouseleave", autoSlide);
   });
 </script>
 

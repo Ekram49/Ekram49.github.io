@@ -22,153 +22,145 @@ subtitle: Maritime Data Analyst
   }
 
   /* Slider Styles */
-  .slider-container {
+  #image-slider {
     position: relative;
-    width: 80%;
+    width: 80%; /* Adjust the width as needed */
     max-width: 900px;
-    margin: auto;
-  }
-
-  .slider {
-    position: relative;
+    margin: 20px auto;
+    height: 400px; /* Adjust the height to fit your layout */
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   }
 
-  .slides {
-    display: flex;
-    transition: transform 1s ease-in-out;
-  }
-
-  .slide {
+  /* Main slider image */
+  .slider-main-image {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
   }
 
-  .thumbnail-container {
+  /* Slider thumbnail container */
+  .slider-thumbnails {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    margin-top: 10px;
     gap: 10px;
+    z-index: 10;
   }
 
-  .thumbnail {
-    width: 100px;
+  .slider-thumbnails img {
+    width: 80px;
     height: 50px;
     object-fit: cover;
+    border-radius: 6px;
     opacity: 0.7;
     cursor: pointer;
-    transition: opacity 0.3s;
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-  .thumbnail:hover {
-    opacity: 1;
+  .slider-thumbnails img:hover {
     transform: scale(1.1);
+    opacity: 1;
   }
 
-  .controls {
+  /* Slider navigation arrows */
+  .arrow {
     position: absolute;
     top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
     transform: translateY(-50%);
-  }
-
-  .prev, .next {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    transition: background-color 0.3s;
+    padding: 15px;
     border-radius: 50%;
+    font-size: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   }
 
-  .prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+  .arrow:hover {
+    transform: translateY(-50%) scale(1.2);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Positioning left and right arrows */
+  .arrow-left {
+    left: 10px;
+  }
+
+  .arrow-right {
+    right: 10px;
+  }
+
+  /* Hover zoom effect on main image */
+  #image-slider:hover .slider-main-image {
+    transform: scale(1.05); /* Slight zoom on hover */
   }
 </style>
 
+<!-- Slider JavaScript -->
 <script>
-// Function to create a slider from the given image URLs
-function createSlider(imageUrls, containerSelector) {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get the image links from the data-images attribute
+    const sliderDiv = document.querySelector("#image-slider");
+    const imageLinks = JSON.parse(sliderDiv.getAttribute("data-images"));
 
-  const slider = document.createElement('div');
-  slider.classList.add('slider-container');
+    // Dynamically create slider components
+    const sliderHTML = `
+      <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
+      <div class="slider-thumbnails">
+        ${imageLinks.map((link, index) => `<img src="${link}" alt="Thumbnail ${index + 1}" data-index="${index}">`).join('')}
+      </div>
+      <div class="arrow arrow-left">&#8592;</div>
+      <div class="arrow arrow-right">&#8594;</div>
+    `;
+    sliderDiv.innerHTML = sliderHTML;
 
-  const slidesContainer = document.createElement('div');
-  slidesContainer.classList.add('slider');
-  const slides = document.createElement('div');
-  slides.classList.add('slides');
-  
-  imageUrls.forEach(url => {
-    const slide = document.createElement('img');
-    slide.src = url;
-    slide.classList.add('slide');
-    slides.appendChild(slide);
+    let currentIndex = 0;
+    const mainImage = document.querySelector(".slider-main-image");
+    const thumbnails = document.querySelectorAll(".slider-thumbnails img");
+    const leftArrow = document.querySelector(".arrow-left");
+    const rightArrow = document.querySelector(".arrow-right");
+
+    // Function to update the main image
+    function updateMainImage(index) {
+      mainImage.src = imageLinks[index];
+    }
+
+    // Thumbnail click event
+    thumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener("click", () => {
+        currentIndex = parseInt(thumbnail.getAttribute("data-index"));
+        updateMainImage(currentIndex);
+      });
+    });
+
+    // Arrow navigation
+    leftArrow.addEventListener("click", () => {
+      currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
+      updateMainImage(currentIndex);
+    });
+
+    rightArrow.addEventListener("click", () => {
+      currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+      updateMainImage(currentIndex);
+    });
+
+    // Smooth animation to loop through images from left to right
+    function autoSlide() {
+      setInterval(() => {
+        currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+        updateMainImage(currentIndex);
+      }, 5000); // Change image every 5 seconds
+    }
+
+    // Start auto-sliding images
+    autoSlide();
   });
-
-  slidesContainer.appendChild(slides);
-  slider.appendChild(slidesContainer);
-
-  const controls = document.createElement('div');
-  controls.classList.add('controls');
-  const prevButton = document.createElement('button');
-  prevButton.classList.add('prev');
-  prevButton.innerHTML = '&lt;';
-  const nextButton = document.createElement('button');
-  nextButton.classList.add('next');
-  nextButton.innerHTML = '&gt;';
-  
-  controls.appendChild(prevButton);
-  controls.appendChild(nextButton);
-  slider.appendChild(controls);
-
-  const thumbnailContainer = document.createElement('div');
-  thumbnailContainer.classList.add('thumbnail-container');
-  imageUrls.forEach(url => {
-    const thumbnail = document.createElement('img');
-    thumbnail.src = url;
-    thumbnail.classList.add('thumbnail');
-    thumbnail.addEventListener('mouseover', () => changeSlide(index));
-    thumbnailContainer.appendChild(thumbnail);
-  });
-  slider.appendChild(thumbnailContainer);
-
-  container.appendChild(slider);
-
-  let currentIndex = 0;
-
-  function changeSlide(index) {
-    if (index < 0) currentIndex = imageUrls.length - 1;
-    else if (index >= imageUrls.length) currentIndex = 0;
-    else currentIndex = index;
-    
-    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
-
-  prevButton.addEventListener('click', () => changeSlide(currentIndex - 1));
-  nextButton.addEventListener('click', () => changeSlide(currentIndex + 1));
-
-  // Auto slide functionality (optional)
-  setInterval(() => {
-    changeSlide(currentIndex + 1);
-  }, 4000); // Change every 4 seconds
-}
-
-// Initialize the slider with the URLs
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-images]').forEach((element) => {
-    const imageUrls = JSON.parse(element.getAttribute('data-images'));
-    createSlider(imageUrls, `#${element.id}`);
-  });
-});
 </script>
 
 <!-- Main Content Starts Here -->

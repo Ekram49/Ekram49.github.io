@@ -25,7 +25,7 @@ We used data from [Web Robots](https://webrobots.io/kickstarter-datasets/), whic
 
 •	Staff Pick
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/feature%20importances.jpg)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/feature%20importances.PNG)
 
 ## Exploring the Dataset, We Found That Out of 209,445 Kickstarter Campaigns:
 
@@ -38,13 +38,13 @@ We used data from [Web Robots](https://webrobots.io/kickstarter-datasets/), whic
 
 •	5,207 campaigns are still live
 
-![creep](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/feature%state.jpg)
+![creep](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/state.PNG)
 
 After further exploratory data analysis, we used a Random Forest Classifier to build our predictive model. It achieved approximately **75.3%** accuracy on the test data, which we were quite satisfied with—especially considering the many variables that can influence a campaign’s success, making a perfectly accurate model nearly impossible.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/app-1.jpg)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/app-1.PNG)
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/feature%20importances.jpg/app-2.jpg)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/feature%20importances.jpg/app-2.PNG)
 
 To make our predictive model accessible, we developed a [Flask app](https://ds-15-ks-2.herokuapp.com/ that lets you input your campaign’s features and outputs the probability of its success.
 

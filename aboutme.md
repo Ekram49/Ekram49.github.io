@@ -92,13 +92,13 @@ subtitle: Maritime Data Analyst
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: white; /* Solid white color */
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
 
   .slider-dots span.active {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8); /* Darker shade for active dot */
   }
 </style>
 
@@ -124,15 +124,15 @@ subtitle: Maritime Data Analyst
     const rightArrow = document.querySelector(".arrow-right");
     const dots = document.querySelectorAll(".slider-dots span");
 
-    // Function to update the main image with sliding animation
+    // Function to update the main image with sliding animation (new image comes from the right)
     function updateMainImage(index) {
       mainImage.style.transition = "transform 0.5s ease-in-out";
-      mainImage.style.transform = `translateX(-100%)`; // Slide out old image
+      mainImage.style.transform = `translateX(100%)`; // Move old image to the right
 
       setTimeout(() => {
         mainImage.src = imageLinks[index]; // Update image
         mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset animation
-        mainImage.style.transform = `translateX(0)`; // Slide in new image
+        mainImage.style.transform = `translateX(0)`; // Slide in new image from the right
       }, 500); // Wait for the slide-out transition to complete
 
       // Update the dots

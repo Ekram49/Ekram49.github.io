@@ -21,42 +21,44 @@ subtitle: Maritime Data Analyst
     transform: scale(1.05);
   }
 
-  /* Slider Styles */
+<!-- Slider CSS -->
+<style>
   #image-slider {
     position: relative;
     width: 80%; /* Adjust the width as needed */
-    max-width: 900px;
+    max-width: 800px; /* Adjust width for smaller space */
     margin: 20px auto;
     height: 400px; /* Adjust the height to fit your layout */
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 12px;
   }
 
   /* Main slider image */
   .slider-main-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+    object-fit: contain; /* Ensures the whole image is visible */
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    border-radius: 12px; /* Rounded corners for the main image */
   }
 
   /* Slider thumbnail container */
   .slider-thumbnails {
     position: absolute;
-    bottom: 20px;
+    bottom: -50px; /* Keep space between the slider and the thumbnails */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     z-index: 10;
   }
 
   .slider-thumbnails img {
-    width: 80px;
-    height: 50px;
+    width: 60px;
+    height: 40px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 8px;
     opacity: 0.7;
     cursor: pointer;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -99,6 +101,7 @@ subtitle: Maritime Data Analyst
   /* Hover zoom effect on main image */
   #image-slider:hover .slider-main-image {
     transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow effect for card-like effect */
   }
 </style>
 
@@ -128,18 +131,36 @@ subtitle: Maritime Data Analyst
 
     // Function to update the main image
     function updateMainImage(index) {
-      mainImage.src = imageLinks[index];
+      // Apply sliding animation (left to right)
+      mainImage.style.transition = "transform 0.5s ease-in-out";
+      mainImage.style.transform = `translateX(-100%)`; // Slide out the old image
+
+      setTimeout(() => {
+        mainImage.src = imageLinks[index]; // Update image
+        mainImage.style.transition = "transform 0.5s ease-in-out"; // Reset animation on image change
+        mainImage.style.transform = `translateX(0)`; // Slide in the new image
+      }, 500); // Wait for the transition before changing the image
     }
 
-    // Thumbnail click event
+    // Thumbnail click event with animation from thumbnail to main image
     thumbnails.forEach((thumbnail) => {
       thumbnail.addEventListener("click", () => {
-        currentIndex = parseInt(thumbnail.getAttribute("data-index"));
-        updateMainImage(currentIndex);
+        const thumbnailIndex = parseInt(thumbnail.getAttribute("data-index"));
+        const thumbnailRect = thumbnail.getBoundingClientRect();
+
+        // Animate the thumbnail to the main image position
+        mainImage.style.transition = "transform 0.5s ease-in-out";
+        mainImage.style.transform = `translateX(-100%)`;
+
+        setTimeout(() => {
+          mainImage.src = imageLinks[thumbnailIndex];
+          mainImage.style.transition = "transform 0.5s ease-in-out";
+          mainImage.style.transform = `translateX(0)`;
+        }, 500);
       });
     });
 
-    // Arrow navigation
+    // Arrow navigation with smooth slide
     leftArrow.addEventListener("click", () => {
       currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
       updateMainImage(currentIndex);
@@ -150,7 +171,7 @@ subtitle: Maritime Data Analyst
       updateMainImage(currentIndex);
     });
 
-    // Smooth animation to loop through images from left to right
+    // Auto sliding functionality
     function autoSlide() {
       setInterval(() => {
         currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;

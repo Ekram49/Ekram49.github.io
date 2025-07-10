@@ -4,89 +4,98 @@ title: Ekram Ahmed
 subtitle: Maritime Data Analyst
 ---
 
-<style>
-    /* Slider Container */
-    #image-slider {
-        position: relative;
-        width: 80%; 
-        max-width: 800px;
-        margin: 20px auto;
-        height: 400px;
-        overflow: hidden;
-        border-radius: 12px;
-        background-color: transparent;
-    }
+    <style>
+        /* Slider Container */
+        #image-slider {
+            position: relative;
+            width: 80%; 
+            max-width: 800px;
+            margin: 20px auto;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: transparent;
+        }
 
-    /* Main Image */
-    .slider-main-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        left: 0;
-        top: 0;
-        transition: transform 0.5s ease;
-    }
+        /* Main Image */
+        .slider-main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: transform 0.5s ease;
+        }
 
-    /* Navigation Dots */
-    .slider-dots {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 8px;
-    }
+        /* Navigation Dots */
+        .slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
 
-    .slider-dots span {
-        display: block;
-        width: 10px;
-        height: 10px;
-        background-color: white;
-        border-radius: 50%;
-        opacity: 0.5;
-        cursor: pointer;
-        transition: opacity 0.3s ease;
-    }
+        .slider-dots span {
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
 
-    .slider-dots span.active {
-        opacity: 1;
-    }
+        .slider-dots span.active {
+            opacity: 1;
+        }
 
-    /* Arrow Buttons */
-    .arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(0, 0, 0, 0.6);
-        color: white;
-        padding: 10px;
-        border-radius: 50%;
-        font-size: 25px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    }
+        /* Arrow Buttons */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
 
-    .arrow:hover {
-        transform: translateY(-50%) scale(1.2);
-        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
-    }
+        .arrow:hover {
+            transform: translateY(-50%) scale(1.2);
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+        }
 
-    .arrow-left {
-        left: 10px;
-    }
+        .arrow-left {
+            left: 10px;
+        }
 
-    .arrow-right {
-        right: 10px;
-    }
+        .arrow-right {
+            right: 10px;
+        }
 
-    /* Hover Effect on Image */
-    #image-slider:hover .slider-main-image {
-        transform: scale(1.05);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-</style>
+        /* Hover Effect on Image */
+        #image-slider:hover .slider-main-image {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Image Slider Container -->
+<div id="image-slider" data-images='[
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%201.png", 
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%202.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%203.png"
+]'></div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

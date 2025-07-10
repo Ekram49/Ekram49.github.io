@@ -4,195 +4,186 @@ title: Ekram Ahmed
 subtitle: Maritime Data Analyst
 ---
 
-<style>
-    /* Slider container */
-    #image-slider {
-        position: relative;
-        width: 80%; /* Adjust width */
-        max-width: 800px; /* Limit maximum size */
-        margin: 20px auto;
-        height: 400px; /* Adjust height */
-        overflow: hidden;
-        background-color: transparent; /* Transparent background */
-    }
+    <style>
+        /* Slider Container */
+        #image-slider {
+            position: relative;
+            width: 80%; 
+            max-width: 800px;
+            margin: 20px auto;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: transparent;
+        }
 
-    /* Main image styles */
-    .slider-main-image {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* Ensure no cropping, keep aspect ratio */
-        transition: transform 0.2s ease; /* Smooth transition */
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+        /* Main Image */
+        .slider-main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: transform 0.5s ease;
+        }
 
-    /* Arrow button styles */
-    .arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(0, 0, 0, 0.6);
-        color: white;
-        padding: 15px;
-        border-radius: 50%;
-        font-size: 25px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    }
+        /* Navigation Dots */
+        .slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
 
-    .arrow-left {
-        left: 10px;
-    }
+        .slider-dots span {
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
 
-    .arrow-right {
-        right: 10px;
-    }
+        .slider-dots span.active {
+            opacity: 1;
+        }
 
-    .arrow:hover {
-        transform: translateY(-50%) scale(1.2);
-        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
-    }
+        /* Arrow Buttons */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
 
-    /* Dots for navigation */
-    .dots-container {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 10px;
-        z-index: 10;
-    }
+        .arrow:hover {
+            transform: translateY(-50%) scale(1.2);
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+        }
 
-    .dot {
-        width: 10px;
-        height: 10px;
-        background-color: white;
-        border-radius: 50%;
-        cursor: pointer;
-        opacity: 0.6;
-        transition: opacity 0.2s ease;
-    }
+        .arrow-left {
+            left: 10px;
+        }
 
-    .dot:hover {
-        opacity: 1;
-    }
+        .arrow-right {
+            right: 10px;
+        }
 
-    .dot.active {
-        opacity: 1; /* Active dot */
-    }
-</style>
-    
+        /* Hover Effect on Image */
+        #image-slider:hover .slider-main-image {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const sliderDiv = document.querySelector("#image-slider");
         const imageLinks = JSON.parse(sliderDiv.getAttribute("data-images"));
-
+        
         const sliderHTML = `
             <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
             <div class="arrow arrow-left">&#8592;</div>
             <div class="arrow arrow-right">&#8594;</div>
-            <div class="dots-container"></div>
+            <div class="slider-dots">
+                ${imageLinks.map((_, index) => `<span data-index="${index}"></span>`).join('')}
+            </div>
         `;
         sliderDiv.innerHTML = sliderHTML;
 
         let currentIndex = 0;
-        let autoSlideInterval; // Store the interval ID
         const mainImage = document.querySelector(".slider-main-image");
+        const dots = document.querySelectorAll(".slider-dots span");
         const leftArrow = document.querySelector(".arrow-left");
         const rightArrow = document.querySelector(".arrow-right");
 
-        // Create dots for manual navigation
-        function createDots() {
-            const dotsContainer = document.querySelector(".dots-container");
-            imageLinks.forEach((link, index) => {
-                const dot = document.createElement("span");
-                dot.classList.add("dot");
-                dot.addEventListener("click", () => {
-                    currentIndex = index;
-                    updateMainImage(currentIndex, 'manual');
-                });
-                dotsContainer.appendChild(dot);
-            });
-        }
-        
-        // Update dots' active state
-        function updateDots() {
-            const dots = document.querySelectorAll(".dot");
-            dots.forEach((dot, index) => {
-                if (index === currentIndex) {
-                    dot.classList.add("active");
-                } else {
-                    dot.classList.remove("active");
-                }
-            });
-        }
+        // Function to update the main image
+        function updateMainImage(index, direction = 'manual') {
+            const isNext = direction === 'manual' ? index > currentIndex : true;
+            const moveDirection = isNext ? "-100%" : "100%"; // Move right for next, left for previous
 
-        // Update the main image with a smooth transition
-        function updateMainImage(index, direction = 'auto') {
-            const isNext = direction === 'manual' ? index > currentIndex : true; // Check if it's the next image or previous
-            const moveDirection = isNext ? "100%" : "-100%"; // Move right for next, left for previous
-
-            // Slide current image out
-            mainImage.style.transition = "transform 0.2s ease";
+            // 1. Slide out the current image
+            mainImage.style.transition = "transform 0.5s ease";
             mainImage.style.transform = `translateX(${moveDirection})`;
 
-            // After the current image moves out, update the image source and position the new image off-screen
             setTimeout(() => {
-                mainImage.src = imageLinks[index]; // Update the image source
-                mainImage.style.transition = "none"; // Disable transition for instant movement
-                mainImage.style.transform = `translateX(${isNext ? "-100%" : "100%"})`; // Move new image off-screen
+                // 2. Change the source immediately and prepare the new image in the same position
+                mainImage.src = imageLinks[index];
+                mainImage.style.transition = "none";
+                mainImage.style.transform = `translateX(${isNext ? "100%" : "-100%"})`;
 
-                // Trigger the new image to slide in from the opposite direction
+                // 3. Reset the image position and smoothly bring it into view
                 setTimeout(() => {
-                    mainImage.style.transition = "transform 0.2s ease"; // Enable smooth transition
-                    mainImage.style.transform = "translateX(0)"; // Slide the new image into the center
+                    mainImage.style.transition = "transform 0.5s ease";
+                    mainImage.style.transform = "translateX(0)";
                 }, 10);
-            }, 500); // Wait for the old image to finish sliding out
+            }, 500); // Keep the duration in sync with the transition time
 
-            // Update the current index
             currentIndex = index;
-            updateDots(); // Update dot active state
+            updateDots();
         }
 
-        // Arrow navigation (manual sliding)
+        // Update the dots based on the current index
+        function updateDots() {
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        // Dot click event
+        dots.forEach(dot => {
+            dot.addEventListener("click", () => {
+                const index = parseInt(dot.getAttribute("data-index"));
+                updateMainImage(index, 'manual');
+            });
+        });
+
+        // Arrow navigation (left/right)
         leftArrow.addEventListener("click", () => {
-            const newIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
-            updateMainImage(newIndex, 'manual');
+            currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
+            updateMainImage(currentIndex, 'manual');
         });
 
         rightArrow.addEventListener("click", () => {
-            const newIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-            updateMainImage(newIndex, 'manual');
+            currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+            updateMainImage(currentIndex, 'manual');
         });
 
-        // Dot navigation (manual sliding)
-        createDots();
-
-        // Auto sliding functionality (slides right to left automatically)
-        function startAutoSlide() {
+        // Auto sliding functionality
+        let autoSlideInterval;
+        function autoSlide() {
             autoSlideInterval = setInterval(() => {
-                const newIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-                updateMainImage(newIndex, 'auto');
+                currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+                updateMainImage(currentIndex, 'auto');
             }, 5000); // Change image every 5 seconds
         }
 
-        // Start auto-sliding when the page loads
-        startAutoSlide();
-
-        // Pause auto-slide when hovering over the slider (including arrows)
+        // Stop auto-slide on hover
         sliderDiv.addEventListener("mouseenter", () => {
             clearInterval(autoSlideInterval);
         });
 
-        // Resume auto-slide when the mouse leaves the slider area
-        sliderDiv.addEventListener("mouseleave", () => {
-            startAutoSlide();
-        });
+        // Restart auto-slide on mouse leave
+        sliderDiv.addEventListener("mouseleave", autoSlide);
+
+        // Start auto-sliding images when the page loads
+        autoSlide();
     });
 </script>
+
 <!-- Main Content Starts Here -->
 <div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
   <a href="https://ekram49.github.io/" class="link-button">Portfolio</a>

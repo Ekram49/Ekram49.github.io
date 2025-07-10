@@ -21,7 +21,7 @@ subtitle: Maritime Data Analyst
     .slider-main-image {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain; /* Ensure the entire image is visible */
         position: absolute;
         left: 0;
         top: 0;

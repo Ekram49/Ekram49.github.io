@@ -79,61 +79,90 @@ subtitle: Maritime Data Analyst
 
 <!-- JavaScript -->
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const sliderDiv = document.querySelector("#image-slider");
-    const imageLinks = JSON.parse(sliderDiv.getAttribute("data-images"));
+  
+document.addEventListener("DOMContentLoaded", function() {
+  const sliderDiv = document.querySelector("#image-slider");
+  const imageLinks = JSON.parse(sliderDiv.getAttribute("data-images"));
 
-    const sliderHTML = `
-      <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
-      <div class="arrow arrow-left">&#8592;</div>
-      <div class="arrow arrow-right">&#8594;</div>
-      <div class="slider-dots">
-        ${imageLinks.map((_, index) => `<span data-index="${index}"></span>`).join('')}
-      </div>
-    `;
-    sliderDiv.innerHTML = sliderHTML;
+  const sliderHTML = `
+    <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
+    <div class="arrow arrow-left">&#8592;</div>
+    <div class="arrow arrow-right">&#8594;</div>
+    <div class="slider-dots">
+      ${imageLinks.map((_, index) => `<span data-index="${index}"></span>`).join('')}
+    </div>
+  `;
+  sliderDiv.innerHTML = sliderHTML;
 
-    let currentIndex = 0;
-    const mainImage = document.querySelector(".slider-main-image");
-    const arrows = document.querySelectorAll(".arrow");
-    const dots = document.querySelectorAll(".slider-dots span");
+  let currentIndex = 0;
+  let autoSlideInterval;
 
-    // Update the image based on the index
-    function updateMainImage(index) {
-      mainImage.src = imageLinks[index];
-      dots.forEach(dot => dot.classList.remove("active"));
-      dots[index].classList.add("active");
-    }
+  const mainImage = document.querySelector(".slider-main-image");
+  const arrows = document.querySelectorAll(".arrow");
+  const dots = document.querySelectorAll(".slider-dots span");
 
-    // Arrow click event listener
-    arrows.forEach(arrow => {
-      arrow.addEventListener("click", (e) => {
-        if (e.target.classList.contains("arrow-left")) {
-          currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
-        } else if (e.target.classList.contains("arrow-right")) {
-          currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-        }
-        updateMainImage(currentIndex);
-      });
+  // Update the image based on the index
+  function updateMainImage(index) {
+    mainImage.src = imageLinks[index];
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[index].classList.add("active");
+  }
+
+  // Arrow click event listener
+  arrows.forEach(arrow => {
+    arrow.addEventListener("click", (e) => {
+      if (e.target.classList.contains("arrow-left")) {
+        currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
+      } else if (e.target.classList.contains("arrow-right")) {
+        currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+      }
+      updateMainImage(currentIndex);
     });
+  });
 
-    // Dot click event listener
-    dots.forEach(dot => {
-      dot.addEventListener("click", () => {
-        currentIndex = parseInt(dot.getAttribute("data-index"));
-        updateMainImage(currentIndex);
-      });
+  // Dot click event listener
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      currentIndex = parseInt(dot.getAttribute("data-index"));
+      updateMainImage(currentIndex);
     });
+  });
 
-    // Set the first dot as active initially
-    dots[currentIndex].classList.add("active");
+  // Set the first dot as active initially
+  dots[currentIndex].classList.add("active");
 
-    // Auto-sliding functionality
-    setInterval(() => {
+  // Auto-sliding functionality
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
       currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
       updateMainImage(currentIndex);
     }, 5000); // Change image every 5 seconds
+  }
+
+  // Stop the auto-slide on hover (on frame or arrows)
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  // Restart auto-slide when hover stops
+  function resumeAutoSlide() {
+    startAutoSlide();
+  }
+
+  // Start the auto-slide initially
+  startAutoSlide();
+
+  // Pause on hover for the image frame
+  mainImage.addEventListener("mouseenter", stopAutoSlide);
+  mainImage.addEventListener("mouseleave", resumeAutoSlide);
+
+  // Pause on hover for the arrows
+  arrows.forEach(arrow => {
+    arrow.addEventListener("mouseenter", stopAutoSlide);
+    arrow.addEventListener("mouseleave", resumeAutoSlide);
   });
+});
+
 </script>
 
 

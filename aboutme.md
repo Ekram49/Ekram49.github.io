@@ -109,24 +109,23 @@ subtitle: Maritime Data Analyst
         sliderDiv.innerHTML = sliderHTML;
 
         const mainImageWrapper = document.querySelector(".slider-main-image-wrapper");
-        const mainImage = document.querySelector(".slider-main-image");
         const leftArrow = document.querySelector(".arrow-left");
         const rightArrow = document.querySelector(".arrow-right");
         const dots = document.querySelectorAll(".dot");
 
         let currentIndex = 0;
+        let isAutoSliding = true;
 
         function updateMainImage(index, direction) {
-            // Prepare the wrapper for the transition
             const newImage = document.createElement("img");
             newImage.classList.add("slider-main-image");
             newImage.src = imageLinks[index];
             mainImageWrapper.appendChild(newImage);
 
-            // Perform the transition
+            // Perform transition on image wrapper
             mainImageWrapper.style.transition = "transform 0.5s ease";
 
-            // Slide the images
+            // Slide images in direction
             if (direction === 'right') {
                 mainImageWrapper.style.transform = `translateX(-100%)`;
             } else if (direction === 'left') {
@@ -135,12 +134,10 @@ subtitle: Maritime Data Analyst
 
             setTimeout(() => {
                 // Remove the old image
-                mainImageWrapper.removeChild(mainImage);
-                // Reset the wrapper transform to show the new image
+                mainImageWrapper.removeChild(mainImageWrapper.firstChild);
                 mainImageWrapper.style.transition = "none";
                 mainImageWrapper.style.transform = `translateX(0)`;
-                // Set the new image as the main image
-                mainImage = newImage;
+                mainImageWrapper.appendChild(newImage);
                 updateDots(index);
             }, 500);
         }
@@ -153,11 +150,13 @@ subtitle: Maritime Data Analyst
         leftArrow.addEventListener("click", () => {
             currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
             updateMainImage(currentIndex, 'left');
+            isAutoSliding = false;
         });
 
         rightArrow.addEventListener("click", () => {
             currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
             updateMainImage(currentIndex, 'right');
+            isAutoSliding = false;
         });
 
         dots.forEach(dot => {
@@ -168,15 +167,16 @@ subtitle: Maritime Data Analyst
             });
         });
 
-        // Auto slide functionality
         function autoSlide() {
-            setInterval(() => {
+            if (isAutoSliding) {
                 currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
                 updateMainImage(currentIndex, 'right');
-            }, 5000);
+            }
         }
 
-        autoSlide();
+        setInterval(() => {
+            if (isAutoSliding) autoSlide();
+        }, 5000);
     });
 </script>
 

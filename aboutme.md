@@ -4,73 +4,43 @@ title: Ekram Ahmed
 subtitle: Maritime Data Analyst
 ---
 
+<div id="image-slider" data-images='["image1.jpg", "image2.jpg", "image3.jpg"]'></div>
+
 <style>
-    /* Slider Container */
     #image-slider {
         position: relative;
-        width: 80%; 
+        width: 80%;
         max-width: 800px;
-        margin: 20px auto;
         height: 400px;
+        margin: 20px auto;
         overflow: hidden;
         border-radius: 12px;
         background-color: transparent;
     }
 
-    /* Main Image */
-    .slider-main-image {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* Ensure the entire image is visible */
-        position: absolute;
-        left: 0;
-        top: 0;
+    .slider-main-image-wrapper {
+        display: flex;
         transition: transform 0.5s ease;
     }
 
-    /* Navigation Dots */
-    .slider-dots {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 8px;
+    .slider-main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 12px;
     }
 
-    .slider-dots span {
-        display: block;
-        width: 10px;
-        height: 10px;
-        background-color: white;
-        border-radius: 50%;
-        opacity: 0.5;
-        cursor: pointer;
-        transition: opacity 0.3s ease;
-    }
-
-    .slider-dots span.active {
-        opacity: 1;
-    }
-
-    /* Arrow Buttons */
     .arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         background-color: rgba(0, 0, 0, 0.6);
         color: white;
-        padding: 10px;
+        padding: 15px;
         border-radius: 50%;
         font-size: 25px;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .arrow:hover {
-        transform: translateY(-50%) scale(1.2);
-        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
     }
 
     .arrow-left {
@@ -81,10 +51,28 @@ subtitle: Maritime Data Analyst
         right: 10px;
     }
 
-    /* Hover Effect on Image */
-    #image-slider:hover .slider-main-image {
-        transform: scale(1.05);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    .dots-container {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 1;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: white;
+        opacity: 0.7;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+    }
+
+    .dot.active {
+        opacity: 1;
     }
 </style>
 
@@ -92,67 +80,64 @@ subtitle: Maritime Data Analyst
     document.addEventListener("DOMContentLoaded", function() {
         const sliderDiv = document.querySelector("#image-slider");
         const imageLinks = JSON.parse(sliderDiv.getAttribute("data-images"));
-        
+
         const sliderHTML = `
-            <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
+            <div class="slider-main-image-wrapper">
+                <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
+            </div>
             <div class="arrow arrow-left">&#8592;</div>
             <div class="arrow arrow-right">&#8594;</div>
-            <div class="slider-dots">
-                ${imageLinks.map((_, index) => `<span data-index="${index}"></span>`).join('')}
+            <div class="dots-container">
+                ${imageLinks.map((link, index) => `<div class="dot" data-index="${index}"></div>`).join('')}
             </div>
         `;
         sliderDiv.innerHTML = sliderHTML;
 
-        let currentIndex = 0;
+        const mainImageWrapper = document.querySelector(".slider-main-image-wrapper");
         const mainImage = document.querySelector(".slider-main-image");
-        const dots = document.querySelectorAll(".slider-dots span");
         const leftArrow = document.querySelector(".arrow-left");
         const rightArrow = document.querySelector(".arrow-right");
+        const dots = document.querySelectorAll(".dot");
 
-        // Function to update the main image
-        function updateMainImage(index, direction = 'manual') {
-            const isNext = direction === 'manual' ? index > currentIndex : true;
-            const moveDirection = isNext ? "-100%" : "100%"; // Move right for next, left for previous
+        let currentIndex = 0;
 
-            // 1. Slide out the current image
-            mainImage.style.transition = "transform 0.5s ease";
-            mainImage.style.transform = `translateX(${moveDirection})`;
+        function updateMainImage(index, direction) {
+            // Prepare the wrapper for the transition
+            const newImage = document.createElement("img");
+            newImage.classList.add("slider-main-image");
+            newImage.src = imageLinks[index];
+            mainImageWrapper.appendChild(newImage);
+
+            // Perform the transition
+            mainImageWrapper.style.transition = "transform 0.5s ease";
+
+            // Slide the images
+            if (direction === 'right') {
+                mainImageWrapper.style.transform = `translateX(-100%)`;
+            } else if (direction === 'left') {
+                mainImageWrapper.style.transform = `translateX(100%)`;
+            }
 
             setTimeout(() => {
-                // 2. Change the source immediately and prepare the new image in the same position
-                mainImage.src = imageLinks[index];
-                mainImage.style.transition = "none";
-                mainImage.style.transform = `translateX(${isNext ? "100%" : "-100%"})`;
-
-                // 3. Reset the image position and smoothly bring it into view
-                setTimeout(() => {
-                    mainImage.style.transition = "transform 0.5s ease";
-                    mainImage.style.transform = "translateX(0)";
-                }, 10);
-            }, 500); // Keep the duration in sync with the transition time
-
-            currentIndex = index;
-            updateDots();
+                // Remove the old image
+                mainImageWrapper.removeChild(mainImage);
+                // Reset the wrapper transform to show the new image
+                mainImageWrapper.style.transition = "none";
+                mainImageWrapper.style.transform = `translateX(0)`;
+                // Set the new image as the main image
+                mainImage = newImage;
+                updateDots(index);
+            }, 500);
         }
 
-        // Update the dots based on the current index
-        function updateDots() {
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[currentIndex].classList.add('active');
+        function updateDots(index) {
+            dots.forEach(dot => dot.classList.remove("active"));
+            dots[index].classList.add("active");
         }
 
-        // Dot click event
-        dots.forEach(dot => {
-            dot.addEventListener("click", () => {
-                const index = parseInt(dot.getAttribute("data-index"));
-                updateMainImage(index, 'manual');
-            });
-        });
-
-        // Arrow navigation (left/right)
         leftArrow.addEventListener("click", () => {
             currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
-            updateMainImage(currentIndex, 'manual');
+            updateMainImage(currentIndex, 'left');
         });
 
         rightArrow.addEventListener("click", () => {
@@ -160,27 +145,26 @@ subtitle: Maritime Data Analyst
             updateMainImage(currentIndex, 'right');
         });
 
-        // Auto sliding functionality
-        let autoSlideInterval;
-        function autoSlide() {
-            autoSlideInterval = setInterval(() => {
-                currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-                updateMainImage(currentIndex, 'auto');
-            }, 5000); // Change image every 5 seconds
-        }
-
-        // Stop auto-slide on hover
-        sliderDiv.addEventListener("mouseenter", () => {
-            clearInterval(autoSlideInterval);
+        dots.forEach(dot => {
+            dot.addEventListener("click", (e) => {
+                const index = parseInt(e.target.getAttribute("data-index"));
+                currentIndex = index;
+                updateMainImage(currentIndex, index > currentIndex ? 'right' : 'left');
+            });
         });
 
-        // Restart auto-slide on mouse leave
-        sliderDiv.addEventListener("mouseleave", autoSlide);
+        // Auto slide functionality
+        function autoSlide() {
+            setInterval(() => {
+                currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+                updateMainImage(currentIndex, 'right');
+            }, 5000);
+        }
 
-        // Start auto-sliding images when the page loads
         autoSlide();
     });
 </script>
+
 
 <!-- Main Content Starts Here -->
 <div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">

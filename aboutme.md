@@ -24,8 +24,8 @@ subtitle: Maritime Data Analyst
   /* Image slider styles */
   .image-slider {
     position: relative;
-    width: 95%;
-    max-width: 800px;
+    width: 100%;
+    max-width: 1000px;
     height: 400px;
     margin: 30px auto;
     overflow: hidden;

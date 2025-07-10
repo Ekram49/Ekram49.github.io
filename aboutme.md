@@ -84,16 +84,6 @@ subtitle: Maritime Data Analyst
   }
 </style>
 
-<!-- Example usage between paragraphs -->
-<p>This is a paragraph of content before the first slider.</p>
-
-<!-- Optional buttons -->
-<div style="text-align: center; margin-top: 20px;">
-  <a href="https://ekram49.github.io/" class="link-button">Portfolio</a>
-  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link" class="link-button">Resume</a>
-  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="link-button">LinkedIn</a>
-  <a href="mailto:ekramullahzaki@gmail.com" class="link-button">Email</a>
-</div>
 
 <!-- JavaScript to initialize all sliders -->
 <script>

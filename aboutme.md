@@ -4,9 +4,8 @@ title: Ekram Ahmed
 subtitle: Maritime Data Analyst
 ---
 
-<!-- CSS -->
 <style>
-/* Slider container */
+  /* Slider container */
   #image-slider {
     position: relative;
     width: 80%;
@@ -19,7 +18,7 @@ subtitle: Maritime Data Analyst
     /* Optional: Add shadow for "card-like" effect */
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   }
-  
+
   /* Main image styles */
   .slider-main-image {
     width: 100%;
@@ -31,7 +30,7 @@ subtitle: Maritime Data Analyst
     transition: transform 0.5s ease, opacity 0.5s ease;
     opacity: 1;
   }
-  
+
   /* Arrow button styles */
   .arrow {
     position: absolute;
@@ -46,20 +45,20 @@ subtitle: Maritime Data Analyst
     transition: all 0.3s ease;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   }
-  
+
   .arrow:hover {
     transform: translateY(-50%) scale(1.2);
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
   }
-  
+
   .arrow-left {
     left: 10px;
   }
-  
+
   .arrow-right {
     right: 10px;
   }
-  
+
   /* Slider dots (for navigation) */
   .slider-dots {
     position: absolute;
@@ -69,7 +68,7 @@ subtitle: Maritime Data Analyst
     display: flex;
     gap: 10px;
   }
-  
+
   .slider-dots span {
     width: 10px;
     height: 10px;
@@ -78,43 +77,66 @@ subtitle: Maritime Data Analyst
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
+
   .slider-dots span.active {
     background-color: white; /* Active dot color */
   }
-  
+
   .slider-dots span:hover {
     background-color: rgba(255, 255, 255, 1);
   }
-  
+
   /* Hover zoom effect on main image */
   #image-slider:hover .slider-main-image {
     transform: scale(1.05); /* Slight zoom */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for "card-like" effect */
   }
-
 </style>
 
-<!-- JavaScript -->
+
+<div id="image-slider">
+  <div class="arrow arrow-left">&#10094;</div>
+  <div class="arrow arrow-right">&#10095;</div>
+
+  <!-- Dots navigation -->
+  <div class="slider-dots">
+    <span data-index="0"></span>
+    <span data-index="1"></span>
+    <span data-index="2"></span>
+  </div>
+</div>
+
 <script>
-  
+  const imageLinks = [
+    'https://via.placeholder.com/800x400', 
+    'https://via.placeholder.com/800x400?text=Image+2',
+    'https://via.placeholder.com/800x400?text=Image+3'
+  ];
+
+  let currentIndex = 0;
+  const sliderDiv = document.querySelector("#image-slider");
+  const dots = document.querySelectorAll(".slider-dots span");
+  const arrows = document.querySelectorAll(".arrow");
+  const mainImage = document.querySelector(".slider-main-image");
+
+  // Update main image in the slider
   function updateMainImage(index, direction) {
     const currentImage = mainImage;
     const newImage = document.createElement("img");
     newImage.classList.add("slider-main-image");
     newImage.src = imageLinks[index];
     newImage.alt = "Main Image";
-  
+
     // Direction-based transition
     if (direction === "left") {
       newImage.style.transform = "translateX(100%)"; // Start off the screen to the right
     } else {
       newImage.style.transform = "translateX(-100%)"; // Start off the screen to the left
     }
-  
+
     // Append the new image and apply transition
     sliderDiv.appendChild(newImage);
-  
+
     // Wait for the new image to be visible before transitioning
     setTimeout(() => {
       newImage.style.transition = "transform 0.5s ease, opacity 0.5s ease";
@@ -122,12 +144,49 @@ subtitle: Maritime Data Analyst
       currentImage.style.transition = "transform 0.5s ease, opacity 0.5s ease";
       currentImage.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)"; // Slide out the current image
     }, 10); // Small delay to ensure the new image is visible
-  
+
     // After transition ends, remove the old image
     setTimeout(() => {
       currentImage.remove();
     }, 500); // Wait for the transition to complete
   }
+
+  // Arrow click event listener
+  arrows.forEach(arrow => {
+    arrow.addEventListener("click", (e) => {
+      if (e.target.classList.contains("arrow-left")) {
+        currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
+        updateMainImage(currentIndex, "right"); // Slide image from right
+      } else if (e.target.classList.contains("arrow-right")) {
+        currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
+        updateMainImage(currentIndex, "left"); // Slide image from left
+      }
+    });
+  });
+
+  // Dot click event listener
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      currentIndex = parseInt(dot.getAttribute("data-index"));
+      updateMainImage(currentIndex, currentIndex > 0 ? "left" : "right");
+    });
+  });
+
+  // Pause auto slide when hovering over the frame or arrows
+  sliderDiv.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+  sliderDiv.addEventListener('mouseleave', startAutoSlide);
+  
+  // Auto slide logic
+  let autoSlideInterval;
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % imageLinks.length;
+      updateMainImage(currentIndex, "left"); // Slide image from left
+    }, 3000); // Auto slide every 3 seconds
+  }
+
+  // Start auto slide
+  startAutoSlide();
 </script>
 
 

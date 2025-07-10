@@ -4,8 +4,25 @@ title: Ekram Ahmed
 subtitle: Maritime Data Analyst
 ---
 
+<!-- Image Slider Section (No images here, just the container) -->
+<div id="image-slider">
+  <!-- Arrows for navigation -->
+  <div class="arrow arrow-left">&#10094;</div>
+  <div class="arrow arrow-right">&#10095;</div>
+
+  <!-- Slider to hold dynamically inserted images -->
+  <div id="slider" class="slider">
+    <!-- Dynamically inserted images will go here -->
+  </div>
+
+  <!-- Dots for navigation -->
+  <div class="slider-dots" id="slider-dots">
+    <!-- Dots will be dynamically created -->
+  </div>
+</div>
+
 <style>
-  /* Slider container */
+  /* Your slider and image styles here */
   #image-slider {
     position: relative;
     width: 80%;
@@ -15,15 +32,13 @@ subtitle: Maritime Data Analyst
     overflow: hidden;
     background-color: transparent;
     border-radius: 12px;
-    /* Optional: Add shadow for "card-like" effect */
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   }
 
-  /* Main image styles */
   .slider-main-image {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensure the entire image is visible */
+    object-fit: contain;
     position: absolute;
     top: 0;
     left: 0;
@@ -31,7 +46,6 @@ subtitle: Maritime Data Analyst
     opacity: 1;
   }
 
-  /* Arrow button styles */
   .arrow {
     position: absolute;
     top: 50%;
@@ -46,11 +60,6 @@ subtitle: Maritime Data Analyst
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   }
 
-  .arrow:hover {
-    transform: translateY(-50%) scale(1.2);
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
-  }
-
   .arrow-left {
     left: 10px;
   }
@@ -59,7 +68,6 @@ subtitle: Maritime Data Analyst
     right: 10px;
   }
 
-  /* Slider dots (for navigation) */
   .slider-dots {
     position: absolute;
     bottom: 10px;
@@ -75,55 +83,22 @@ subtitle: Maritime Data Analyst
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
 
   .slider-dots span.active {
-    background-color: white; /* Active dot color */
-  }
-
-  .slider-dots span:hover {
-    background-color: rgba(255, 255, 255, 1);
-  }
-
-  /* Hover zoom effect on main image */
-  #image-slider:hover .slider-main-image {
-    transform: scale(1.05); /* Slight zoom */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for "card-like" effect */
+    background-color: white;
   }
 </style>
 
-
-<div id="image-slider">
-  <div class="arrow arrow-left">&#10094;</div>
-  <div class="arrow arrow-right">&#10095;</div>
-
-  <!-- This is where the main images will be inserted dynamically later -->
-  <div id="slider" class="slider">
-    <!-- Dynamically inserted images will go here -->
-  </div>
-
-  <!-- Dots navigation -->
-  <div class="slider-dots" id="slider-dots">
-    <!-- Dots will be created dynamically via JS -->
-  </div>
-</div>
-
 <script>
+  // Initializing variables for image slider
   let currentIndex = 0;
-  const sliderDiv = document.querySelector("#image-slider");
+  const images = []; // Empty initially, images will be added dynamically
+  const sliderDiv = document.querySelector("#slider");
   const sliderDotsContainer = document.querySelector("#slider-dots");
   const arrows = document.querySelectorAll(".arrow");
-  
-  // Let's assume you add images dynamically via an array of image URLs
-  const images = [
-    "https://via.placeholder.com/800x400?text=Image+1",
-    "https://via.placeholder.com/800x400?text=Image+2",
-    "https://via.placeholder.com/800x400?text=Image+3",
-    // Add more images as needed
-  ];
 
-  // Function to create a new image element and update slider
+  // Function to create a new image element dynamically
   function createNewImage(src) {
     const newImage = document.createElement("img");
     newImage.classList.add("slider-main-image");
@@ -132,7 +107,7 @@ subtitle: Maritime Data Analyst
     return newImage;
   }
 
-  // Function to create the dots based on the number of images
+  // Function to update dots dynamically based on the number of images
   function createDots() {
     sliderDotsContainer.innerHTML = ""; // Clear previous dots
     images.forEach((_, index) => {
@@ -146,77 +121,73 @@ subtitle: Maritime Data Analyst
     });
   }
 
-  // Update slider to show image at a given index
+  // Function to update the main image
   function updateMainImage(index, direction) {
-    const currentImage = document.querySelectorAll(".slider-main-image")[0]; // Only work with the first image
+    const currentImage = document.querySelectorAll(".slider-main-image")[0]; 
     const newImage = createNewImage(images[index]);
 
     // Direction-based transition
     if (direction === "left") {
-      newImage.style.transform = "translateX(100%)"; // Start off the screen to the right
+      newImage.style.transform = "translateX(100%)"; // Start from right
     } else {
-      newImage.style.transform = "translateX(-100%)"; // Start off the screen to the left
+      newImage.style.transform = "translateX(-100%)"; // Start from left
     }
 
     // Append the new image and apply transition
     sliderDiv.appendChild(newImage);
 
-    // Wait for the new image to be visible before transitioning
+    // Transition effect for sliding
     setTimeout(() => {
       newImage.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-      newImage.style.transform = "translateX(0)"; // Slide in the new image
+      newImage.style.transform = "translateX(0)";
       currentImage.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-      currentImage.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)"; // Slide out the current image
-    }, 10); // Small delay to ensure the new image is visible
+      currentImage.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)";
+    }, 10);
 
-    // After transition ends, remove the old image
+    // After the transition, remove the old image
     setTimeout(() => {
       currentImage.remove();
-    }, 500); // Wait for the transition to complete
+    }, 500);
 
-    // Update dot navigation
+    // Update the active dot
     updateDots(index);
   }
 
-  // Update active dot
+  // Function to update the active dot
   function updateDots(index) {
     const allDots = sliderDotsContainer.querySelectorAll("span");
     allDots.forEach(dot => dot.classList.remove("active"));
     allDots[index].classList.add("active");
   }
 
-  // Arrow click event listener
+  // Arrow navigation logic
   arrows.forEach(arrow => {
     arrow.addEventListener("click", (e) => {
       if (e.target.classList.contains("arrow-left")) {
         currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
-        updateMainImage(currentIndex, "right"); // Slide image from right
+        updateMainImage(currentIndex, "right"); // Slide from right
       } else if (e.target.classList.contains("arrow-right")) {
         currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
-        updateMainImage(currentIndex, "left"); // Slide image from left
+        updateMainImage(currentIndex, "left"); // Slide from left
       }
     });
   });
 
-  // Pause auto slide when hovering over the frame or arrows
-  sliderDiv.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-  sliderDiv.addEventListener('mouseleave', startAutoSlide);
-
-  // Auto slide logic
-  let autoSlideInterval;
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % images.length; // Slide images from left (using dynamic image count)
-      updateMainImage(currentIndex, "left");
-    }, 3000); // Auto slide every 3 seconds
+  // Function to add images dynamically later
+  function addImages(newImages) {
+    images.push(...newImages); // Add new images to the array
+    createDots(); // Recreate dots after adding images
+    if (images.length > 0) {
+      updateMainImage(0, "left"); // Display the first image
+    }
   }
 
-  // Start auto slide
-  startAutoSlide();
-
-  // Initialize the slider with the first image and dots
-  createDots();
-  updateMainImage(currentIndex, "left");
+  // Example: Adding images dynamically later
+  addImages([
+    "https://via.placeholder.com/800x400?text=Image+1",
+    "https://via.placeholder.com/800x400?text=Image+2",
+    "https://via.placeholder.com/800x400?text=Image+3"
+  ]);
 </script>
 
 <!-- Main Content Starts Here -->

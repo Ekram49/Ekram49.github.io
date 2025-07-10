@@ -6,25 +6,32 @@ subtitle: Maritime Data Analyst
 
 <!-- CSS -->
 <style>
-  /* Slider frame */
+/* Slider container */
   #image-slider {
     position: relative;
-    width: 80%; /* Adjust width */
+    width: 80%;
     max-width: 800px;
-    margin: 20px auto;
-    height: 400px; /* Adjust height */
+    margin: 0 auto;
+    height: 400px;
     overflow: hidden;
     background-color: transparent;
+    border-radius: 12px;
+    /* Optional: Add shadow for "card-like" effect */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   }
-
+  
   /* Main image styles */
   .slider-main-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    transition: transform 0.5s ease;
+    object-fit: contain; /* Ensure the entire image is visible */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
   }
-
+  
   /* Arrow button styles */
   .arrow {
     position: absolute;
@@ -36,133 +43,91 @@ subtitle: Maritime Data Analyst
     border-radius: 50%;
     font-size: 25px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   }
-
+  
+  .arrow:hover {
+    transform: translateY(-50%) scale(1.2);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+  }
+  
   .arrow-left {
     left: 10px;
   }
-
+  
   .arrow-right {
     right: 10px;
   }
-
-  /* Dots at the bottom */
+  
+  /* Slider dots (for navigation) */
   .slider-dots {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    justify-content: center;
     gap: 10px;
-    z-index: 2;
   }
-
+  
   .slider-dots span {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
-  .slider-dots .active {
-    background-color: #003366;
+  
+  .slider-dots span.active {
+    background-color: white; /* Active dot color */
   }
-
-  /* Zoom effect when hovering on the image */
+  
+  .slider-dots span:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  
+  /* Hover zoom effect on main image */
   #image-slider:hover .slider-main-image {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Slight zoom */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for "card-like" effect */
   }
+
 </style>
 
 <!-- JavaScript -->
 <script>
   
-document.addEventListener("DOMContentLoaded", function() {
-  const sliderDiv = document.querySelector("#image-slider");
-  const imageLinks = JSON.parse(sliderDiv.getAttribute("data-images"));
-
-  const sliderHTML = `
-    <img class="slider-main-image" src="${imageLinks[0]}" alt="Main Image">
-    <div class="arrow arrow-left">&#8592;</div>
-    <div class="arrow arrow-right">&#8594;</div>
-    <div class="slider-dots">
-      ${imageLinks.map((_, index) => `<span data-index="${index}"></span>`).join('')}
-    </div>
-  `;
-  sliderDiv.innerHTML = sliderHTML;
-
-  let currentIndex = 0;
-  let autoSlideInterval;
-
-  const mainImage = document.querySelector(".slider-main-image");
-  const arrows = document.querySelectorAll(".arrow");
-  const dots = document.querySelectorAll(".slider-dots span");
-
-  // Update the image based on the index
-  function updateMainImage(index) {
-    mainImage.src = imageLinks[index];
-    dots.forEach(dot => dot.classList.remove("active"));
-    dots[index].classList.add("active");
+  function updateMainImage(index, direction) {
+    const currentImage = mainImage;
+    const newImage = document.createElement("img");
+    newImage.classList.add("slider-main-image");
+    newImage.src = imageLinks[index];
+    newImage.alt = "Main Image";
+  
+    // Direction-based transition
+    if (direction === "left") {
+      newImage.style.transform = "translateX(100%)"; // Start off the screen to the right
+    } else {
+      newImage.style.transform = "translateX(-100%)"; // Start off the screen to the left
+    }
+  
+    // Append the new image and apply transition
+    sliderDiv.appendChild(newImage);
+  
+    // Wait for the new image to be visible before transitioning
+    setTimeout(() => {
+      newImage.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+      newImage.style.transform = "translateX(0)"; // Slide in the new image
+      currentImage.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+      currentImage.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)"; // Slide out the current image
+    }, 10); // Small delay to ensure the new image is visible
+  
+    // After transition ends, remove the old image
+    setTimeout(() => {
+      currentImage.remove();
+    }, 500); // Wait for the transition to complete
   }
-
-  // Arrow click event listener
-  arrows.forEach(arrow => {
-    arrow.addEventListener("click", (e) => {
-      if (e.target.classList.contains("arrow-left")) {
-        currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
-      } else if (e.target.classList.contains("arrow-right")) {
-        currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-      }
-      updateMainImage(currentIndex);
-    });
-  });
-
-  // Dot click event listener
-  dots.forEach(dot => {
-    dot.addEventListener("click", () => {
-      currentIndex = parseInt(dot.getAttribute("data-index"));
-      updateMainImage(currentIndex);
-    });
-  });
-
-  // Set the first dot as active initially
-  dots[currentIndex].classList.add("active");
-
-  // Auto-sliding functionality
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-      currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-      updateMainImage(currentIndex);
-    }, 5000); // Change image every 5 seconds
-  }
-
-  // Stop the auto-slide on hover (on frame or arrows)
-  function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-  }
-
-  // Restart auto-slide when hover stops
-  function resumeAutoSlide() {
-    startAutoSlide();
-  }
-
-  // Start the auto-slide initially
-  startAutoSlide();
-
-  // Pause on hover for the image frame
-  mainImage.addEventListener("mouseenter", stopAutoSlide);
-  mainImage.addEventListener("mouseleave", resumeAutoSlide);
-
-  // Pause on hover for the arrows
-  arrows.forEach(arrow => {
-    arrow.addEventListener("mouseenter", stopAutoSlide);
-    arrow.addEventListener("mouseleave", resumeAutoSlide);
-  });
-});
-
 </script>
 
 

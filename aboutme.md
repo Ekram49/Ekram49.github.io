@@ -4,38 +4,37 @@ title: Ekram Ahmed
 subtitle: Maritime Data Analyst
 ---
 
-<!-- Image Slider Section (No images here, just the container) -->
-<div id="image-slider">
-  <!-- Arrows for navigation -->
-  <div class="arrow arrow-left">&#10094;</div>
-  <div class="arrow arrow-right">&#10095;</div>
-
-  <!-- Slider to hold dynamically inserted images -->
-  <div id="slider" class="slider">
-    <!-- Dynamically inserted images will go here -->
-  </div>
-
-  <!-- Dots for navigation -->
-  <div class="slider-dots" id="slider-dots">
-    <!-- Dots will be dynamically created -->
-  </div>
-</div>
-
 <style>
-  /* Your slider and image styles here */
-  #image-slider {
+  /* Your link button styles */
+  .link-button {
+    display: inline-block;
+    margin: 5px 10px;
+    padding: 8px 16px;
+    background-color: #d3d3d3;
+    color: #003366;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  .link-button:hover {
+    background-color: #a9a9a9; /* darker shade */
+    transform: scale(1.05);
+  }
+
+  /* Image slider styles */
+  .image-slider {
     position: relative;
     width: 80%;
     max-width: 800px;
-    margin: 0 auto;
     height: 400px;
+    margin: 30px auto;
     overflow: hidden;
     background-color: transparent;
     border-radius: 12px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   }
 
-  .slider-main-image {
+  .image-slider .slider-main-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -46,7 +45,7 @@ subtitle: Maritime Data Analyst
     opacity: 1;
   }
 
-  .arrow {
+  .image-slider .arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -56,28 +55,23 @@ subtitle: Maritime Data Analyst
     border-radius: 50%;
     font-size: 25px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
   }
 
-  .arrow-left {
-    left: 10px;
-  }
+  .image-slider .arrow-left { left: 10px; }
+  .image-slider .arrow-right { right: 10px; }
 
-  .arrow-right {
-    right: 10px;
-  }
-
-  .slider-dots {
+  .image-slider .slider-dots {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
+    z-index: 10;
   }
 
-  .slider-dots span {
+  .image-slider .slider-dots span {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -85,110 +79,112 @@ subtitle: Maritime Data Analyst
     cursor: pointer;
   }
 
-  .slider-dots span.active {
+  .image-slider .slider-dots span.active {
     background-color: white;
   }
 </style>
 
+<!-- Example usage between paragraphs -->
+<p>This is a paragraph of content before the first slider.</p>
+
+<!-- Optional buttons -->
+<div style="text-align: center; margin-top: 20px;">
+  <a href="https://ekram49.github.io/" class="link-button">Portfolio</a>
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link" class="link-button">Resume</a>
+  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="link-button">LinkedIn</a>
+  <a href="mailto:ekramullahzaki@gmail.com" class="link-button">Email</a>
+</div>
+
+<!-- JavaScript to initialize all sliders -->
 <script>
-  // Initializing variables for image slider
-  let currentIndex = 0;
-  const images = []; // Empty initially, images will be added dynamically
-  const sliderDiv = document.querySelector("#slider");
-  const sliderDotsContainer = document.querySelector("#slider-dots");
-  const arrows = document.querySelectorAll(".arrow");
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll(".image-slider");
 
-  // Function to create a new image element dynamically
-  function createNewImage(src) {
-    const newImage = document.createElement("img");
-    newImage.classList.add("slider-main-image");
-    newImage.src = src;
-    newImage.alt = "Main Image";
-    return newImage;
-  }
+    sliders.forEach(slider => {
+      const images = JSON.parse(slider.dataset.images);
+      let currentIndex = 0;
 
-  // Function to update dots dynamically based on the number of images
-  function createDots() {
-    sliderDotsContainer.innerHTML = ""; // Clear previous dots
-    images.forEach((_, index) => {
-      const dot = document.createElement("span");
-      dot.setAttribute("data-index", index);
-      dot.addEventListener("click", () => {
-        currentIndex = index;
-        updateMainImage(currentIndex, index > currentIndex ? "left" : "right");
-      });
-      sliderDotsContainer.appendChild(dot);
-    });
-  }
+      // Create internal structure
+      slider.innerHTML = `
+        <div class="arrow arrow-left">&#10094;</div>
+        <div class="arrow arrow-right">&#10095;</div>
+        <div class="slider"></div>
+        <div class="slider-dots"></div>
+      `;
 
-  // Function to update the main image
-  function updateMainImage(index, direction) {
-    const currentImage = document.querySelectorAll(".slider-main-image")[0]; 
-    const newImage = createNewImage(images[index]);
+      const sliderDiv = slider.querySelector(".slider");
+      const dotsContainer = slider.querySelector(".slider-dots");
+      const leftArrow = slider.querySelector(".arrow-left");
+      const rightArrow = slider.querySelector(".arrow-right");
 
-    // Direction-based transition
-    if (direction === "left") {
-      newImage.style.transform = "translateX(100%)"; // Start from right
-    } else {
-      newImage.style.transform = "translateX(-100%)"; // Start from left
-    }
-
-    // Append the new image and apply transition
-    sliderDiv.appendChild(newImage);
-
-    // Transition effect for sliding
-    setTimeout(() => {
-      newImage.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-      newImage.style.transform = "translateX(0)";
-      currentImage.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-      currentImage.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)";
-    }, 10);
-
-    // After the transition, remove the old image
-    setTimeout(() => {
-      currentImage.remove();
-    }, 500);
-
-    // Update the active dot
-    updateDots(index);
-  }
-
-  // Function to update the active dot
-  function updateDots(index) {
-    const allDots = sliderDotsContainer.querySelectorAll("span");
-    allDots.forEach(dot => dot.classList.remove("active"));
-    allDots[index].classList.add("active");
-  }
-
-  // Arrow navigation logic
-  arrows.forEach(arrow => {
-    arrow.addEventListener("click", (e) => {
-      if (e.target.classList.contains("arrow-left")) {
-        currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
-        updateMainImage(currentIndex, "right"); // Slide from right
-      } else if (e.target.classList.contains("arrow-right")) {
-        currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
-        updateMainImage(currentIndex, "left"); // Slide from left
+      function createImage(src) {
+        const img = document.createElement("img");
+        img.className = "slider-main-image";
+        img.src = src;
+        img.alt = "Slider Image";
+        return img;
       }
+
+      function createDots() {
+        dotsContainer.innerHTML = "";
+        images.forEach((_, i) => {
+          const dot = document.createElement("span");
+          dot.addEventListener("click", () => {
+            if (i !== currentIndex) {
+              const dir = i > currentIndex ? "left" : "right";
+              currentIndex = i;
+              updateImage(dir);
+            }
+          });
+          dotsContainer.appendChild(dot);
+        });
+      }
+
+      function updateDots() {
+        const allDots = dotsContainer.querySelectorAll("span");
+        allDots.forEach(dot => dot.classList.remove("active"));
+        if (allDots[currentIndex]) allDots[currentIndex].classList.add("active");
+      }
+
+      function updateImage(direction) {
+        const oldImg = sliderDiv.querySelector(".slider-main-image");
+        const newImg = createImage(images[currentIndex]);
+        newImg.style.transform = direction === "left" ? "translateX(100%)" : "translateX(-100%)";
+        sliderDiv.appendChild(newImg);
+
+        requestAnimationFrame(() => {
+          newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+          newImg.style.transform = "translateX(0)";
+          if (oldImg) {
+            oldImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+            oldImg.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)";
+          }
+        });
+
+        setTimeout(() => {
+          if (oldImg) oldImg.remove();
+        }, 500);
+
+        updateDots();
+      }
+
+      leftArrow.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateImage("right");
+      });
+
+      rightArrow.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateImage("left");
+      });
+
+      // Initialize
+      createDots();
+      updateImage("left");
     });
   });
-
-  // Function to add images dynamically later
-  function addImages(newImages) {
-    images.push(...newImages); // Add new images to the array
-    createDots(); // Recreate dots after adding images
-    if (images.length > 0) {
-      updateMainImage(0, "left"); // Display the first image
-    }
-  }
-
-  // Example: Adding images dynamically later
-  addImages([
-    "https://via.placeholder.com/800x400?text=Image+1",
-    "https://via.placeholder.com/800x400?text=Image+2",
-    "https://via.placeholder.com/800x400?text=Image+3"
-  ]);
 </script>
+
 
 <!-- Main Content Starts Here -->
 <div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">

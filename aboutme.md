@@ -92,8 +92,6 @@ subtitle: Maritime Data Analyst
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for "card-like" effect */
     }
   </style>
-</head>
-<body>
 
   <div id="image-slider">
     <div class="arrow arrow-left">&#10094;</div>

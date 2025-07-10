@@ -157,7 +157,7 @@ subtitle: Maritime Data Analyst
 
         rightArrow.addEventListener("click", () => {
             currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-            updateMainImage(currentIndex, 'manual');
+            updateMainImage(currentIndex, 'right');
         });
 
         // Auto sliding functionality

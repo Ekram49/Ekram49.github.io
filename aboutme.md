@@ -5,23 +5,6 @@ subtitle: Maritime Data Analyst
 ---
 
 <style>
-    
-   /* Your link button styles */
-  .link-button {
-    display: inline-block;
-    margin: 5px 10px;
-    padding: 8px 16px;
-    background-color: #d3d3d3;
-    color: #003366;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  .link-button:hover {
-    background-color: #a9a9a9; /* darker shade */
-    transform: scale(1.05);
-  }
-    
     #image-slider {
         position: relative;
         width: 80%;
@@ -41,7 +24,7 @@ subtitle: Maritime Data Analyst
     .slider-main-image {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: contain;  /* Keep this so images fit nicely */
         border-radius: 12px;
     }
 
@@ -149,13 +132,13 @@ subtitle: Maritime Data Analyst
 
         leftArrow.addEventListener("click", () => {
             currentIndex = (currentIndex === 0) ? imageLinks.length - 1 : currentIndex - 1;
-            updateMainImage(currentIndex, 'left');
+            updateMainImage(currentIndex, 'left'); // Slide left
             isAutoSliding = false;
         });
 
         rightArrow.addEventListener("click", () => {
             currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-            updateMainImage(currentIndex, 'right');
+            updateMainImage(currentIndex, 'right'); // Slide right
             isAutoSliding = false;
         });
 
@@ -170,7 +153,7 @@ subtitle: Maritime Data Analyst
         function autoSlide() {
             if (isAutoSliding) {
                 currentIndex = (currentIndex === imageLinks.length - 1) ? 0 : currentIndex + 1;
-                updateMainImage(currentIndex, 'right');
+                updateMainImage(currentIndex, 'right'); // Auto slide right
             }
         }
 

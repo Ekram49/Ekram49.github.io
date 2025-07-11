@@ -30,8 +30,8 @@ subtitle: Maritime Data Analyst
     margin: 30px auto;
     overflow: hidden;
     background-color: transparent;
-    border-radius: 12px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    /* border-radius: 12px; */
+    /* box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);*/
   }
 
   .image-slider .slider-main-image {

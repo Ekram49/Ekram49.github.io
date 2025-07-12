@@ -5,8 +5,11 @@ subtitle: 🫱✨🫲
 permalink: /contactinfo/
 ---
 
-<!-- Font Awesome (still needed for icons) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Font Awesome (only used in this section) -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
 
 <style>
   .contact-intro {
@@ -63,23 +66,11 @@ permalink: /contactinfo/
     z-index: 2;
   }
 
-  /* Fix for broken image icons */
-  .contact-button img {
-    all: unset;
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-  }
-
-  .contact-button:hover img {
-    filter: none;
-  }
-
   .contact-button i {
-    width: 22px;
-    height: 22px;
+    font-size: 26px;
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.3));
+    /* Align icon vertically with text */
+    margin-bottom: 2px;
   }
 
   /* Platform Colors */
@@ -109,11 +100,11 @@ permalink: /contactinfo/
 
 <div class="button-grid">
 
-  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="contact-button linkedin" target="_blank">
+  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="contact-button linkedin" target="_blank" rel="noopener">
     <i class="fab fa-linkedin"></i> LinkedIn
   </a>
 
-  <a href="https://github.com/Ekram49" class="contact-button github" target="_blank">
+  <a href="https://github.com/Ekram49" class="contact-button github" target="_blank" rel="noopener">
     <i class="fab fa-github"></i> GitHub
   </a>
 
@@ -121,31 +112,31 @@ permalink: /contactinfo/
     <i class="fas fa-envelope"></i> Email
   </a>
 
-  <a href="https://wa.me/19294599555" class="contact-button whatsapp" target="_blank">
+  <a href="https://wa.me/19294599555" class="contact-button whatsapp" target="_blank" rel="noopener">
     <i class="fab fa-whatsapp"></i> WhatsApp
   </a>
 
-  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank">
-    <img src="/assets/icons/resume-icon.png" alt="Resume Icon"> Resume
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt"></i> Resume
   </a>
 
-  <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank">
-    <img src="/assets/icons/portfolio-icon.png" alt="Portfolio Icon"> Portfolio
+  <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank" rel="noopener">
+    <i class="fas fa-book"></i> Portfolio
   </a>
 
-  <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank">
+  <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank" rel="noopener">
     <i class="fab fa-facebook-f"></i> Facebook
   </a>
 
-  <a href="https://www.instagram.com/" class="contact-button instagram" target="_blank">
+  <a href="https://www.instagram.com/" class="contact-button instagram" target="_blank" rel="noopener">
     <i class="fab fa-instagram"></i> Instagram
   </a>
 
-  <a href="https://x.com/EkramAh56552843" class="contact-button x-twitter" target="_blank">
+  <a href="https://x.com/EkramAh56552843" class="contact-button x-twitter" target="_blank" rel="noopener">
     <i class="fab fa-x-twitter"></i> X (Twitter)
   </a>
 
-  <a href="https://ekram49.github.io/aboutme/" class="contact-button about" target="_blank">
+  <a href="https://ekram49.github.io/aboutme/" class="contact-button about" target="_blank" rel="noopener">
     <i class="fas fa-user"></i> About Ekram
   </a>
 

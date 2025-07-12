@@ -5,17 +5,18 @@ subtitle: 🫱✨🫲
 permalink: /contactinfo/
 ---
 
-<!-- Font Awesome (used globally) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Font Awesome (only used in button section) -->
+<div id="fa-contact-scope">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</div>
 
 <style>
   .contact-intro {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.8rem; /* Bigger like subtitle */
+    font-size: 1.6rem;
     font-style: italic;
-    font-weight: 400;
-    margin-bottom: 20px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-align: center;
+    margin-bottom: 20px;
   }
 
   .button-grid {
@@ -52,7 +53,6 @@ permalink: /contactinfo/
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     width: 100%;
     box-sizing: border-box;
-    line-height: 1; /* Fix vertical alignment */
   }
 
   .button-grid:hover .contact-button {
@@ -66,23 +66,8 @@ permalink: /contactinfo/
     z-index: 2;
   }
 
-  /* Fix icon vertical alignment */
-  .contact-button i,
-  .contact-button img {
-    width: 26px;
-    height: 26px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .contact-button img {
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-  }
-
-  .contact-button:hover img {
-    filter: none;
+  .contact-button i {
+    font-size: 22px;
   }
 
   /* Platform Colors */
@@ -107,16 +92,16 @@ permalink: /contactinfo/
 </style>
 
 <div class="contact-intro">
-  🔴 Hi! This is <strong>Cryza</strong>, Ekram's personal <strong>AI*</strong> assistant. How can I help you connect with Ekram?
+  🔴 Hi! This is <strong>Cryza</strong>, Ekram's personal AI* assistant. How can I help you connect with Ekram?
 </div>
 
 <div class="button-grid">
 
-  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="contact-button linkedin" target="_blank" rel="noopener">
+  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="contact-button linkedin" target="_blank">
     <i class="fab fa-linkedin"></i> LinkedIn
   </a>
 
-  <a href="https://github.com/Ekram49" class="contact-button github" target="_blank" rel="noopener">
+  <a href="https://github.com/Ekram49" class="contact-button github" target="_blank">
     <i class="fab fa-github"></i> GitHub
   </a>
 
@@ -124,31 +109,31 @@ permalink: /contactinfo/
     <i class="fas fa-envelope"></i> Email
   </a>
 
-  <a href="https://wa.me/19294599555" class="contact-button whatsapp" target="_blank" rel="noopener">
+  <a href="https://wa.me/19294599555" class="contact-button whatsapp" target="_blank">
     <i class="fab fa-whatsapp"></i> WhatsApp
   </a>
 
-  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank" rel="noopener">
-    <img src="/assets/icons/resume-icon.png" alt="Resume Icon"> Resume
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank">
+    <i class="fas fa-file-alt"></i> Resume
   </a>
 
-  <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank" rel="noopener">
-    <img src="/assets/icons/portfolio-icon.png" alt="Portfolio Icon"> Portfolio
+  <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank">
+    <i class="fas fa-book"></i> Portfolio
   </a>
 
-  <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank" rel="noopener">
+  <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank">
     <i class="fab fa-facebook-f"></i> Facebook
   </a>
 
-  <a href="https://www.instagram.com/" class="contact-button instagram" target="_blank" rel="noopener">
+  <a href="https://www.instagram.com/" class="contact-button instagram" target="_blank">
     <i class="fab fa-instagram"></i> Instagram
   </a>
 
-  <a href="https://x.com/EkramAh56552843" class="contact-button x-twitter" target="_blank" rel="noopener">
+  <a href="https://x.com/EkramAh56552843" class="contact-button x-twitter" target="_blank">
     <i class="fab fa-x-twitter"></i> X (Twitter)
   </a>
 
-  <a href="https://ekram49.github.io/aboutme/" class="contact-button about" target="_blank" rel="noopener">
+  <a href="https://ekram49.github.io/aboutme/" class="contact-button about" target="_blank">
     <i class="fas fa-user"></i> About Ekram
   </a>
 

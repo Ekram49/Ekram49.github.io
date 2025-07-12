@@ -9,15 +9,15 @@ permalink: /contactinfo/
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-  /* Contact intro styled like subtitle but italic, bigger and normal weight */
+  /* Bigger italic intro line, like Jekyll subtitle */
   .contact-intro {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.4rem;
+    font-size: 2rem;
     font-style: italic;
     font-weight: 400;
     margin-bottom: 20px;
     text-align: center;
-    line-height: 1.3;
+    line-height: 1.2;
   }
 
   .button-grid {

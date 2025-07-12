@@ -5,40 +5,13 @@ subtitle: 🫱✨🫲
 permalink: /contactinfo/
 ---
 
-<!-- Font Awesome (only used for contact buttons) -->
+<!-- Font Awesome (used globally) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-  /* Disable Font Awesome styles globally */
-  .fa, .fas, .far, .fal, .fab {
-    all: unset;
-    display: inline-block;
-    font-family: initial !important;
-    font-weight: normal !important;
-    font-style: normal !important;
-    -webkit-font-smoothing: auto !important;
-    -moz-osx-font-smoothing: auto !important;
-    text-rendering: auto !important;
-  }
-
-  /* Enable Font Awesome styles ONLY inside .contact-button */
-  .contact-button .fa,
-  .contact-button .fas,
-  .contact-button .far,
-  .contact-button .fal,
-  .contact-button .fab {
-    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 6 Pro" !important;
-    font-weight: 900 !important;
-    font-style: normal !important;
-    font-variant: normal !important;
-    text-rendering: auto !important;
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
-  }
-
   .contact-intro {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.8rem; /* bigger to match subtitle */
+    font-size: 1.8rem; /* Bigger like subtitle */
     font-style: italic;
     font-weight: 400;
     margin-bottom: 20px;
@@ -79,6 +52,7 @@ permalink: /contactinfo/
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     width: 100%;
     box-sizing: border-box;
+    line-height: 1; /* Fix vertical alignment */
   }
 
   .button-grid:hover .contact-button {
@@ -92,10 +66,14 @@ permalink: /contactinfo/
     z-index: 2;
   }
 
+  /* Fix icon vertical alignment */
   .contact-button i,
   .contact-button img {
     width: 26px;
     height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .contact-button img {
@@ -129,7 +107,7 @@ permalink: /contactinfo/
 </style>
 
 <div class="contact-intro">
-  🔴 Hi! This is <strong>Cryza</strong>, Ekram's personal AI* assistant. How can I help you connect with Ekram?
+  🔴 Hi! This is <strong>Cryza</strong>, Ekram's personal <strong>AI*</strong> assistant. How can I help you connect with Ekram?
 </div>
 
 <div class="button-grid">

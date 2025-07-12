@@ -101,6 +101,96 @@ subtitle: Maritime Data Analyst
   </a>
 </div>
 
+<!-- JavaScript to initialize all sliders -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll(".image-slider");
+
+    sliders.forEach(slider => {
+      const images = JSON.parse(slider.dataset.images);
+      let currentIndex = 0;
+
+      // Create internal structure
+      slider.innerHTML = 
+        <div class="arrow arrow-left">&#10094;</div>
+        <div class="arrow arrow-right">&#10095;</div>
+        <div class="slider"></div>
+        <div class="slider-dots"></div>
+      ;
+
+      const sliderDiv = slider.querySelector(".slider");
+      const dotsContainer = slider.querySelector(".slider-dots");
+      const leftArrow = slider.querySelector(".arrow-left");
+      const rightArrow = slider.querySelector(".arrow-right");
+
+      function createImage(src) {
+        const img = document.createElement("img");
+        img.className = "slider-main-image";
+        img.src = src;
+        img.alt = "Slider Image";
+        return img;
+      }
+
+      function createDots() {
+        dotsContainer.innerHTML = "";
+        images.forEach((_, i) => {
+          const dot = document.createElement("span");
+          dot.addEventListener("click", () => {
+            if (i !== currentIndex) {
+              const dir = i > currentIndex ? "left" : "right";
+              currentIndex = i;
+              updateImage(dir);
+            }
+          });
+          dotsContainer.appendChild(dot);
+        });
+      }
+
+      function updateDots() {
+        const allDots = dotsContainer.querySelectorAll("span");
+        allDots.forEach(dot => dot.classList.remove("active"));
+        if (allDots[currentIndex]) allDots[currentIndex].classList.add("active");
+      }
+
+      function updateImage(direction) {
+        const oldImg = sliderDiv.querySelector(".slider-main-image");
+        const newImg = createImage(images[currentIndex]);
+        newImg.style.transform = direction === "left" ? "translateX(100%)" : "translateX(-100%)";
+        sliderDiv.appendChild(newImg);
+
+        requestAnimationFrame(() => {
+          newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+          newImg.style.transform = "translateX(0)";
+          if (oldImg) {
+            oldImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+            oldImg.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)";
+          }
+        });
+
+        setTimeout(() => {
+          if (oldImg) oldImg.remove();
+        }, 500);
+
+        updateDots();
+      }
+
+      leftArrow.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateImage("right");
+      });
+
+      rightArrow.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateImage("left");
+      });
+
+      // Initialize
+      createDots();
+      updateImage("left");
+    });
+  });
+</script>
+
 <!-- Your original content below (unchanged) -->
 
 Hey, this is Ekram—a maritime data analyst with a background that spans marine engineering, pharmaceutical retail, maritime tech startups, and a lot of time spent diving deep into data. 

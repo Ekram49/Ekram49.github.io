@@ -35,6 +35,7 @@ permalink: /contactinfo/
   .contact-button:hover {
     transform: scale(1.05);
     z-index: 2;
+    color: white !important; /* Override global link hover color */
   }
 
   .contact-button i,
@@ -91,11 +92,11 @@ permalink: /contactinfo/
   </a>
 
   <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank">
-    <img src="/assets/icons/resume-icon.png" alt="Resume Icon"> Resume
+    <img src="https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/My%20Headshot.png" alt="Resume Icon"> Resume
   </a>
 
   <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank">
-    <img src="/assets/icons/portfolio-icon.png" alt="Portfolio Icon"> Portfolio
+    <img src="https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/My%20Headshot.png" alt="Portfolio Icon"> Portfolio
   </a>
 
   <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank">
@@ -121,4 +122,4 @@ permalink: /contactinfo/
 </div>
 
 <!-- Load Font Awesome -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">

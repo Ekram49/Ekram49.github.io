@@ -22,7 +22,7 @@ permalink: /contactinfo/
   .button-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0;
+    gap: 15px;
     max-width: 800px;
     margin: 0 auto;
     padding: 0 10px;
@@ -39,48 +39,101 @@ permalink: /contactinfo/
     align-items: center;
     justify-content: center;
     gap: 12px;
-    padding: 18px;
+    padding: 16px 22px;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
     font-size: 18px;
-    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     color: white !important;
-    border: none;
-    text-decoration: none;
-    border-radius: 0;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 2.5px solid transparent;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #005582, #0077b5); /* fallback color, overridden by platform classes */
+    box-shadow:
+      0 4px 6px rgba(0,0,0,0.15),
+      inset 0 -3px 5px rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: 
+      transform 0.25s cubic-bezier(.4,0,.2,1),
+      box-shadow 0.3s ease,
+      background 0.3s ease,
+      border-color 0.3s ease;
     width: 100%;
     box-sizing: border-box;
-  }
-
-  .button-grid:hover .contact-button {
-    opacity: 0.5;
-  }
-
-  .contact-button:hover {
-    transform: scale(1.08);
-    opacity: 1 !important;
-    border-radius: 8px;
-    z-index: 2;
+    text-decoration: none;
   }
 
   .contact-button i {
     font-size: 22px;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
   }
 
-  /* Platform Colors */
-  .linkedin   { background-color: #0077b5; }
-  .github     { background-color: #333; }
-  .email      { background-color: #d44638; }
-  .whatsapp   { background-color: #25D366; }
-  .resume     { background-color: #6c63ff; }
-  .portfolio  { background-color: #003366; }
-  .facebook   { background-color: #1877f2; }
-  .instagram  { background-color: #e1306c; }
-  .x-twitter  { background-color: #000000; }
-  .about      { background-color: #444444; }
+  /* Remove old grid hover opacity */
+  .button-grid:hover .contact-button {
+    opacity: 1 !important;
+  }
+
+  .contact-button:hover,
+  .contact-button:focus {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+      0 8px 15px rgba(0,0,0,0.3),
+      inset 0 -3px 8px rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    outline: none;
+  }
+
+  /* Platform color gradients and border colors */
+  .linkedin {
+    background: linear-gradient(145deg, #005582, #0077b5);
+    border-color: #004466;
+  }
+
+  .github {
+    background: linear-gradient(145deg, #222, #444);
+    border-color: #111;
+  }
+
+  .email {
+    background: linear-gradient(145deg, #b5392f, #d44638);
+    border-color: #8b2d24;
+  }
+
+  .whatsapp {
+    background: linear-gradient(145deg, #1ebd56, #25D366);
+    border-color: #198c40;
+  }
+
+  .resume {
+    background: linear-gradient(145deg, #594de8, #6c63ff);
+    border-color: #4a3ecf;
+  }
+
+  .portfolio {
+    background: linear-gradient(145deg, #002244, #003366);
+    border-color: #001a33;
+  }
+
+  .facebook {
+    background: linear-gradient(145deg, #0f62c7, #1877f2);
+    border-color: #0b4b9a;
+  }
+
+  .instagram {
+    background: linear-gradient(145deg, #b73661, #e1306c);
+    border-color: #8c274a;
+  }
+
+  .x-twitter {
+    background: linear-gradient(145deg, #111, #000000);
+    border-color: #222;
+  }
+
+  .about {
+    background: linear-gradient(145deg, #444, #666);
+    border-color: #333;
+  }
 
   .disclaimer {
     margin-top: 30px;
@@ -97,11 +150,11 @@ permalink: /contactinfo/
 
 <div class="button-grid">
 
-  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="contact-button linkedin" target="_blank">
+  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="contact-button linkedin" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-linkedin"></i> LinkedIn
   </a>
 
-  <a href="https://github.com/Ekram49" class="contact-button github" target="_blank">
+  <a href="https://github.com/Ekram49" class="contact-button github" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-github"></i> GitHub
   </a>
 
@@ -109,31 +162,31 @@ permalink: /contactinfo/
     <i class="fas fa-envelope"></i> Email
   </a>
 
-  <a href="https://wa.me/19294599555" class="contact-button whatsapp" target="_blank">
+  <a href="https://wa.me/19294599555" class="contact-button whatsapp" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-whatsapp"></i> WhatsApp
   </a>
 
-  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank">
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank" rel="noopener noreferrer">
     <i class="fas fa-file-alt"></i> Resume
   </a>
 
-  <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank">
+  <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank" rel="noopener noreferrer">
     <i class="fas fa-book"></i> Portfolio
   </a>
 
-  <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank">
+  <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-facebook-f"></i> Facebook
   </a>
 
-  <a href="https://www.instagram.com/" class="contact-button instagram" target="_blank">
+  <a href="https://www.instagram.com/" class="contact-button instagram" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-instagram"></i> Instagram
   </a>
 
-  <a href="https://x.com/EkramAh56552843" class="contact-button x-twitter" target="_blank">
+  <a href="https://x.com/EkramAh56552843" class="contact-button x-twitter" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-x-twitter"></i> X (Twitter)
   </a>
 
-  <a href="https://ekram49.github.io/aboutme/" class="contact-button about" target="_blank">
+  <a href="https://ekram49.github.io/aboutme/" class="contact-button about" target="_blank" rel="noopener noreferrer">
     <i class="fas fa-user"></i> About Ekram
   </a>
 

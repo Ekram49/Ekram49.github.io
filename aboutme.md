@@ -83,6 +83,66 @@ subtitle: Maritime Data Analyst
   .link-button i {
     font-size: 20px;
   }
+
+  /* Image slider styles */
+  .image-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+    margin: 30px auto;
+    overflow: hidden;
+    background-color: transparent;
+  }
+
+  .image-slider .slider-main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
+  }
+
+  .image-slider .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .image-slider .arrow-left { left: 10px; }
+  .image-slider .arrow-right { right: 10px; }
+
+  .image-slider .slider-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .image-slider .slider-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+  }
+
+  .image-slider .slider-dots span.active {
+    background-color: white;
+  }
 </style>
 
 <!-- Buttons -->
@@ -109,7 +169,6 @@ subtitle: Maritime Data Analyst
       const images = JSON.parse(slider.dataset.images);
       let currentIndex = 0;
 
-      // ✅ FIX: Wrap innerHTML correctly using backticks for multiline string
       slider.innerHTML = `
         <div class="arrow arrow-left">&#10094;</div>
         <div class="arrow arrow-right">&#10095;</div>
@@ -183,7 +242,6 @@ subtitle: Maritime Data Analyst
         updateImage("left");
       });
 
-      // Initialize
       createDots();
       updateImage("left");
     });

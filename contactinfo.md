@@ -2,7 +2,6 @@
 layout: page
 title: "Let’s Connect!"
 subtitle: 🫱✨🫲
-subtitle: Hi! This is <strong>Cryza</strong>, Ekram's personal AI* assistant. How can I help you connect with Ekram?
 permalink: /contactinfo/
 ---
 
@@ -94,6 +93,18 @@ permalink: /contactinfo/
     text-align: center;
   }
 </style>
+
+<div class="contact-intro contact-intro-italic">
+  🔴 Hi! This is <strong>Cryza</strong>, Ekram's personal AI* assistant. How can I help you connect with Ekram?
+</div>
+
+.contact-intro-italic {
+  font-style: italic;
+  font-weight: 400; /* normal, not bold */
+  font-size: 1.4rem; /* a bit bigger than subtitle's 1.2rem */
+  text-align: center;
+}
+
 
 <div class="button-grid">
 

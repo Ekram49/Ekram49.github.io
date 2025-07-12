@@ -1,6 +1,7 @@
 ---
 layout: page
-title: "Let’s Connect 🫱✨🫲"
+title: "Let’s Connect!"
+subtitle: 🫱✨🫲
 permalink: /contactinfo/
 ---
 

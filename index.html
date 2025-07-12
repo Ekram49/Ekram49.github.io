@@ -7,29 +7,98 @@ use-site-title: true
 
 <!-- Link to my contact info -->
 
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-  .link-button {
-    display: inline-block;
-    margin: 5px 10px;
-    padding: 8px 16px;
-    background-color:#d3d3d3;
-    color: #003366;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  .button-container {
+    text-align: center;
+    margin: 10px 0 30px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
   }
 
-  .link-button:hover {
-    background-color: #a9a9a9; /* darker shade */
-    transform: scale(1.05);    /* optional: slight zoom */
+  .link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 160px;
+    padding: 14px 22px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    box-shadow:
+      0 4px 6px rgba(0,0,0,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.2);
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .link-button i {
+    font-size: 22px;
+  }
+
+  .link-button:hover,
+  .link-button:focus {
+    transform: scale(1.08);
+    box-shadow:
+      0 6px 10px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.3);
+    outline: none;
+  }
+
+  /* Platform Colors */
+  .link-portfolio {
+    background-color: #003366;
+    border-color: #002244;
+  }
+
+  .link-resume {
+    background-color: #6c63ff;
+    border-color: #5a52e6;
+  }
+
+  .link-linkedin {
+    background-color: #0077b5;
+    border-color: #005983;
+  }
+
+  .link-email {
+    background-color: #d44638;
+    border-color: #b63628;
+  }
+
+  .link-about {
+    background-color: #444444;
+    border-color: #222222;
   }
 </style>
 
-<div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
-  <a href="https://ekram49.github.io/aboutme/" class="link-button">Who Dis?</a>
-  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link" class="link-button">Resume</a>
-  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="link-button">LinkedIn</a>
-  <a href="mailto:ekramullahzaki@gmail.com" class="link-button">Email</a>
+<div class="button-container">
+  <a href="https://ekram49.github.io/aboutme/" class="link-button link-about" target="_blank" rel="noopener noreferrer">
+    <i class="fas fa-user"></i> Who Dis?
+  </a>
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link" class="link-button link-resume" target="_blank" rel="noopener noreferrer">
+    <i class="fas fa-file-alt"></i> Resume
+  </a>
+  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="link-button link-linkedin" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-linkedin"></i> LinkedIn
+  </a>
+  <a href="mailto:ekramullahzaki@gmail.com" class="link-button link-email">
+    <i class="fas fa-envelope"></i> Email
+  </a>
 </div>
 
 <div class="posts-list">

@@ -106,10 +106,10 @@ subtitle: Maritime Data Analyst
     const sliders = document.querySelectorAll(".image-slider");
 
     sliders.forEach(slider => {
-      const images = JSON.parse(slider.dataset.images || "[]");
+      const images = JSON.parse(slider.dataset.images);
       let currentIndex = 0;
 
-      // Fix: Inject slider HTML properly as a string
+      // ✅ FIX: Wrap innerHTML correctly using backticks for multiline string
       slider.innerHTML = `
         <div class="arrow arrow-left">&#10094;</div>
         <div class="arrow arrow-right">&#10095;</div>

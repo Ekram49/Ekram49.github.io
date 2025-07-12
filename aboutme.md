@@ -179,9 +179,9 @@ subtitle: Maritime Data Analyst
 <!-- Main Content Starts Here -->
 <div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
   <a href="https://ekram49.github.io/" class="link-button">Portfolio</a>
-  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link" class="link-button">Resume</a>
-  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="link-button">LinkedIn</a>
-  <a href="mailto:ekramullahzaki@gmail.com" class="link-button">Email</a>
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link" class="link-button"> Resume  </a>
+  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="link-button">LinkedIn </a>
+  <a href="mailto:ekramullahzaki@gmail.com" class="link-button">  Email  </a>
 </div>
 
 Hey, this is Ekram—a maritime data analyst with a background that spans marine engineering, pharmaceutical retail, maritime tech startups, and a lot of time spent diving deep into data. 

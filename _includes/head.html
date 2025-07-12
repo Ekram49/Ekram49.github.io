@@ -17,6 +17,9 @@
   {% include gtm_head.html %}
   {% include google_analytics.html %}
 
+  <!-- ✅ Font Awesome 6 (loaded globally, just once) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-bU7U8+Fi7PUjAqY67wSYQLjHEi5y8dcbkJzZQPV8a6Ag4v59YF+5YhUHz7ER2J7doyrbVLXG9qWx+Jz6BtR0Wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   {% if layout.common-ext-css %}
     {% for css in layout.common-ext-css %}
       {% include ext-css.html css=css %}
@@ -53,7 +56,7 @@
     {% endfor %}
   {% endif %}
 
-    <!-- Facebook OpenGraph tags -->
+  <!-- Facebook OpenGraph tags -->
   {% if site.fb_app_id %}
   <meta property="fb:app_id" content="{{ site.fb_app_id }}" />
   {% endif %}
@@ -66,14 +69,13 @@
   <meta property="og:title" content="{{ site.title }}" />
   {% endif %}
 
-   {% if page.meta-description %}
+  {% if page.meta-description %}
   <meta property="og:description" content="{{ page.meta-description }}">
   {% elsif page.subtitle %}
   <meta property="og:description" content="{{ page.subtitle }}">
   {% else %}
   <meta property="og:description" content="{{ page.content | strip_html | xml_escape | truncatewords: 50 }}">
   {% endif %}
-
 
   <meta property="og:type" content="website" />
 
@@ -88,44 +90,3 @@
   {% if page.share-img %}
   <meta property="og:image" content="{{ page.share-img }}" />
   {% elsif site.avatar %}
-  <meta property="og:image" content="{{ site.avatar | absolute_url }}" />
-  {% endif %}
-
-
-  <!-- Twitter summary cards -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@{{ site.author.twitter }}" />
-  <meta name="twitter:creator" content="@{{ site.author.twitter }}" />
-
-  {% if page.meta-title %}
-  <meta name="twitter:title" content="{{ page.meta-title }}" />
-  {% elsif page.title %}
-  <meta name="twitter:title" content="{{ page.title }}" />
-  {% else %}
-  <meta name="twitter:title" content="{{ site.title }}" />
-  {% endif %}
-
-  {% if page.meta-description %}
-  <meta name="twitter:description" content="{{ page.meta-description }}">
-  {% elsif page.subtitle %}
-  <meta name="twitter:description" content="{{ page.subtitle }}">
-  {% else %}
-  <meta name="twitter:description" content="{{ page.content | strip_html | xml_escape | truncatewords: 50 }}">
-  {% endif %}
-
-  {% if page.share-img %}
-  <meta name="twitter:image" content="{{ page.share-img }}" />
-  {% elsif site.avatar %}
-  <meta name="twitter:image" content="{{ site.avatar | absolute_url }}" />
-  {% endif %}
-
-  {% if site.matomo %}
-  {% include matomo.html %}
-  {% endif %}
-
-  {% if page.comments and site.staticman.repository and site.staticman.branch %}
-  <!-- Staticman -->
-  <link rel="stylesheet" href="{{ "/css/staticman.css" | relative_url }}" />
-  {% endif %}
-
-</head>

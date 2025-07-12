@@ -6,7 +6,7 @@ permalink: /contactinfo/
 ---
 
 <!-- Font Awesome (only used in this section) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
 
 <style>
   .contact-intro {

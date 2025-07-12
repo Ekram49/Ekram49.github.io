@@ -20,12 +20,11 @@ description: "Ekram's Blog"
 
 # List of links in the navigation bar
 navbar-links:
-  About Me: "aboutme"
-  "Let's connect": CONTACTINFO
-  # Resources:
-  #   - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
-  #   - Learn markdown: "http://www.markdowntutorial.com/"
-  #   - My github: "https://github.com/Ekram49/"
+  About Me: "aboutme"  
+  Resources:
+    - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
+    - Learn markdown: "http://www.markdowntutorial.com/"
+    - "Let's connect": "contactinfo"
     
  
 

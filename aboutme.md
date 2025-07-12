@@ -101,22 +101,21 @@ subtitle: Maritime Data Analyst
   </a>
 </div>
 
-<!-- JavaScript to initialize all sliders -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const sliders = document.querySelectorAll(".image-slider");
 
     sliders.forEach(slider => {
-      const images = JSON.parse(slider.dataset.images);
+      const images = JSON.parse(slider.dataset.images || "[]");
       let currentIndex = 0;
 
-      // Create internal structure
-      slider.innerHTML = 
+      // Fix: Inject slider HTML properly as a string
+      slider.innerHTML = `
         <div class="arrow arrow-left">&#10094;</div>
         <div class="arrow arrow-right">&#10095;</div>
         <div class="slider"></div>
         <div class="slider-dots"></div>
-      ;
+      `;
 
       const sliderDiv = slider.querySelector(".slider");
       const dotsContainer = slider.querySelector(".slider-dots");
@@ -190,6 +189,7 @@ subtitle: Maritime Data Analyst
     });
   });
 </script>
+
 
 <!-- Your original content below (unchanged) -->
 

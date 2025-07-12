@@ -6,17 +6,18 @@ permalink: /contactinfo/
 ---
 
 <!-- Font Awesome (only used in this section) -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+  /* Contact intro styled like subtitle but italic, bigger and normal weight */
   .contact-intro {
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    font-weight: 400;
     margin-bottom: 20px;
     text-align: center;
+    line-height: 1.3;
   }
 
   .button-grid {
@@ -38,7 +39,7 @@ permalink: /contactinfo/
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 14px;
     padding: 18px;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 18px;
@@ -55,10 +56,10 @@ permalink: /contactinfo/
     box-sizing: border-box;
   }
 
+  /* Dim all buttons on grid hover except hovered */
   .button-grid:hover .contact-button {
     opacity: 0.5;
   }
-
   .contact-button:hover {
     transform: scale(1.08);
     opacity: 1 !important;
@@ -66,11 +67,33 @@ permalink: /contactinfo/
     z-index: 2;
   }
 
-  .contact-button i {
-    font-size: 26px;
-    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.3));
-    /* Align icon vertically with text */
-    margin-bottom: 2px;
+  /* Icon styles */
+  .contact-button i,
+  .contact-button img {
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    filter: brightness(0) invert(1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    transition: filter 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .contact-button img {
+    object-fit: contain;
+  }
+
+  /* Remove filter on hover so color icons show */
+  .contact-button:hover i,
+  .contact-button:hover img {
+    filter: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.45);
+  }
+
+  /* Align text baseline with icons */
+  .contact-button span {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
   }
 
   /* Platform Colors */
@@ -94,58 +117,50 @@ permalink: /contactinfo/
   }
 </style>
 
-<div class="contact-intro contact-intro-italic">
-  🔴 Hi! This is <strong>Cryza</strong>, Ekram's personal <strong>AI* assistant</strong>,. How can I help you connect with Ekram?
+<div class="contact-intro">
+  🔴 Hi! This is <strong>Cryza</strong>, Ekram's personal AI* assistant. How can I help you connect with Ekram?
 </div>
-
-.contact-intro-italic {
-  font-style: italic;
-  font-weight: 400; /* normal, not bold */
-  font-size: 1.4rem; /* a bit bigger than subtitle's 1.2rem */
-  text-align: center;
-}
-
 
 <div class="button-grid">
 
-  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="contact-button linkedin" target="_blank" rel="noopener">
-    <i class="fab fa-linkedin"></i> LinkedIn
+  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="contact-button linkedin" target="_blank">
+    <i class="fab fa-linkedin"></i><span>LinkedIn</span>
   </a>
 
-  <a href="https://github.com/Ekram49" class="contact-button github" target="_blank" rel="noopener">
-    <i class="fab fa-github"></i> GitHub
+  <a href="https://github.com/Ekram49" class="contact-button github" target="_blank">
+    <i class="fab fa-github"></i><span>GitHub</span>
   </a>
 
   <a href="mailto:ekramullahzaki@gmail.com" class="contact-button email">
-    <i class="fas fa-envelope"></i> Email
+    <i class="fas fa-envelope"></i><span>Email</span>
   </a>
 
-  <a href="https://wa.me/19294599555" class="contact-button whatsapp" target="_blank" rel="noopener">
-    <i class="fab fa-whatsapp"></i> WhatsApp
+  <a href="https://wa.me/19294599555" class="contact-button whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
   </a>
 
-  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank" rel="noopener">
-    <i class="fas fa-file-alt"></i> Resume
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank">
+    <img src="/assets/icons/resume-icon.png" alt="Resume Icon"><span>Resume</span>
   </a>
 
-  <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank" rel="noopener">
-    <i class="fas fa-book"></i> Portfolio
+  <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank">
+    <img src="/assets/icons/portfolio-icon.png" alt="Portfolio Icon"><span>Portfolio</span>
   </a>
 
-  <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank" rel="noopener">
-    <i class="fab fa-facebook-f"></i> Facebook
+  <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank">
+    <i class="fab fa-facebook-f"></i><span>Facebook</span>
   </a>
 
-  <a href="https://www.instagram.com/" class="contact-button instagram" target="_blank" rel="noopener">
-    <i class="fab fa-instagram"></i> Instagram
+  <a href="https://www.instagram.com/" class="contact-button instagram" target="_blank">
+    <i class="fab fa-instagram"></i><span>Instagram</span>
   </a>
 
-  <a href="https://x.com/EkramAh56552843" class="contact-button x-twitter" target="_blank" rel="noopener">
-    <i class="fab fa-x-twitter"></i> X (Twitter)
+  <a href="https://x.com/EkramAh56552843" class="contact-button x-twitter" target="_blank">
+    <i class="fab fa-x-twitter"></i><span>X (Twitter)</span>
   </a>
 
-  <a href="https://ekram49.github.io/aboutme/" class="contact-button about" target="_blank" rel="noopener">
-    <i class="fas fa-user"></i> About Ekram
+  <a href="https://ekram49.github.io/aboutme/" class="contact-button about" target="_blank">
+    <i class="fas fa-user"></i><span>About Ekram</span>
   </a>
 
 </div>

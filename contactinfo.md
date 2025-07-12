@@ -5,8 +5,8 @@ subtitle: 🫱✨🫲
 permalink: /contactinfo/
 ---
 
-<!-- Font Awesome (only used in this section) -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
+<!-- Font Awesome (still needed for icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
   .contact-intro {
@@ -63,19 +63,23 @@ permalink: /contactinfo/
     z-index: 2;
   }
 
-  .contact-button i,
+  /* Fix for broken image icons */
   .contact-button img {
+    all: unset;
+    display: inline-block;
     width: 22px;
     height: 22px;
-  }
-
-  .contact-button img {
     object-fit: contain;
     filter: brightness(0) invert(1);
   }
 
   .contact-button:hover img {
     filter: none;
+  }
+
+  .contact-button i {
+    width: 22px;
+    height: 22px;
   }
 
   /* Platform Colors */

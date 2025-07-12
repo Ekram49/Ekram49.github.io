@@ -95,7 +95,7 @@ permalink: /contactinfo/
 </style>
 
 <div class="contact-intro contact-intro-italic">
-  🔴 Hi! This is <strong>Cryza</strong>, Ekram's personal AI* assistant. How can I help you connect with Ekram?
+  🔴 Hi! This is <strong>Cryza</strong>, Ekram's personal <strong>AI* assistant</strong>,. How can I help you connect with Ekram?
 </div>
 
 .contact-intro-italic {

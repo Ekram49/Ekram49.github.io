@@ -6,9 +6,13 @@ permalink: /contactinfo/
 ---
 
 <!-- Font Awesome (only used in button section) -->
-<div id="fa-contact-scope">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</div>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  integrity="sha512-bU7U8+Fi7PUjAqY67wSYQLjHEi5y8dcbkJzZQPV8a6Ag4v59YF+5YhUHz7ER2J7doyrbVLXG9qWx+Jz6BtR0Wg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 
 <style>
   .contact-intro {
@@ -26,6 +30,8 @@ permalink: /contactinfo/
     max-width: 800px;
     margin: 0 auto;
     padding: 0 10px;
+    border-radius: 12px;       /* rounded outer corners */
+    overflow: hidden;          /* clip button corners */
   }
 
   @media (max-width: 600px) {
@@ -48,7 +54,7 @@ permalink: /contactinfo/
     color: white !important;
     border: none;
     text-decoration: none;
-    border-radius: 0;
+    border-radius: 0;          /* no rounding on buttons */
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     width: 100%;
@@ -62,12 +68,13 @@ permalink: /contactinfo/
   .contact-button:hover {
     transform: scale(1.08);
     opacity: 1 !important;
-    border-radius: 8px;
+    border-radius: 8px;        /* slight rounding on hovered button */
     z-index: 2;
   }
 
   .contact-button i {
     font-size: 22px;
+    line-height: 1;            /* better vertical align */
   }
 
   /* Platform Colors */
@@ -97,11 +104,11 @@ permalink: /contactinfo/
 
 <div class="button-grid">
 
-  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="contact-button linkedin" target="_blank">
+  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="contact-button linkedin" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-linkedin"></i> LinkedIn
   </a>
 
-  <a href="https://github.com/Ekram49" class="contact-button github" target="_blank">
+  <a href="https://github.com/Ekram49" class="contact-button github" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-github"></i> GitHub
   </a>
 
@@ -109,31 +116,31 @@ permalink: /contactinfo/
     <i class="fas fa-envelope"></i> Email
   </a>
 
-  <a href="https://wa.me/19294599555" class="contact-button whatsapp" target="_blank">
+  <a href="https://wa.me/19294599555" class="contact-button whatsapp" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-whatsapp"></i> WhatsApp
   </a>
 
-  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank">
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank" rel="noopener noreferrer">
     <i class="fas fa-file-alt"></i> Resume
   </a>
 
-  <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank">
+  <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank" rel="noopener noreferrer">
     <i class="fas fa-book"></i> Portfolio
   </a>
 
-  <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank">
+  <a href="https://www.facebook.com/ekram.zaki" class="contact-button facebook" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-facebook-f"></i> Facebook
   </a>
 
-  <a href="https://www.instagram.com/" class="contact-button instagram" target="_blank">
+  <a href="https://www.instagram.com/" class="contact-button instagram" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-instagram"></i> Instagram
   </a>
 
-  <a href="https://x.com/EkramAh56552843" class="contact-button x-twitter" target="_blank">
+  <a href="https://x.com/EkramAh56552843" class="contact-button x-twitter" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-x-twitter"></i> X (Twitter)
   </a>
 
-  <a href="https://ekram49.github.io/aboutme/" class="contact-button about" target="_blank">
+  <a href="https://ekram49.github.io/aboutme/" class="contact-button about" target="_blank" rel="noopener noreferrer">
     <i class="fas fa-user"></i> About Ekram
   </a>
 

@@ -8,20 +8,80 @@ subtitle: Maritime Data Analyst
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
 <style>
-  /* Your link button styles */
-  .link-button {
-    display: inline-block;
-    margin: 5px 10px;
-    padding: 8px 16px;
-    background-color: #d3d3d3;
-    color: #003366;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Buttons container to center and space them */
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: 30px 0;
   }
-  .link-button:hover {
-    background-color: #a9a9a9; /* darker shade */
-    transform: scale(1.05);
+
+  /* Modern 3D button style */
+  .link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    min-width: 160px;
+    height: 46px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    color: white;
+    border-radius: 12px;
+    border: 2.5px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow:
+      0 4px 6px rgba(0,0,0,0.15),
+      inset 0 -3px 5px rgba(255,255,255,0.2);
+    transition:
+      transform 0.25s cubic-bezier(.4,0,.2,1),
+      box-shadow 0.3s ease,
+      background 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .link-button:hover,
+  .link-button:focus {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+      0 8px 15px rgba(0,0,0,0.3),
+      inset 0 -3px 8px rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.6);
+    color: white; /* keep text color white on hover */
+    outline: none;
+  }
+
+  /* Platform brand colors with gradient and border */
+  a.link-portfolio {
+    background: linear-gradient(145deg, #002244, #003366);
+    border-color: #001a33;
+  }
+
+  a.link-resume {
+    background: linear-gradient(145deg, #594de8, #6c63ff);
+    border-color: #4a3ecf;
+  }
+
+  a.link-linkedin {
+    background: linear-gradient(145deg, #005582, #0077b5);
+    border-color: #004466;
+  }
+
+  a.link-email {
+    background: linear-gradient(145deg, #b5392f, #d44638);
+    border-color: #8b2d24;
+  }
+
+  /* Font Awesome icon size inside buttons */
+  .link-button i {
+    font-size: 20px;
   }
 
   /* Image slider styles */
@@ -89,6 +149,31 @@ subtitle: Maritime Data Analyst
     background-color: white;
   }
 </style>
+
+<!-- Buttons -->
+<div class="button-container">
+  <a href="https://ekram49.github.io/" class="link-button link-portfolio" target="_blank" rel="noopener noreferrer">
+    <i class="fas fa-book"></i> Portfolio
+  </a>
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=drive_link" class="link-button link-resume" target="_blank" rel="noopener noreferrer">
+    <i class="fas fa-file-alt"></i> Resume
+  </a>
+  <a href="https://www.linkedin.com/in/ekram-ullah-ahmed/" class="link-button link-linkedin" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-linkedin"></i> LinkedIn
+  </a>
+  <a href="mailto:ekramullahzaki@gmail.com" class="link-button link-email">
+    <i class="fas fa-envelope"></i> Email
+  </a>
+</div>
+
+<!-- Slider container -->
+<div class="image-slider" 
+  data-images='[
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%201.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%202.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Ship.png"
+  ]'>
+</div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -206,8 +291,6 @@ subtitle: Maritime Data Analyst
     });
   });
 </script>
-
-
 
 <!-- Your original content below (unchanged) -->
 

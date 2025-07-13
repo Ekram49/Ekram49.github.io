@@ -169,24 +169,23 @@ subtitle: Maritime Data Analyst
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const sliders = document.querySelectorAll(".image-slider");
-
+  
     sliders.forEach(slider => {
       const images = JSON.parse(slider.dataset.images);
       let currentIndex = 0;
       let autoSlideInterval;
-
-      // Create internal structure
+  
       slider.innerHTML = 
         '<div class="arrow arrow-left">&#10094;</div>' +
         '<div class="arrow arrow-right">&#10095;</div>' +
         '<div class="slider"></div>' +
         '<div class="slider-dots"></div>';
-
+  
       const sliderDiv = slider.querySelector(".slider");
       const dotsContainer = slider.querySelector(".slider-dots");
       const leftArrow = slider.querySelector(".arrow-left");
       const rightArrow = slider.querySelector(".arrow-right");
-
+  
       function createImage(src) {
         const img = document.createElement("img");
         img.className = "slider-main-image";
@@ -194,7 +193,7 @@ subtitle: Maritime Data Analyst
         img.alt = "Slider Image";
         return img;
       }
-
+  
       function createDots() {
         dotsContainer.innerHTML = "";
         images.forEach((_, i) => {
@@ -210,19 +209,19 @@ subtitle: Maritime Data Analyst
           dotsContainer.appendChild(dot);
         });
       }
-
+  
       function updateDots() {
         const allDots = dotsContainer.querySelectorAll("span");
         allDots.forEach(dot => dot.classList.remove("active"));
         if (allDots[currentIndex]) allDots[currentIndex].classList.add("active");
       }
-
+  
       function updateImage(direction) {
         const oldImg = sliderDiv.querySelector(".slider-main-image");
         const newImg = createImage(images[currentIndex]);
         newImg.style.transform = direction === "left" ? "translateX(100%)" : "translateX(-100%)";
         sliderDiv.appendChild(newImg);
-
+  
         requestAnimationFrame(() => {
           newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
           newImg.style.transform = "translateX(0)";
@@ -231,56 +230,57 @@ subtitle: Maritime Data Analyst
             oldImg.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)";
           }
         });
-
+  
         setTimeout(() => {
           if (oldImg) oldImg.remove();
         }, 500);
-
+  
         updateDots();
       }
-
+  
       function nextSlide() {
         currentIndex = (currentIndex + 1) % images.length;
+        // Use the same animation as right arrow click => slide images from right to left (direction "left")
         updateImage("left");
       }
-
+  
       function prevSlide() {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
+        // Use the same animation as left arrow click => slide images from left to right (direction "right")
         updateImage("right");
       }
-
+  
       function startAutoSlide() {
         autoSlideInterval = setInterval(nextSlide, 5000);
       }
-
+  
       function stopAutoSlide() {
         clearInterval(autoSlideInterval);
       }
-
+  
       function resetAutoSlide() {
         stopAutoSlide();
         startAutoSlide();
       }
-
+  
       leftArrow.addEventListener("click", () => {
         prevSlide();
         resetAutoSlide();
       });
-
+  
       rightArrow.addEventListener("click", () => {
         nextSlide();
         resetAutoSlide();
       });
-
+  
       slider.addEventListener("mouseenter", stopAutoSlide);
       slider.addEventListener("mouseleave", startAutoSlide);
-
-      // Initialize
+  
       createDots();
       updateImage("left");
       startAutoSlide();
     });
-  });
+});
 </script>
 
 <!-- Your original content below (unchanged) -->

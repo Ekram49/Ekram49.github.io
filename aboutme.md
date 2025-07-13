@@ -378,7 +378,7 @@ Life at sea was as demanding as it was rewarding. I sailed alongside seasoned ma
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Ship%20Life/Ship%20-%20Uniform.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Ship%20Life/Ship%20-%20Dry%20Dock.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Ship%20Life/Ship%20-%20Shore%20Leave.png",
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Ship%20Life/Ship%20-%20Onboard.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Ship%20Life/Ship%20-%20Onboard.png"
   ]'>
 </div>
 

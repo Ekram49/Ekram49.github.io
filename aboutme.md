@@ -106,6 +106,17 @@ subtitle: Maritime Data Analyst
     opacity: 1;
   }
 
+  /* Zoom effect on hover */
+  .slider-main-image {
+    transition: transform 0.4s ease;
+    cursor: zoom-in;
+  }
+  
+  .slider-main-image:hover {
+    transform: scale(1.05);
+  }
+
+
   .image-slider .arrow {
     position: absolute;
     top: 50%;
@@ -166,34 +177,41 @@ subtitle: Maritime Data Analyst
   </a>
 </div>
 
+<!-- Fullscreen Modal -->
+<div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;">
+  <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
+  <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
+</div>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const sliders = document.querySelectorAll(".image-slider");
-  
+
     sliders.forEach(slider => {
       const images = JSON.parse(slider.dataset.images);
       let currentIndex = 0;
       let autoSlideInterval;
-  
+
       slider.innerHTML = 
         '<div class="arrow arrow-left">&#10094;</div>' +
         '<div class="arrow arrow-right">&#10095;</div>' +
         '<div class="slider"></div>' +
         '<div class="slider-dots"></div>';
-  
+
       const sliderDiv = slider.querySelector(".slider");
       const dotsContainer = slider.querySelector(".slider-dots");
       const leftArrow = slider.querySelector(".arrow-left");
       const rightArrow = slider.querySelector(".arrow-right");
-  
+
       function createImage(src) {
         const img = document.createElement("img");
         img.className = "slider-main-image";
         img.src = src;
         img.alt = "Slider Image";
+        img.style.cursor = "zoom-in";
         return img;
       }
-  
+
       function createDots() {
         dotsContainer.innerHTML = "";
         images.forEach((_, i) => {
@@ -209,19 +227,19 @@ subtitle: Maritime Data Analyst
           dotsContainer.appendChild(dot);
         });
       }
-  
+
       function updateDots() {
         const allDots = dotsContainer.querySelectorAll("span");
         allDots.forEach(dot => dot.classList.remove("active"));
         if (allDots[currentIndex]) allDots[currentIndex].classList.add("active");
       }
-  
+
       function updateImage(direction) {
         const oldImg = sliderDiv.querySelector(".slider-main-image");
         const newImg = createImage(images[currentIndex]);
         newImg.style.transform = direction === "left" ? "translateX(100%)" : "translateX(-100%)";
         sliderDiv.appendChild(newImg);
-  
+
         requestAnimationFrame(() => {
           newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
           newImg.style.transform = "translateX(0)";
@@ -230,57 +248,84 @@ subtitle: Maritime Data Analyst
             oldImg.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)";
           }
         });
-  
+
         setTimeout(() => {
           if (oldImg) oldImg.remove();
         }, 500);
-  
+
         updateDots();
       }
-  
+
       function nextSlide() {
         currentIndex = (currentIndex + 1) % images.length;
-        // Use the same animation as right arrow click => slide images from right to left (direction "left")
         updateImage("left");
       }
-  
+
       function prevSlide() {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
-        // Use the same animation as left arrow click => slide images from left to right (direction "right")
         updateImage("right");
       }
-  
+
       function startAutoSlide() {
         autoSlideInterval = setInterval(nextSlide, 5000);
       }
-  
+
       function stopAutoSlide() {
         clearInterval(autoSlideInterval);
       }
-  
+
       function resetAutoSlide() {
         stopAutoSlide();
         startAutoSlide();
       }
-  
+
       leftArrow.addEventListener("click", () => {
         prevSlide();
         resetAutoSlide();
       });
-  
+
       rightArrow.addEventListener("click", () => {
         nextSlide();
         resetAutoSlide();
       });
-  
+
       slider.addEventListener("mouseenter", stopAutoSlide);
       slider.addEventListener("mouseleave", startAutoSlide);
-  
+
       createDots();
       updateImage("left");
       startAutoSlide();
     });
-});
+
+    // ===== Fullscreen modal viewer for slider images =====
+    const modal = document.createElement("div");
+    modal.id = "image-modal";
+    modal.style.cssText = "display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;";
+    modal.innerHTML = `
+      <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
+      <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
+    `;
+    document.body.appendChild(modal);
+
+    document.body.addEventListener("click", function (e) {
+      if (e.target.classList.contains("slider-main-image")) {
+        const modal = document.getElementById("image-modal");
+        const modalImg = document.getElementById("modal-image");
+        modal.style.display = "flex";
+        modalImg.src = e.target.src;
+      }
+    });
+
+    document.getElementById("close-modal").addEventListener("click", function () {
+      document.getElementById("image-modal").style.display = "none";
+    });
+
+    document.getElementById("image-modal").addEventListener("click", function (e) {
+      if (e.target.id === "image-modal") {
+        e.target.style.display = "none";
+      }
+    });
+  });
 </script>
 
 <!-- Your original content below (unchanged) -->

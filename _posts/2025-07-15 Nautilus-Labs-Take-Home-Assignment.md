@@ -2,7 +2,7 @@
 layout: post
 title: Nautilus Labs Take Home Assignment
 subtitle: The Assignment That Landed Me My First Analyst Role
-image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Fishing%20Predictor/gfw-thumbnail.jpg
+image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Logo.png
 ---
 
 My journey as a maritime data analyst began at Nautilus Labs, a maritime technology startup that leveraged AI-driven analytics to optimize vessel speed, route, and performance, reduce fuel consumption, and minimize emissions for more sustainable and efficient shipping operations. I joined Nautilus in April 2022 as a Voyage Optimization Analyst, and later on, worked as a Senior Maritime Analyst until the company wound down its operation back in November 2023.

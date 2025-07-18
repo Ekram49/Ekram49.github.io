@@ -168,6 +168,66 @@ Based on the analysis, my final recommendation to the client would be:
 •	If the goal is to maximize profit with an emissions cap of 2200 MT CO2, 66 rpm would be ideal.
 •	If the goal is to maximize profit by adding a 10$/MT CO2 emissions penalty, 68 rpm would be ideal.
 
+Presentation Tips from Both Sides of the Table
+After completing my data analysis, data visualization, and data-driven decision-making tasks, I had to present my work to a panel of four Nautilus employees. This was the final stage of the interview process and lasted about 30 minutes. During the session, I walked them through how I approached the questions, the methods I used, and the reasoning behind my decisions. The experience was surprisingly conversational—it wasn’t the typical grilling you might expect. Instead of trying to catch me off guard with tricky questions, the panel was more interested in understanding my thought process and how I tackled problems. I even had the chance to ask them questions about their perspectives on different parts of the process, which sparked some insightful discussions.
+
+Before diving into the tips, it’s worth mentioning that a year after joining Nautilus, I was promoted to Senior Maritime Analyst and had the opportunity to sit on the other side of the table. I joined the interview panels and helped make hiring decisions for two new analysts. That means the advice I’m sharing comes from both an interviewee’s and an interviewer’s perspective—what makes a presentation compelling, what draws interviewers in, and what makes someone truly stand out.
+
+1. Understand the Goal of the Presentation
+These types of interviews are not about impressing clients or selling a product—they’re about selling yourself. Your goal is to showcase how you think, not just what you found. The interviewers already know the correct answers; they’re assessing whether your approach, mindset, and methodology would be a valuable addition to their team.
+
+So, rather than focusing only on the outcome, emphasize your:
+
+Thought process
+
+Analytical methods
+
+Workflow design
+
+Communication skills
+
+Adaptability and self-awareness
+
+This is your chance to show what it would be like to work with you, especially in real project scenarios.
+
+2. Research the Company Thoroughly
+This might be the single most underrated tip: do your homework. Learn about the company’s mission, products, industry positioning, and values. Watch their product demos, read their blog or press releases, follow their social media, and try to understand what challenges they’re solving.
+
+Doing this shows genuine interest and allows you to:
+
+Align your experience with their goals
+
+Ask thoughtful, specific questions
+
+Demonstrate cultural fit and motivation
+
+Interviewers are impressed when candidates clearly care about the company—not just the job.
+
+3. Don’t Be Afraid to Stand Out
+In competitive interviews, being “qualified” often isn’t enough. Many candidates will have similar skills and experiences. What sets you apart is how memorable you are. Leave a positive impression—not by being flashy, but by being authentic, confident, and personable.
+
+For example, if you make the panel smile, ask an unusually insightful question, or show a unique perspective, that could be the thing they remember when making a decision. Interview panels are human. People tend to root for those they feel connected to.
+
+4. Treat the Interview as a Two-Way Conversation
+While most questions will come from the panel, don’t miss your chance to ask back. Thoughtful questions not only show your curiosity—they show that you’re taking the opportunity seriously.
+
+Too often, candidates freeze up when asked, “Do you have any questions for us?” If you say no—or worse, don’t prepare any—that can signal a lack of engagement. Even if the rest of your interview went well, someone else who asked smart questions could end up with the edge.
+
+Here’s how to avoid that:
+
+Ask questions naturally throughout the interview, when appropriate.
+
+Prepare a list of potential questions ahead of time so you’re not caught off guard.
+
+Focus on the company’s culture, team structure, tools, workflows, or future direction—these show you’re thinking about what it would be like to work there.
+
+And remember: You’re also interviewing them. You have every right to evaluate whether their values, work environment, and projects align with what you're looking for. Asking the right questions is a sign of professionalism—not arrogance.
+
+Final Thoughts
+Presenting in an interview can be nerve-wracking, but it's also one of the few chances you get to truly stand out. By focusing on your process, doing your research, engaging in meaningful dialogue, and bringing your authentic self, you give yourself the best shot at not only impressing your interviewers—but connecting with them.
+
+Good luck—and own your story.
+
 To Be Continued........
 
 

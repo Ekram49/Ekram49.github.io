@@ -85,7 +85,7 @@ Now that we fully understand the problem and how to solve it, coding it up shoul
 
 Create a dataset in pandas
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Fishing%20Predictor/map%20of%20fishing.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Visualization%20Code.png)
 
 Create variables for freight value, fuel cost, and daily cost, and create a Net Profit column
 
@@ -128,7 +128,7 @@ Minimize emissions for the voyage, regardless of net profit.
 
 Now that we have the total emission for different shaft speeds, it’s super easy to identify the shaft speed that corresponds with the minimum emission.
 
-![Crepe](![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Emissions%20Cap%20DataFrame.png))
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Emissions%20Cap%20DataFrame.png)
 
 
 We can see that the emission is minimum at the minimum shaft speed of 66. Which is expected, as minimizing shaft speed should minimize fuel consumption, hence minimize emissions.
@@ -137,7 +137,7 @@ Maximize net profit while keeping emissions under a certain threshold
 
 Let’s assume the emission threshold for this voyage, set by the client, is 2,000 MT. Considering this cap, we can filter out the shaft speeds that exceed that number and then identify the shaft speed that maximizes net profit is 66 rpm.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Line%20Graph%20-%20Max%20Profit%20With%20Emissions%20Cap.png.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Line%20Graph%20-%20Max%20Profit%20With%20Emissions%20Cap.png)
 
 
 
@@ -150,9 +150,7 @@ Net Profit = (Freight Value) - ((Daily Cost * Days) + Fuel Costs) - Total Emissi
 
 Let’s say that the emission penalty is $10/MT CO2.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Fishing%20Predictor/map%20of%20fishing.png)
-
-![https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Max%20Profit%20With%20Emissions%20Penalty.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Max%20Profit%20With%20Emissions%20Penalty.png)
 
 
 Adding that variable, we can identify the shaft speed that maximizes Net Profit
@@ -229,6 +227,3 @@ Presenting in an interview can be nerve-wracking, but it's also one of the few c
 Good luck—and own your story.
 
 To Be Continued........
-
-
-To Be Continued.......

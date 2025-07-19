@@ -2,7 +2,7 @@
 layout: post
 title: Fishing Predictor
 subtitle: A Web App to Predict Fishing Activity of Vessels
-image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Fishing%20Predictor/gfw-thumbnail.jpg
+image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Fishing%20Predictor/gfw-thumbnail.png
 ---
 
 This web app predicts the fishing activity of Pole and Line vessels based on their position, speed, and the time of year. The data comes from Global Fishing Watch, a non-profit organization that uses data and scientific analysis to promote more sustainable fishing practices.

@@ -96,7 +96,7 @@ Identify the shaft speed with maximum Net Profit
 
 Create a function to visualize a line graph
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Fishing%20Predictor/map%20of%20fishing.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Visualization%20Code.png)
 
 Visualize the findings.
 

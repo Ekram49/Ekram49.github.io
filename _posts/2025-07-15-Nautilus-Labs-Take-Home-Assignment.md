@@ -221,6 +221,20 @@ Focus on the company’s culture, team structure, tools, workflows, or future di
 
 And remember: You’re also interviewing them. You have every right to evaluate whether their values, work environment, and projects align with what you're looking for. Asking the right questions is a sign of professionalism—not arrogance.
 
+A Few Key Moments from My Presentation
+
+For my interview presentation, I made a bold decision: I didn’t use a PowerPoint at all. That might sound risky—and in some ways, it was—but I had a clear reason. The goal of the presentation wasn’t to impress with polished slides. It was to demonstrate how I think, how I work, and how I solve problems. And I realized that the best way to show that wasn’t through static snapshots—it was through the Jupyter Notebook I used to complete the assignment.
+
+So, instead of slides, I walked the interview panel through my actual notebook. It allowed them to see my process from start to finish: the data cleaning, exploration, visualization, and analysis. They could hear my reasoning and see it play out step by step, in real time. It felt more authentic and transparent.
+
+What happened next validated my choice. One of the interviewers—who later became my manager—told me that they also use Jupyter Notebooks to generate counterfactual reports for clients. They mentioned that my ability to build automated and reusable analysis workflows would be directly applicable to the role. That moment made it clear: the tool I chose and how I used it made a bigger impact than the actual results of the analysis.
+
+Interestingly, they also mentioned that most candidates complete the assignment in Excel. When I asked why, they explained that Excel is familiar and easy to use. I shared my perspective—that while I could have done it in Excel, Jupyter makes the analysis more transparent, reproducible, and scalable—and they agreed. It sparked a short but meaningful discussion about workflows and tooling.
+
+One of the questions I asked during the interview was whether the assignment resembled tasks I'd be working on if hired. They explained that while the data provided was synthetic, it closely resembled high-frequency sensor data and noon reports from vessels, which analysts at Nautilus work with regularly. Asking this showed that I was already thinking ahead—about the real-world context, the data sources, and how I’d fit into the role.
+
+Sometimes, doing things a little differently can set you apart in a powerful way—especially when it’s done with intention, clarity, and confidence.
+
 Final Thoughts
 Presenting in an interview can be nerve-wracking, but it's also one of the few chances you get to truly stand out. By focusing on your process, doing your research, engaging in meaningful dialogue, and bringing your authentic self, you give yourself the best shot at not only impressing your interviewers—but connecting with them.
 

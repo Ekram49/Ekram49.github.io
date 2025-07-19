@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a Web App to Predict Kickstarter Campaign Success
-image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/kickstarter-logo.jpg
+image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Kickstarter/kickstarter-logo.png
 ---
 As a Lambda School data science student, I, along with my peers, was tasked with creating a web app to predict the success or failure of Kickstarter campaigns. It was a fun and rewarding project—building a fully functional, useful app from scratch in just four days felt amazing!
 

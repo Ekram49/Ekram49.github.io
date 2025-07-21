@@ -435,8 +435,6 @@ This blog is where I share some of those explorations—data projects, visualiza
 
 When I’m not working or geeking out over datasets, you’ll probably find me doing kettlebell workouts, long-distance swimming, or cruising around NYC on my e-bike or electric skateboard. I’m currently working on a few personal goals: getting my scuba certification, private pilot license, and skydiving license—all within this year. Wish me luck!
 
-<h2> Life(!) Life </h2>
-
 <!-- Slider container -->
 <div class="image-slider" 
   data-images='[
@@ -447,6 +445,7 @@ When I’m not working or geeking out over datasets, you’ll probably find me d
   ]'>
 </div>
 
+<h2> Life(!) Life </h2>
 
 <!-- Slider container -->
 <div class="image-slider" 

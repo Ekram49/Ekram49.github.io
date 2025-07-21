@@ -431,15 +431,19 @@ Outside of work, I’m pretty obsessed with the ocean—not just from a seafarer
 
 This blog is where I share some of those explorations—data projects, visualizations, and thoughts on topics I care about.
 
-<h2> Life(!) Life </h2>
+<h2> Fun Life </h2>
 
 When I’m not working or geeking out over datasets, you’ll probably find me doing kettlebell workouts, long-distance swimming, or cruising around NYC on my e-bike or electric skateboard. I’m currently working on a few personal goals: getting my scuba certification, private pilot license, and skydiving license—all within this year. Wish me luck!
+
+<h2> Life(!) Life </h2>
 
 <!-- Slider container -->
 <div class="image-slider" 
   data-images='[
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Fun%20Life/Fun%20-%20Swimming.png",
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Fun%20Life/Fun%20-%20Diving.png"
+    "https://github.com/Ekram49/Ekram49.github.io/blob/master/img/About%20Me/Fun%20Life/Fun%20-%20Skateboarding.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Fun%20Life/Fun%20-%20Diving.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Fun%20Life/Fun%20-%20Flying.png"
   ]'>
 </div>
 

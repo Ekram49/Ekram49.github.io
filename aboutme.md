@@ -439,7 +439,7 @@ When I’m not working or geeking out over datasets, you’ll probably find me d
 <div class="image-slider" 
   data-images='[
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Fun%20Life/Fun%20-%20Swimming.png",
-    "https://github.com/Ekram49/Ekram49.github.io/blob/master/img/About%20Me/Fun%20Life/Fun%20-%20Skateboarding.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Fun%20Life/Fun%20-%20Skateboarding.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Fun%20Life/Fun%20-%20Diving.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Fun%20Life/Fun%20-%20Flying.png"
   ]'>

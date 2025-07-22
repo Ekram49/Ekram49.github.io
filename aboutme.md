@@ -188,21 +188,34 @@ subtitle: Maritime Data Analyst
     const sliders = document.querySelectorAll(".image-slider");
 
     sliders.forEach(slider => {
-      const images = JSON.parse(slider.dataset.images);
+      const images = (() => {
+        try {
+          return JSON.parse(slider.dataset.images || "[]");
+        } catch {
+          console.error("Invalid JSON in data-images for slider:", slider);
+          return [];
+        }
+      })();
+
+      if (!images.length) return;
+
       let currentIndex = 0;
       let autoSlideInterval;
 
-      slider.innerHTML = 
-        '<div class="arrow arrow-left">&#10094;</div>' +
-        '<div class="arrow arrow-right">&#10095;</div>' +
-        '<div class="slider"></div>' +
-        '<div class="slider-dots"></div>';
+      // Build HTML structure
+      slider.innerHTML = `
+        <div class="arrow arrow-left">&#10094;</div>
+        <div class="arrow arrow-right">&#10095;</div>
+        <div class="slider"></div>
+        <div class="slider-dots"></div>
+      `;
 
       const sliderDiv = slider.querySelector(".slider");
       const dotsContainer = slider.querySelector(".slider-dots");
       const leftArrow = slider.querySelector(".arrow-left");
       const rightArrow = slider.querySelector(".arrow-right");
 
+      // Create image element
       function createImage(src) {
         const img = document.createElement("img");
         img.className = "slider-main-image";
@@ -212,6 +225,7 @@ subtitle: Maritime Data Analyst
         return img;
       }
 
+      // Create navigation dots
       function createDots() {
         dotsContainer.innerHTML = "";
         images.forEach((_, i) => {
@@ -228,20 +242,26 @@ subtitle: Maritime Data Analyst
         });
       }
 
+      // Update dot highlighting
       function updateDots() {
-        const allDots = dotsContainer.querySelectorAll("span");
-        allDots.forEach(dot => dot.classList.remove("active"));
-        if (allDots[currentIndex]) allDots[currentIndex].classList.add("active");
+        dotsContainer.querySelectorAll("span").forEach((dot, i) => {
+          dot.classList.toggle("active", i === currentIndex);
+        });
       }
 
+      // Update image with animation
       function updateImage(direction) {
         const oldImg = sliderDiv.querySelector(".slider-main-image");
         const newImg = createImage(images[currentIndex]);
         newImg.style.transform = direction === "left" ? "translateX(100%)" : "translateX(-100%)";
+        newImg.style.position = "absolute";
+        newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+        newImg.style.opacity = "1";
+
+        sliderDiv.style.position = "relative";
         sliderDiv.appendChild(newImg);
 
         requestAnimationFrame(() => {
-          newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
           newImg.style.transform = "translateX(0)";
           if (oldImg) {
             oldImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
@@ -256,6 +276,7 @@ subtitle: Maritime Data Analyst
         updateDots();
       }
 
+      // Slide logic
       function nextSlide() {
         currentIndex = (currentIndex + 1) % images.length;
         updateImage("left");
@@ -266,12 +287,16 @@ subtitle: Maritime Data Analyst
         updateImage("right");
       }
 
+      // Auto slide controls
       function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 5000);
+        stopAutoSlide(); // prevent duplicates
+        autoSlideInterval = setInterval(() => {
+          nextSlide();
+        }, 10000); // 10 seconds
       }
 
       function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
       }
 
       function resetAutoSlide() {
@@ -279,6 +304,7 @@ subtitle: Maritime Data Analyst
         startAutoSlide();
       }
 
+      // Event listeners
       leftArrow.addEventListener("click", () => {
         prevSlide();
         resetAutoSlide();
@@ -290,14 +316,15 @@ subtitle: Maritime Data Analyst
       });
 
       slider.addEventListener("mouseenter", stopAutoSlide);
-      slider.addEventListener("mouseleave", startAutoSlide);
+      slider.addEventListener("mouseleave", resetAutoSlide);
 
+      // Init
       createDots();
       updateImage("left");
       startAutoSlide();
     });
 
-    // ===== Fullscreen modal viewer for slider images =====
+    // ===== Fullscreen modal viewer =====
     const modal = document.createElement("div");
     modal.id = "image-modal";
     modal.style.cssText = "display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;";
@@ -309,20 +336,26 @@ subtitle: Maritime Data Analyst
 
     document.body.addEventListener("click", function (e) {
       if (e.target.classList.contains("slider-main-image")) {
-        const modal = document.getElementById("image-modal");
         const modalImg = document.getElementById("modal-image");
-        modal.style.display = "flex";
         modalImg.src = e.target.src;
+        modal.style.display = "flex";
       }
     });
 
     document.getElementById("close-modal").addEventListener("click", function () {
-      document.getElementById("image-modal").style.display = "none";
+      modal.style.display = "none";
     });
 
     document.getElementById("image-modal").addEventListener("click", function (e) {
       if (e.target.id === "image-modal") {
-        e.target.style.display = "none";
+        modal.style.display = "none";
+      }
+    });
+
+    // ESC key to close modal
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        modal.style.display = "none";
       }
     });
   });

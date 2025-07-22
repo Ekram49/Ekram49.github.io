@@ -460,7 +460,7 @@ When I’m not working or geeking out over datasets, you’ll probably find me d
   data-images='[
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Cousins/Life%20-%20Cousin%27s%20Wedding.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Cousins/Life%20-%20Sister%27s%20Wedding.png",
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Cousins/Life%20-        %20Cousins%20(Father%27s%20Side).png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Cousins/Life%20-%20Cousins%20(Father%27s%20Side).png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Cousins/Life%20-%20Cousins%20(Mother%27s%20Side).png"
   ]'>
 </div>

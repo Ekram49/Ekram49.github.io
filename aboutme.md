@@ -491,6 +491,14 @@ When I’m not working or geeking out over datasets, you’ll probably find me d
   ]'>
 </div>
 
+<!-- Slider container -->
+<div class="image-slider" 
+  data-images='[
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Friends/Life%20-%20School%20Friends%201.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Friends/Life%20-%20School%20Friends%202.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Friends/Life%20-%20Academy%20Friends.png"
+  ]'>
+</div>
 
 If anything in my blog catches your interest—or if you just feel like saying hi—I’d love to hear from you! Doesn’t matter who you are or where you are in your journey; if you feel like connecting, you’re more than welcome to. You can always find me on [LinkedIn](https://www.linkedin.com/in/ekram-ullah-ahmed/), or you can just [email me](mailto:ekramullahzaki@gmail.com) —my inbox is always open!
 

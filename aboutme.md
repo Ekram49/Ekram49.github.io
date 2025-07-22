@@ -188,21 +188,19 @@ subtitle: Maritime Data Analyst
     const sliders = document.querySelectorAll(".image-slider");
 
     sliders.forEach(slider => {
-      const images = (() => {
-        try {
-          return JSON.parse(slider.dataset.images || "[]");
-        } catch {
-          console.error("Invalid JSON in data-images for slider:", slider);
-          return [];
-        }
-      })();
-
-      if (!images.length) return;
+      let images;
+      try {
+        images = JSON.parse(slider.dataset.images);
+      } catch (e) {
+        console.error("Invalid data-images JSON:", e);
+        return;
+      }
+      if (!Array.isArray(images) || images.length === 0) return;
 
       let currentIndex = 0;
       let autoSlideInterval;
 
-      // Build HTML structure
+      // Set up basic structure
       slider.innerHTML = `
         <div class="arrow arrow-left">&#10094;</div>
         <div class="arrow arrow-right">&#10095;</div>
@@ -215,7 +213,6 @@ subtitle: Maritime Data Analyst
       const leftArrow = slider.querySelector(".arrow-left");
       const rightArrow = slider.querySelector(".arrow-right");
 
-      // Create image element
       function createImage(src) {
         const img = document.createElement("img");
         img.className = "slider-main-image";
@@ -225,16 +222,15 @@ subtitle: Maritime Data Analyst
         return img;
       }
 
-      // Create navigation dots
       function createDots() {
         dotsContainer.innerHTML = "";
         images.forEach((_, i) => {
           const dot = document.createElement("span");
           dot.addEventListener("click", () => {
             if (i !== currentIndex) {
-              const dir = i > currentIndex ? "left" : "right";
+              const direction = i > currentIndex ? "left" : "right";
               currentIndex = i;
-              updateImage(dir);
+              updateImage(direction);
               resetAutoSlide();
             }
           });
@@ -242,30 +238,28 @@ subtitle: Maritime Data Analyst
         });
       }
 
-      // Update dot highlighting
       function updateDots() {
-        dotsContainer.querySelectorAll("span").forEach((dot, i) => {
-          dot.classList.toggle("active", i === currentIndex);
-        });
+        const allDots = dotsContainer.querySelectorAll("span");
+        allDots.forEach(dot => dot.classList.remove("active"));
+        if (allDots[currentIndex]) allDots[currentIndex].classList.add("active");
       }
 
-      // Update image with animation
-      function updateImage(direction) {
+      function updateImage(direction = "left") {
         const oldImg = sliderDiv.querySelector(".slider-main-image");
         const newImg = createImage(images[currentIndex]);
-        newImg.style.transform = direction === "left" ? "translateX(100%)" : "translateX(-100%)";
-        newImg.style.position = "absolute";
-        newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-        newImg.style.opacity = "1";
 
-        sliderDiv.style.position = "relative";
+        newImg.style.transform = direction === "left" ? "translateX(100%)" : "translateX(-100%)";
+        newImg.style.opacity = "0";
+        newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
         sliderDiv.appendChild(newImg);
 
         requestAnimationFrame(() => {
           newImg.style.transform = "translateX(0)";
+          newImg.style.opacity = "1";
           if (oldImg) {
-            oldImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
             oldImg.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)";
+            oldImg.style.opacity = "0";
+            oldImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
           }
         });
 
@@ -276,7 +270,6 @@ subtitle: Maritime Data Analyst
         updateDots();
       }
 
-      // Slide logic
       function nextSlide() {
         currentIndex = (currentIndex + 1) % images.length;
         updateImage("left");
@@ -287,16 +280,12 @@ subtitle: Maritime Data Analyst
         updateImage("right");
       }
 
-      // Auto slide controls
       function startAutoSlide() {
-        stopAutoSlide(); // prevent duplicates
-        autoSlideInterval = setInterval(() => {
-          nextSlide();
-        }, 10000); // 10 seconds
+        autoSlideInterval = setInterval(nextSlide, 10000); // 10 seconds
       }
 
       function stopAutoSlide() {
-        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        clearInterval(autoSlideInterval);
       }
 
       function resetAutoSlide() {
@@ -318,16 +307,19 @@ subtitle: Maritime Data Analyst
       slider.addEventListener("mouseenter", stopAutoSlide);
       slider.addEventListener("mouseleave", resetAutoSlide);
 
-      // Init
+      // Initialize
       createDots();
       updateImage("left");
       startAutoSlide();
     });
 
-    // ===== Fullscreen modal viewer =====
+    // Fullscreen Modal Viewer
     const modal = document.createElement("div");
     modal.id = "image-modal";
-    modal.style.cssText = "display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;";
+    modal.style.cssText = `
+      display:none; position:fixed; top:0; left:0; width:100vw; height:100vh;
+      background-color:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;
+    `;
     modal.innerHTML = `
       <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
       <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
@@ -336,25 +328,17 @@ subtitle: Maritime Data Analyst
 
     document.body.addEventListener("click", function (e) {
       if (e.target.classList.contains("slider-main-image")) {
-        const modalImg = document.getElementById("modal-image");
-        modalImg.src = e.target.src;
+        document.getElementById("modal-image").src = e.target.src;
         modal.style.display = "flex";
       }
     });
 
-    document.getElementById("close-modal").addEventListener("click", function () {
+    document.getElementById("close-modal").addEventListener("click", () => {
       modal.style.display = "none";
     });
 
-    document.getElementById("image-modal").addEventListener("click", function (e) {
+    modal.addEventListener("click", (e) => {
       if (e.target.id === "image-modal") {
-        modal.style.display = "none";
-      }
-    });
-
-    // ESC key to close modal
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape") {
         modal.style.display = "none";
       }
     });

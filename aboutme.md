@@ -413,7 +413,8 @@ It was also a chance to reunite with many of my coursemates. We shared our sea s
 <div class="image-slider" 
   data-images='[
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%20Life%202.0/Academy%202.0%20(1).png",
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%20Life%202.0/Academy%202.0%20(2).png"
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%20Life%202.0/Academy%202.0%20(2).png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%20Life%202.0/Academy%202.0%20(3).png"
   ]'>
 </div>
 

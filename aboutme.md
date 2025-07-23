@@ -459,6 +459,7 @@ This blog is where I share some of those explorations—data projects, visualiza
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Multi%20Segment%20Map.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20GFW%20Map.png"
   ]'>
+</div>
 
 <!-- Slider container -->
 <div class="image-slider" 
@@ -469,6 +470,7 @@ This blog is where I share some of those explorations—data projects, visualiza
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Weather%20Forecast.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Performance.png"
   ]'>
+</div>
 
 <!-- Slider container -->
 <div class="image-slider" 
@@ -479,6 +481,7 @@ This blog is where I share some of those explorations—data projects, visualiza
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20-%20YTD%20AER.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20GFW%20Features.png"
   ]'>
+</div>
 
 <h2> Fun Life </h2>
 

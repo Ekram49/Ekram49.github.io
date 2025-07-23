@@ -449,6 +449,37 @@ Outside of work, I’m pretty obsessed with the ocean—not just from a seafarer
 
 This blog is where I share some of those explorations—data projects, visualizations, and thoughts on topics I care about.
 
+<!-- Slider container -->
+<div class="image-slider" 
+  data-images='[
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20RL%20to%20GC.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Predicted%20Positions.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Email%20Map.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20VO%20Map.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Multi%20Segment%20Map.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20GFW%20Map.png"
+  ]'>
+
+<!-- Slider container -->
+<div class="image-slider" 
+  data-images='[
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20-%20Adherence%202.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Alignment.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Max%20TCE.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Weather%20Forecast.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Performance.png"
+  ]'>
+
+<!-- Slider container -->
+<div class="image-slider" 
+  data-images='[
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Prediction%20Table.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Prediction%20Table%202.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20ETA%20Simulation.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20-%20YTD%20AER.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20GFW%20Features.png"
+  ]'>
+
 <h2> Fun Life </h2>
 
 When I’m not working or geeking out over datasets, you’ll probably find me doing kettlebell workouts, long-distance swimming, or cruising around NYC on my e-bike or electric skateboard. I’m currently working on a few personal goals: getting my scuba certification, private pilot license, and skydiving license—all within this year. Wish me luck!

@@ -195,12 +195,14 @@ subtitle: Maritime Data Analyst
         console.error("Invalid data-images JSON:", e);
         return;
       }
+
       if (!Array.isArray(images) || images.length === 0) return;
 
       let currentIndex = 0;
-      let autoSlideInterval;
+      let autoSlideInterval = null;
+      let isTransitioning = false;
 
-      // Set up basic structure
+      // Build slider structure
       slider.innerHTML = `
         <div class="arrow arrow-left">&#10094;</div>
         <div class="arrow arrow-right">&#10095;</div>
@@ -227,7 +229,7 @@ subtitle: Maritime Data Analyst
         images.forEach((_, i) => {
           const dot = document.createElement("span");
           dot.addEventListener("click", () => {
-            if (i !== currentIndex) {
+            if (i !== currentIndex && !isTransitioning) {
               const direction = i > currentIndex ? "left" : "right";
               currentIndex = i;
               updateImage(direction);
@@ -239,12 +241,15 @@ subtitle: Maritime Data Analyst
       }
 
       function updateDots() {
-        const allDots = dotsContainer.querySelectorAll("span");
-        allDots.forEach(dot => dot.classList.remove("active"));
-        if (allDots[currentIndex]) allDots[currentIndex].classList.add("active");
+        dotsContainer.querySelectorAll("span").forEach((dot, i) => {
+          dot.classList.toggle("active", i === currentIndex);
+        });
       }
 
       function updateImage(direction = "left") {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
         const oldImg = sliderDiv.querySelector(".slider-main-image");
         const newImg = createImage(images[currentIndex]);
 
@@ -256,6 +261,7 @@ subtitle: Maritime Data Analyst
         requestAnimationFrame(() => {
           newImg.style.transform = "translateX(0)";
           newImg.style.opacity = "1";
+
           if (oldImg) {
             oldImg.style.transform = direction === "left" ? "translateX(-100%)" : "translateX(100%)";
             oldImg.style.opacity = "0";
@@ -265,27 +271,31 @@ subtitle: Maritime Data Analyst
 
         setTimeout(() => {
           if (oldImg) oldImg.remove();
+          isTransitioning = false;
         }, 500);
 
         updateDots();
       }
 
       function nextSlide() {
+        if (isTransitioning) return;
         currentIndex = (currentIndex + 1) % images.length;
         updateImage("left");
       }
 
       function prevSlide() {
+        if (isTransitioning) return;
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         updateImage("right");
       }
 
       function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 10000); // 10 seconds
+        autoSlideInterval = setInterval(nextSlide, 10000);
       }
 
       function stopAutoSlide() {
         clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
       }
 
       function resetAutoSlide() {
@@ -293,7 +303,7 @@ subtitle: Maritime Data Analyst
         startAutoSlide();
       }
 
-      // Event listeners
+      // Controls
       leftArrow.addEventListener("click", () => {
         prevSlide();
         resetAutoSlide();
@@ -307,7 +317,7 @@ subtitle: Maritime Data Analyst
       slider.addEventListener("mouseenter", stopAutoSlide);
       slider.addEventListener("mouseleave", resetAutoSlide);
 
-      // Initialize
+      // Init
       createDots();
       updateImage("left");
       startAutoSlide();
@@ -317,8 +327,8 @@ subtitle: Maritime Data Analyst
     const modal = document.createElement("div");
     modal.id = "image-modal";
     modal.style.cssText = `
-      display:none; position:fixed; top:0; left:0; width:100vw; height:100vh;
-      background-color:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;
+      display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background-color: rgba(0,0,0,0.9); z-index: 9999; justify-content: center; align-items: center;
     `;
     modal.innerHTML = `
       <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
@@ -326,7 +336,7 @@ subtitle: Maritime Data Analyst
     `;
     document.body.appendChild(modal);
 
-    document.body.addEventListener("click", function (e) {
+    document.body.addEventListener("click", e => {
       if (e.target.classList.contains("slider-main-image")) {
         document.getElementById("modal-image").src = e.target.src;
         modal.style.display = "flex";
@@ -337,7 +347,7 @@ subtitle: Maritime Data Analyst
       modal.style.display = "none";
     });
 
-    modal.addEventListener("click", (e) => {
+    modal.addEventListener("click", e => {
       if (e.target.id === "image-modal") {
         modal.style.display = "none";
       }

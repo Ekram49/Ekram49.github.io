@@ -364,6 +364,14 @@ The sea has shaped a big part of who I am—both in work and in life. If you're 
 
 I was born on a naval base in Khulna, Bangladesh. With my father serving as a naval officer in the Bangladesh Navy, I spent my early years moving from one naval base to another. Growing up in that world gave me rare access to Navy ships, training centers, and the everyday life of sailors. While living on bases, I got to swim, dive, and ride boats with sailors and officers who felt more like family than figures in uniform. Being surrounded by the discipline, camaraderie, and quiet strength of the Navy shaped the way I saw the world—and left me with a deep longing to carve out my own path connected to the sea.
 
+<!-- Slider container -->
+<div class="image-slider" 
+  data-images='[
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Early%20Life/Early%20Life%20-%20Fun.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Early%20Life/Early%20Life%20-%20Navy.png"
+  ]'>
+</div>
+
 <h2> Academy Life </h2>
 
 My journey as a maritime professional began in 2013 when I joined the prestigious Bangladesh Marine Academy as a marine engineering cadet. Over the course of two intense years of pre-sea training, I was introduced to the fundamentals of seamanship, personal survival techniques, fire prevention, marine safety, ship construction, and maritime regulations. As an engineering cadet, I also delved deep into subjects like thermodynamics, marine propulsion systems, electrical and control systems, and the inner workings of shipboard machinery.
@@ -512,8 +520,9 @@ When I’m not working or geeking out over datasets, you’ll probably find me d
 <!-- Slider container -->
 <div class="image-slider" 
   data-images='[
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Family/Life%20-%20Parents.png",
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Family/Life%20-%20Sister.png"
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Family/Life%20-%20Family%20-%20Childhood.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Family/Life%20-%20Family%20in%20Academy.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Family/Life%20-%20Family%20-%20Adult.png"  
   ]'>
 </div>
 

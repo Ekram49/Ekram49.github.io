@@ -146,6 +146,7 @@ subtitle: Maritime Data Analyst
     const sliders = document.querySelectorAll(".image-slider");
 
     sliders.forEach(slider => {
+      const images = JSON.parse(slider.dataset.images);
       let images;
       try {
         images = JSON.parse(slider.dataset.images);

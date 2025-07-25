@@ -177,12 +177,6 @@ subtitle: Maritime Data Analyst
   </a>
 </div>
 
-<!-- Fullscreen Modal -->
-<div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;">
-  <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
-  <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
-</div>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const sliders = document.querySelectorAll(".image-slider");
@@ -201,13 +195,17 @@ subtitle: Maritime Data Analyst
       let currentIndex = 0;
       let autoSlideInterval = null;
       let isTransitioning = false;
+      let touchStartX = 0;
 
       // Build slider structure
+      slider.setAttribute("role", "region");
+      slider.setAttribute("aria-label", "Image Carousel");
+
       slider.innerHTML = `
-        <div class="arrow arrow-left">&#10094;</div>
-        <div class="arrow arrow-right">&#10095;</div>
-        <div class="slider"></div>
-        <div class="slider-dots"></div>
+        <div class="arrow arrow-left" role="button" tabindex="0" aria-label="Previous slide">&#10094;</div>
+        <div class="arrow arrow-right" role="button" tabindex="0" aria-label="Next slide">&#10095;</div>
+        <div class="slider" style="position:relative; overflow:hidden;"></div>
+        <div class="slider-dots" role="tablist"></div>
       `;
 
       const sliderDiv = slider.querySelector(".slider");
@@ -220,7 +218,9 @@ subtitle: Maritime Data Analyst
         img.className = "slider-main-image";
         img.src = src;
         img.alt = "Slider Image";
+        img.loading = "lazy";
         img.style.cursor = "zoom-in";
+        img.setAttribute("tabindex", "0");
         return img;
       }
 
@@ -228,6 +228,9 @@ subtitle: Maritime Data Analyst
         dotsContainer.innerHTML = "";
         images.forEach((_, i) => {
           const dot = document.createElement("span");
+          dot.setAttribute("role", "tab");
+          dot.setAttribute("aria-selected", i === currentIndex ? "true" : "false");
+          dot.setAttribute("tabindex", "0");
           dot.addEventListener("click", () => {
             if (i !== currentIndex && !isTransitioning) {
               const direction = i > currentIndex ? "left" : "right";
@@ -236,6 +239,9 @@ subtitle: Maritime Data Analyst
               resetAutoSlide();
             }
           });
+          dot.addEventListener("keydown", e => {
+            if (e.key === "Enter" || e.key === " ") dot.click();
+          });
           dotsContainer.appendChild(dot);
         });
       }
@@ -243,6 +249,7 @@ subtitle: Maritime Data Analyst
       function updateDots() {
         dotsContainer.querySelectorAll("span").forEach((dot, i) => {
           dot.classList.toggle("active", i === currentIndex);
+          dot.setAttribute("aria-selected", i === currentIndex ? "true" : "false");
         });
       }
 
@@ -314,8 +321,43 @@ subtitle: Maritime Data Analyst
         resetAutoSlide();
       });
 
+      leftArrow.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") leftArrow.click();
+      });
+      rightArrow.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") rightArrow.click();
+      });
+
       slider.addEventListener("mouseenter", stopAutoSlide);
       slider.addEventListener("mouseleave", resetAutoSlide);
+
+      // Keyboard navigation
+      document.addEventListener("keydown", e => {
+        if (document.activeElement.closest(".image-slider") === slider) {
+          if (e.key === "ArrowLeft") {
+            prevSlide();
+            resetAutoSlide();
+          } else if (e.key === "ArrowRight") {
+            nextSlide();
+            resetAutoSlide();
+          }
+        }
+      });
+
+      // Touch swipe support
+      slider.addEventListener("touchstart", e => {
+        touchStartX = e.touches[0].clientX;
+      });
+
+      slider.addEventListener("touchend", e => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const diffX = touchEndX - touchStartX;
+        if (Math.abs(diffX) > 50) {
+          if (diffX > 0) prevSlide();
+          else nextSlide();
+          resetAutoSlide();
+        }
+      });
 
       // Init
       createDots();
@@ -326,27 +368,43 @@ subtitle: Maritime Data Analyst
     // Fullscreen Modal Viewer
     const modal = document.createElement("div");
     modal.id = "image-modal";
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
     modal.style.cssText = `
       display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background-color: rgba(0,0,0,0.9); z-index: 9999; justify-content: center; align-items: center;
     `;
     modal.innerHTML = `
-      <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
-      <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
+      <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;" tabindex="0">
+      <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;" role="button" aria-label="Close Modal" tabindex="0">&times;</span>
     `;
     document.body.appendChild(modal);
 
+    // Open modal
     document.body.addEventListener("click", e => {
       if (e.target.classList.contains("slider-main-image")) {
         document.getElementById("modal-image").src = e.target.src;
         modal.style.display = "flex";
+        document.getElementById("modal-image").focus();
       }
     });
 
+    // Escape key closes modal
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && modal.style.display === "flex") {
+        modal.style.display = "none";
+      }
+    });
+
+    // Close button
     document.getElementById("close-modal").addEventListener("click", () => {
       modal.style.display = "none";
     });
+    document.getElementById("close-modal").addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") modal.style.display = "none";
+    });
 
+    // Click outside modal image closes modal
     modal.addEventListener("click", e => {
       if (e.target.id === "image-modal") {
         modal.style.display = "none";

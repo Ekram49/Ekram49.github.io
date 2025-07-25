@@ -111,149 +111,172 @@ subtitle: Maritime Data Analyst
   <a href="mailto:ekramullahzaki@gmail.com" class="link-button link-email"><i class="fas fa-envelope"></i> Email</a>
 </div>
 
+<!-- Fullscreen Modal -->
+<div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
+  <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
+  <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
+</div>
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".image-slider").forEach(slider => {
-    let images = [];
-    try {
-      images = JSON.parse(slider.dataset.images);
-    } catch (e) {
-      console.error("Invalid images data:", e);
-      return;
-    }
-    if (!Array.isArray(images) || !images.length) return;
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll(".image-slider");
 
-    let currentIndex = 0;
-    let autoSlide = null;
-    let isTransitioning = false;
-    let touchStartX = 0;
+    sliders.forEach(slider => {
+      const images = JSON.parse(slider.dataset.images);
+      let currentIndex = 0;
+      let autoSlideInterval = null;
+      let isTransitioning = false;
+      let touchStartX = 0;
 
-    slider.setAttribute("role", "region");
-    slider.setAttribute("aria-label", "Image carousel");
+      slider.setAttribute("role", "region");
+      slider.setAttribute("aria-label", "Image Carousel");
 
-    slider.innerHTML = `
-      <div class="arrow arrow-left" role="button" tabindex="0" aria-label="Previous">&#10094;</div>
-      <div class="arrow arrow-right" role="button" tabindex="0" aria-label="Next">&#10095;</div>
-      <div class="slider"></div>
-      <div class="slider-dots" role="tablist"></div>
-    `;
+      slider.innerHTML = `
+        <div class="arrow arrow-left" role="button" tabindex="0" aria-label="Previous slide">&#10094;</div>
+        <div class="arrow arrow-right" role="button" tabindex="0" aria-label="Next slide">&#10095;</div>
+        <div class="slider" style="position:relative; overflow:hidden;"></div>
+        <div class="slider-dots" role="tablist"></div>
+      `;
 
-    const sliderDiv = slider.querySelector(".slider");
-    const dots = slider.querySelector(".slider-dots");
-    const left = slider.querySelector(".arrow-left");
-    const right = slider.querySelector(".arrow-right");
+      const sliderDiv = slider.querySelector(".slider");
+      const dotsContainer = slider.querySelector(".slider-dots");
+      const leftArrow = slider.querySelector(".arrow-left");
+      const rightArrow = slider.querySelector(".arrow-right");
 
-    const createImage = src => {
-      const img = document.createElement("img");
-      img.src = src;
-      img.className = "slider-main-image";
-      img.alt = "Slide image";
-      img.loading = "lazy";
-      return img;
-    };
+      function createImage(src) {
+        const img = document.createElement("img");
+        img.className = "slider-main-image";
+        img.src = src;
+        img.alt = "Slider Image";
+        img.loading = "lazy";
+        img.style.cursor = "zoom-in";
+        img.setAttribute("tabindex", "0");
 
-    const updateDots = () => {
-      dots.querySelectorAll("span").forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentIndex);
-      });
-    };
+        img.addEventListener("click", () => {
+          const modal = document.getElementById("image-modal");
+          const modalImage = document.getElementById("modal-image");
+          modalImage.src = src;
+          modal.style.display = "flex";
+        });
 
-    const showImage = (dir = "left", instant = false) => {
-      if (isTransitioning && !instant) return;
-      isTransitioning = true;
-
-      const oldImg = sliderDiv.querySelector(".slider-main-image");
-      const newImg = createImage(images[currentIndex]);
-
-      if (instant) {
-        sliderDiv.innerHTML = "";
-        sliderDiv.appendChild(newImg);
-        updateDots();
-        isTransitioning = false;
-        return;
+        return img;
       }
 
-      newImg.style.transform = dir === "left" ? "translateX(100%)" : "translateX(-100%)";
-      newImg.style.opacity = "0";
-      newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-      sliderDiv.appendChild(newImg);
+      function createDots() {
+        dotsContainer.innerHTML = "";
+        images.forEach((_, i) => {
+          const dot = document.createElement("span");
+          dot.setAttribute("role", "tab");
+          dot.setAttribute("aria-selected", i === currentIndex ? "true" : "false");
+          dot.setAttribute("tabindex", "0");
+          dot.addEventListener("click", () => {
+            if (i !== currentIndex && !isTransitioning) {
+              const direction = i > currentIndex ? "left" : "right";
+              currentIndex = i;
+              updateSlider(direction);
+              resetAutoSlide();
+            }
+          });
+          dot.addEventListener("keydown", e => {
+            if (e.key === "Enter" || e.key === " ") dot.click();
+          });
+          dotsContainer.appendChild(dot);
+        });
+      }
 
-      requestAnimationFrame(() => {
-        newImg.style.transform = "translateX(0)";
-        newImg.style.opacity = "1";
-        if (oldImg) {
-          oldImg.style.transform = dir === "left" ? "translateX(-100%)" : "translateX(100%)";
-          oldImg.style.opacity = "0";
-          oldImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+      function updateDots() {
+        dotsContainer.querySelectorAll("span").forEach((dot, i) => {
+          dot.classList.toggle("active", i === currentIndex);
+          dot.setAttribute("aria-selected", i === currentIndex ? "true" : "false");
+        });
+      }
+
+      function updateSlider(direction) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        const oldImg = sliderDiv.querySelector(".slider-main-image");
+        const newImg = createImage(images[currentIndex]);
+
+        newImg.style.position = "absolute";
+        newImg.style.top = 0;
+        newImg.style[direction === "left" ? "left" : "right"] = "100%";
+        newImg.style.transition = "all 0.5s ease";
+
+        sliderDiv.appendChild(newImg);
+
+        requestAnimationFrame(() => {
+          oldImg.style[direction === "left" ? "left" : "right"] = "-100%";
+          oldImg.style.transition = "all 0.5s ease";
+          newImg.style.left = 0;
+
+          setTimeout(() => {
+            sliderDiv.removeChild(oldImg);
+            newImg.style.position = "";
+            newImg.style.left = "";
+            newImg.style.right = "";
+            newImg.style.transition = "";
+            isTransitioning = false;
+            updateDots();
+          }, 500);
+        });
+      }
+
+      function resetAutoSlide() {
+        stopAutoSlide();
+        autoSlideInterval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % images.length;
+          updateSlider("left");
+        }, 5000);
+      }
+
+      function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+      }
+
+      // Init slider
+      sliderDiv.appendChild(createImage(images[currentIndex]));
+      createDots();
+      updateDots();
+      resetAutoSlide();
+
+      leftArrow.addEventListener("click", () => {
+        if (!isTransitioning) {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          updateSlider("right");
+          resetAutoSlide();
         }
       });
 
-      setTimeout(() => {
-        if (oldImg) oldImg.remove();
-        isTransitioning = false;
-      }, 500);
-
-      updateDots();
-    };
-
-    const createDots = () => {
-      dots.innerHTML = "";
-      images.forEach((_, i) => {
-        const dot = document.createElement("span");
-        dot.setAttribute("role", "tab");
-        dot.setAttribute("tabindex", "0");
-        dot.addEventListener("click", () => {
-          if (i !== currentIndex) {
-            const dir = i > currentIndex ? "left" : "right";
-            currentIndex = i;
-            showImage(dir);
-            resetAutoSlide();
-          }
-        });
-        dot.addEventListener("keydown", e => {
-          if (["Enter", " "].includes(e.key)) dot.click();
-        });
-        dots.appendChild(dot);
+      rightArrow.addEventListener("click", () => {
+        if (!isTransitioning) {
+          currentIndex = (currentIndex + 1) % images.length;
+          updateSlider("left");
+          resetAutoSlide();
+        }
       });
-    };
 
-    const next = () => { currentIndex = (currentIndex + 1) % images.length; showImage("left"); };
-    const prev = () => { currentIndex = (currentIndex - 1 + images.length) % images.length; showImage("right"); };
-    const startAuto = () => { autoSlide = setInterval(next, 10000); };
-    const stopAuto = () => { clearInterval(autoSlide); autoSlide = null; };
-    const resetAutoSlide = () => { stopAuto(); startAuto(); };
+      leftArrow.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") leftArrow.click();
+      });
+      rightArrow.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") rightArrow.click();
+      });
 
-    left.addEventListener("click", () => { prev(); resetAutoSlide(); });
-    right.addEventListener("click", () => { next(); resetAutoSlide(); });
-
-    [left, right].forEach(arrow => arrow.addEventListener("keydown", e => {
-      if (["Enter", " "].includes(e.key)) arrow.click();
-    }));
-
-    slider.addEventListener("mouseenter", stopAuto);
-    slider.addEventListener("mouseleave", startAuto);
-
-    slider.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; });
-    slider.addEventListener("touchend", e => {
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 50) {
-        dx > 0 ? prev() : next();
-        resetAutoSlide();
-      }
+      slider.addEventListener("mouseenter", stopAutoSlide);
+      slider.addEventListener("mouseleave", resetAutoSlide);
     });
 
-    document.addEventListener("keydown", e => {
-      if (document.activeElement.closest(".image-slider") === slider) {
-        if (e.key === "ArrowLeft") prev();
-        else if (e.key === "ArrowRight") next();
+    // Close modal logic
+    document.getElementById("close-modal").addEventListener("click", () => {
+      document.getElementById("image-modal").style.display = "none";
+    });
+    document.getElementById("image-modal").addEventListener("click", (e) => {
+      if (e.target.id === "image-modal") {
+        e.target.style.display = "none";
       }
     });
-
-    createDots();
-    showImage("left", true);
-    startAuto();
   });
-});
 </script>
 
 

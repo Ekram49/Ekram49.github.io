@@ -62,11 +62,13 @@ subtitle: Maritime Data Analyst
     top: 0; left: 0;
     width: 100%; height: 100%;
     object-fit: contain;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: opacity 0.5s ease;
     opacity: 1;
     cursor: zoom-in;
   }
-  .slider-main-image:hover { transform: scale(1.05); }
+  .slider-main-image.fade-out {
+    opacity: 0;
+  }
 
   .arrow {
     position: absolute;
@@ -112,24 +114,23 @@ subtitle: Maritime Data Analyst
 </div>
 
 <!-- Fullscreen Modal -->
-<div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center; flex-direction: column;">
+<div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.8); z-index:9999; display:flex; justify-content:center; align-items:center;">
   <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
   <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
 </div>
-
 
 <script>
   function initSliders() {
     const sliders = document.querySelectorAll(".image-slider");
 
     if (sliders.length === 0) {
-      // Try again in 100ms if no sliders yet (in case they’re rendered late)
       return setTimeout(initSliders, 100);
     }
 
     sliders.forEach(slider => {
       const images = JSON.parse(slider.dataset.images || "[]");
       let currentIndex = 0;
+      let autoSlideInterval;
 
       slider.innerHTML = `
         <div class="arrow arrow-left">&#10094;</div>
@@ -148,6 +149,8 @@ subtitle: Maritime Data Analyst
         img.className = "slider-main-image";
         img.src = src;
         img.alt = "Slider Image";
+        img.style.opacity = "1";
+        img.style.transition = "opacity 0.5s ease";
         img.style.cursor = "zoom-in";
         img.addEventListener("click", () => {
           document.getElementById("modal-image").src = src;
@@ -157,9 +160,19 @@ subtitle: Maritime Data Analyst
       }
 
       function updateSlider() {
-        sliderDiv.innerHTML = "";
-        sliderDiv.appendChild(createImage(images[currentIndex]));
-        updateDots();
+        const oldImage = sliderDiv.querySelector(".slider-main-image");
+        if (oldImage) {
+          oldImage.classList.add("fade-out");
+          setTimeout(() => {
+            sliderDiv.innerHTML = "";
+            sliderDiv.appendChild(createImage(images[currentIndex]));
+            updateDots();
+          }, 500);
+        } else {
+          sliderDiv.innerHTML = "";
+          sliderDiv.appendChild(createImage(images[currentIndex]));
+          updateDots();
+        }
       }
 
       function updateDots() {
@@ -168,24 +181,38 @@ subtitle: Maritime Data Analyst
           const dot = document.createElement("span");
           dot.className = i === currentIndex ? "active" : "";
           dot.addEventListener("click", () => {
+            clearInterval(autoSlideInterval);
             currentIndex = i;
             updateSlider();
+            autoSlideInterval = startAutoSlide();
           });
           dotsContainer.appendChild(dot);
         });
       }
 
+      function startAutoSlide() {
+        return setInterval(() => {
+          currentIndex = (currentIndex + 1) % images.length;
+          updateSlider();
+        }, 10000);
+      }
+
       leftArrow.addEventListener("click", () => {
+        clearInterval(autoSlideInterval);
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         updateSlider();
+        autoSlideInterval = startAutoSlide();
       });
 
       rightArrow.addEventListener("click", () => {
+        clearInterval(autoSlideInterval);
         currentIndex = (currentIndex + 1) % images.length;
         updateSlider();
+        autoSlideInterval = startAutoSlide();
       });
 
       updateSlider();
+      autoSlideInterval = startAutoSlide();
     });
   }
 

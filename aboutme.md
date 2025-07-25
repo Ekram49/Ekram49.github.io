@@ -4,11 +4,10 @@ title: Ekram Ahmed
 subtitle: Maritime Data Analyst
 ---
 
-<!-- Font Awesome for icons -->
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
 <style>
-  /* BUTTONS */
   .button-container {
     display: flex;
     flex-wrap: wrap;
@@ -16,7 +15,6 @@ subtitle: Maritime Data Analyst
     gap: 16px;
     margin: 30px 0;
   }
-
   .link-button {
     display: inline-flex;
     align-items: center;
@@ -25,9 +23,7 @@ subtitle: Maritime Data Analyst
     padding: 14px 24px;
     min-width: 160px;
     height: 46px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
+    font: 700 16px 'Open Sans', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1.1px;
     color: white;
@@ -36,28 +32,21 @@ subtitle: Maritime Data Analyst
     cursor: pointer;
     text-decoration: none;
     box-shadow: 0 4px 6px rgba(0,0,0,0.15), inset 0 -3px 5px rgba(255,255,255,0.2);
-    transition: transform 0.25s, box-shadow 0.3s, background 0.3s, border-color 0.3s, color 0.3s;
+    transition: all 0.3s ease;
   }
-
   .link-button:hover,
   .link-button:focus {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 8px 15px rgba(0,0,0,0.3), inset 0 -3px 8px rgba(255,255,255,0.3);
     border-color: rgba(255,255,255,0.6);
-    color: white;
     outline: none;
   }
+  .link-button i { font-size: 20px; }
+  .link-portfolio { background: linear-gradient(145deg, #002244, #003366); border-color: #001a33; }
+  .link-resume    { background: linear-gradient(145deg, #594de8, #6c63ff); border-color: #4a3ecf; }
+  .link-linkedin  { background: linear-gradient(145deg, #005582, #0077b5); border-color: #004466; }
+  .link-email     { background: linear-gradient(145deg, #b5392f, #d44638); border-color: #8b2d24; }
 
-  a.link-portfolio    { background: linear-gradient(145deg, #002244, #003366); border-color: #001a33; }
-  a.link-resume       { background: linear-gradient(145deg, #594de8, #6c63ff); border-color: #4a3ecf; }
-  a.link-linkedin     { background: linear-gradient(145deg, #005582, #0077b5); border-color: #004466; }
-  a.link-email        { background: linear-gradient(145deg, #b5392f, #d44638); border-color: #8b2d24; }
-
-  .link-button i {
-    font-size: 20px;
-  }
-
-  /* SLIDER */
   .image-slider {
     position: relative;
     width: 100%;
@@ -65,25 +54,19 @@ subtitle: Maritime Data Analyst
     height: 400px;
     margin: 40px auto;
     overflow: hidden;
-    background-color: #f0f0f0;
+    background: #f0f0f0;
     border-radius: 12px;
   }
-
   .slider-main-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: contain;
     transition: transform 0.5s ease, opacity 0.5s ease;
     opacity: 1;
     cursor: zoom-in;
   }
-
-  .slider-main-image:hover {
-    transform: scale(1.05);
-  }
+  .slider-main-image:hover { transform: scale(1.05); }
 
   .arrow {
     position: absolute;
@@ -98,11 +81,7 @@ subtitle: Maritime Data Analyst
     z-index: 10;
     transition: transform 0.2s ease;
   }
-
-  .arrow:hover {
-    transform: translateY(-50%) scale(1.2);
-  }
-
+  .arrow:hover { transform: translateY(-50%) scale(1.2); }
   .arrow-left { left: 10px; }
   .arrow-right { right: 10px; }
 
@@ -115,21 +94,16 @@ subtitle: Maritime Data Analyst
     gap: 10px;
     z-index: 10;
   }
-
   .slider-dots span {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.6);
     cursor: pointer;
   }
-
-  .slider-dots span.active {
-    background-color: white;
-  }
+  .slider-dots span.active { background: white; }
 </style>
 
-<!-- BUTTONS -->
 <div class="button-container">
   <a href="https://ekram49.github.io/" class="link-button link-portfolio" target="_blank"><i class="fas fa-book"></i> Portfolio</a>
   <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view" class="link-button link-resume" target="_blank"><i class="fas fa-file-alt"></i> Resume</a>
@@ -137,214 +111,151 @@ subtitle: Maritime Data Analyst
   <a href="mailto:ekramullahzaki@gmail.com" class="link-button link-email"><i class="fas fa-envelope"></i> Email</a>
 </div>
 
-<!-- EXAMPLE SLIDER (adjust images as needed) -->
 <div class="image-slider" data-images='["image1.jpg", "image2.jpg", "image3.jpg"]'></div>
 
-<!-- SCRIPT -->
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const sliders = document.querySelectorAll(".image-slider");
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".image-slider").forEach(slider => {
+    let images = [];
+    try {
+      images = JSON.parse(slider.dataset.images);
+    } catch (e) {
+      console.error("Invalid images data:", e);
+      return;
+    }
+    if (!Array.isArray(images) || !images.length) return;
 
-    sliders.forEach(slider => {
-      const images = JSON.parse(slider.dataset.images);
-      let images;
-      try {
-        images = JSON.parse(slider.dataset.images);
-      } catch (e) {
-        console.error("Invalid data-images JSON:", e);
+    let currentIndex = 0;
+    let autoSlide = null;
+    let isTransitioning = false;
+    let touchStartX = 0;
+
+    slider.setAttribute("role", "region");
+    slider.setAttribute("aria-label", "Image carousel");
+
+    slider.innerHTML = `
+      <div class="arrow arrow-left" role="button" tabindex="0" aria-label="Previous">&#10094;</div>
+      <div class="arrow arrow-right" role="button" tabindex="0" aria-label="Next">&#10095;</div>
+      <div class="slider"></div>
+      <div class="slider-dots" role="tablist"></div>
+    `;
+
+    const sliderDiv = slider.querySelector(".slider");
+    const dots = slider.querySelector(".slider-dots");
+    const left = slider.querySelector(".arrow-left");
+    const right = slider.querySelector(".arrow-right");
+
+    const createImage = src => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.className = "slider-main-image";
+      img.alt = "Slide image";
+      img.loading = "lazy";
+      return img;
+    };
+
+    const updateDots = () => {
+      dots.querySelectorAll("span").forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+    };
+
+    const showImage = (dir = "left", instant = false) => {
+      if (isTransitioning && !instant) return;
+      isTransitioning = true;
+
+      const oldImg = sliderDiv.querySelector(".slider-main-image");
+      const newImg = createImage(images[currentIndex]);
+
+      if (instant) {
+        sliderDiv.innerHTML = "";
+        sliderDiv.appendChild(newImg);
+        updateDots();
+        isTransitioning = false;
         return;
       }
 
-      if (!Array.isArray(images) || images.length === 0) return;
+      newImg.style.transform = dir === "left" ? "translateX(100%)" : "translateX(-100%)";
+      newImg.style.opacity = "0";
+      newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+      sliderDiv.appendChild(newImg);
 
-      let currentIndex = 0;
-      let isTransitioning = false;
-      let autoSlide = null;
-      let touchStartX = 0;
-
-      slider.setAttribute("role", "region");
-      slider.setAttribute("aria-label", "Image carousel");
-
-      slider.innerHTML = `
-        <div class="arrow arrow-left" role="button" tabindex="0" aria-label="Previous">&#10094;</div>
-        <div class="arrow arrow-right" role="button" tabindex="0" aria-label="Next">&#10095;</div>
-        <div class="slider" style="position:relative; overflow:hidden;"></div>
-        <div class="slider-dots" role="tablist"></div>
-      `;
-
-      const sliderDiv = slider.querySelector(".slider");
-      const dots = slider.querySelector(".slider-dots");
-      const left = slider.querySelector(".arrow-left");
-      const right = slider.querySelector(".arrow-right");
-
-      function createImage(src) {
-        const img = document.createElement("img");
-        img.className = "slider-main-image";
-        img.src = src;
-        img.alt = "Slide image";
-        img.loading = "lazy";
-        img.tabIndex = 0;
-        return img;
-      }
-
-      function showImage(dir = "left", instant = false) {
-        if (isTransitioning && !instant) return;
-        isTransitioning = true;
-
-        const old = sliderDiv.querySelector(".slider-main-image");
-        const newImg = createImage(images[currentIndex]);
-
-        if (instant) {
-          sliderDiv.innerHTML = "";
-          sliderDiv.appendChild(newImg);
-          updateDots();
-          isTransitioning = false;
-          return;
+      requestAnimationFrame(() => {
+        newImg.style.transform = "translateX(0)";
+        newImg.style.opacity = "1";
+        if (oldImg) {
+          oldImg.style.transform = dir === "left" ? "translateX(-100%)" : "translateX(100%)";
+          oldImg.style.opacity = "0";
+          oldImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
         }
+      });
 
-        newImg.style.transform = dir === "left" ? "translateX(100%)" : "translateX(-100%)";
-        newImg.style.opacity = "0";
-        newImg.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-        sliderDiv.appendChild(newImg);
+      setTimeout(() => {
+        if (oldImg) oldImg.remove();
+        isTransitioning = false;
+      }, 500);
 
-        requestAnimationFrame(() => {
-          newImg.style.transform = "translateX(0)";
-          newImg.style.opacity = "1";
-          if (old) {
-            old.style.transform = dir === "left" ? "translateX(-100%)" : "translateX(100%)";
-            old.style.opacity = "0";
-            old.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+      updateDots();
+    };
+
+    const createDots = () => {
+      dots.innerHTML = "";
+      images.forEach((_, i) => {
+        const dot = document.createElement("span");
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("tabindex", "0");
+        dot.addEventListener("click", () => {
+          if (i !== currentIndex) {
+            const dir = i > currentIndex ? "left" : "right";
+            currentIndex = i;
+            showImage(dir);
+            resetAutoSlide();
           }
         });
-
-        setTimeout(() => {
-          if (old) old.remove();
-          isTransitioning = false;
-        }, 500);
-
-        updateDots();
-      }
-
-      function createDots() {
-        dots.innerHTML = "";
-        images.forEach((_, i) => {
-          const dot = document.createElement("span");
-          dot.setAttribute("role", "tab");
-          dot.setAttribute("tabindex", "0");
-          dot.addEventListener("click", () => {
-            if (i !== currentIndex) {
-              const dir = i > currentIndex ? "left" : "right";
-              currentIndex = i;
-              showImage(dir);
-              resetAutoSlide();
-            }
-          });
-          dot.addEventListener("keydown", e => {
-            if (e.key === "Enter" || e.key === " ") dot.click();
-          });
-          dots.appendChild(dot);
+        dot.addEventListener("keydown", e => {
+          if (["Enter", " "].includes(e.key)) dot.click();
         });
-      }
-
-      function updateDots() {
-        dots.querySelectorAll("span").forEach((dot, i) => {
-          dot.classList.toggle("active", i === currentIndex);
-        });
-      }
-
-      function next() {
-        currentIndex = (currentIndex + 1) % images.length;
-        showImage("left");
-      }
-
-      function prev() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        showImage("right");
-      }
-
-      function startAuto() {
-        autoSlide = setInterval(next, 10000);
-      }
-
-      function stopAuto() {
-        clearInterval(autoSlide);
-        autoSlide = null;
-      }
-
-      function resetAutoSlide() {
-        stopAuto();
-        startAuto();
-      }
-
-      // Events
-      left.addEventListener("click", () => { prev(); resetAutoSlide(); });
-      right.addEventListener("click", () => { next(); resetAutoSlide(); });
-
-      left.addEventListener("keydown", e => { if (["Enter", " "].includes(e.key)) left.click(); });
-      right.addEventListener("keydown", e => { if (["Enter", " "].includes(e.key)) right.click(); });
-
-      slider.addEventListener("mouseenter", stopAuto);
-      slider.addEventListener("mouseleave", startAuto);
-
-      slider.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; });
-      slider.addEventListener("touchend", e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 50) {
-          dx > 0 ? prev() : next();
-          resetAutoSlide();
-        }
+        dots.appendChild(dot);
       });
+    };
 
-      document.addEventListener("keydown", e => {
-        if (document.activeElement.closest(".image-slider") === slider) {
-          if (e.key === "ArrowLeft") prev();
-          else if (e.key === "ArrowRight") next();
-        }
-      });
+    const next = () => { currentIndex = (currentIndex + 1) % images.length; showImage("left"); };
+    const prev = () => { currentIndex = (currentIndex - 1 + images.length) % images.length; showImage("right"); };
+    const startAuto = () => { autoSlide = setInterval(next, 10000); };
+    const stopAuto = () => { clearInterval(autoSlide); autoSlide = null; };
+    const resetAutoSlide = () => { stopAuto(); startAuto(); };
 
-      createDots();
-      showImage("left", true);
-      startAuto();
-    });
+    left.addEventListener("click", () => { prev(); resetAutoSlide(); });
+    right.addEventListener("click", () => { next(); resetAutoSlide(); });
 
-    // Modal Viewer
-    const modal = document.createElement("div");
-    modal.id = "image-modal";
-    modal.setAttribute("role", "dialog");
-    modal.setAttribute("aria-modal", "true");
-    modal.style.cssText = `
-      display:none; position:fixed; top:0; left:0; width:100vw; height:100vh;
-      background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;
-    `;
-    modal.innerHTML = `
-      <img id="modal-image" style="max-width:90%; max-height:90%;" alt="Full Image" tabindex="0">
-      <span id="close-modal" role="button" tabindex="0" style="position:absolute;top:30px;right:40px;font-size:40px;color:white;cursor:pointer;">&times;</span>
-    `;
-    document.body.appendChild(modal);
+    [left, right].forEach(arrow => arrow.addEventListener("keydown", e => {
+      if (["Enter", " "].includes(e.key)) arrow.click();
+    }));
 
-    // Open modal
-    document.body.addEventListener("click", e => {
-      if (e.target.classList.contains("slider-main-image")) {
-        document.getElementById("modal-image").src = e.target.src;
-        modal.style.display = "flex";
-        document.getElementById("modal-image").focus();
+    slider.addEventListener("mouseenter", stopAuto);
+    slider.addEventListener("mouseleave", startAuto);
+
+    slider.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; });
+    slider.addEventListener("touchend", e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) {
+        dx > 0 ? prev() : next();
+        resetAutoSlide();
       }
-    });
-
-    // Close modal
-    document.getElementById("close-modal").addEventListener("click", () => { modal.style.display = "none"; });
-    document.getElementById("close-modal").addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") modal.style.display = "none";
     });
 
     document.addEventListener("keydown", e => {
-      if (e.key === "Escape" && modal.style.display === "flex") modal.style.display = "none";
+      if (document.activeElement.closest(".image-slider") === slider) {
+        if (e.key === "ArrowLeft") prev();
+        else if (e.key === "ArrowRight") next();
+      }
     });
 
-    modal.addEventListener("click", e => {
-      if (e.target.id === "image-modal") modal.style.display = "none";
-    });
+    createDots();
+    showImage("left", true);
+    startAuto();
   });
+});
 </script>
 
 

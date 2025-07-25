@@ -26,7 +26,7 @@ The assignment contained 2 parts. Part 1 was to derive the optimum shaft speed r
 **Future Ekram here — this post ended up much longer than I originally expected. If you’re looking for a shorter version focused mainly on data analysis and visualization, check out the [Jupyter Notebook](https://colab.research.google.com/drive/18_dwLvrVbW5Z_e49HwmS5MFw1KBCtN2e?usp=sharing) where the assignment was completed. However, if you have the time and want to take a deep dive into the thought process and methodology, I highly recommend reading the full post!
 
 
-Part 1 Solution:
+## Part 1 Solution:
 
 Before diving into the solution, let’s add some definition and explanation regarding some terminology used in the assessment. to help understand the task better.
 
@@ -36,7 +36,9 @@ Freight Value: In maritime transportation, the freight value refers to the price
 
 Net Profit: In maritime transportation, net profit for a voyage refers to the total profit earned from a specific shipping voyage after accounting for all relevant revenues and expenses associated with that voyage.
 
-Net Profit (Voyage) = Voyage Revenue – Voyage Expenses
+<!-- Net Profit Equation -->
+<h3 style="text-align: center;"><b><i>Net Profit (Voyage) = Voyage Revenue – Voyage Expenses</i></b></h3>
+
 
 Source of Voyage Revenue: Freight Value
 Source of Voyage Expenses: Fuel Cost, Port Cost, Miscellaneous Costs (Ship maintenance, crew salary, provisions, etc.)
@@ -45,22 +47,23 @@ Speed Over Ground: Speed over ground (SOG) is the actual speed at which a vessel
 
 Now that we have more context regarding some of the terminologies used in the assignment, let’s dive deep into it and explain how I solved it.
 
-Tools I used:
+## Tools I used:
 
 If your goal is to simply find the answer to the question asked in this assignment, which is to identify the ideal shaft speed for maximizing net profit,  you can use any commonly used spreadsheet program, like Excel or Google Sheets, or simply use pen and paper and get it done. But the goal of these kinds of assignments is not just to see if you can find the answer, it’s also how you find it, i.e, your entire thought process of understanding the problem, finding a way to solve it that’s not only accurate but also efficient and repeatable. Also, they want to see if you understand the problem and your solution enough that you can explain it to both technical and non-technical audiences.
 This is why, instead of using Excel and PowerPoint, I decided to do the project in Google Colab, a free, cloud-based tool from Google that lets you write and execute code for cleaning, analyzing, and visualizing data, and document the analysis in a single, shareable document.
 
 In Google Colab, I used Python for the project, as Python is a simple, beginner-friendly language that also has various analytics-focused libraries, which makes data analysis efficient, robust, and scalable. I primarily used Pandas and Numpy for feature engineering, data cleaning, and data analysis, and Plotly for generating interactive visualizations.
 
-Preparing the data:
+## Preparing the data:
 
 Since the dataset was given to me in a PDF, and not in a spreadsheet (Excel or CSV format). I decided to copy the data from the speed and consumption table manually and create a pandas dataframe. While it is possible to parse the PDF to extract data automatically using some other Python libraries, I thought I should not shift my focus to data parsing, as that is not the main focus of the project. Plus, doing some manual work makes it simpler and less prone to error.
 
-Calculation:
+## Calculation:
 
 Let’s look at the Net Profit equation one more time:
 
-Net Profit = (Freight Value) - ((Daily Cost * Days) + Fuel Costs)
+<!-- Expanded Net Profit Equation -->
+<h3 style="text-align: center;"><b><i>Net Profit = (Freight Value) - ((Daily Cost * Days) + Fuel Costs)</i></b></h3>
 
 For a given voyage, assume there are no major changes in Voyage, Cargo Plan, and Bunker Price, the Freight Value, Estimated Daily Cost, and Fuel Cost Per Metric Tons (MT) should remain the same. Which we can also see in the information given to us, where the Freight Value is $1,300,000, the Daily cost is $25,000, and the Fuel Cost is $700/MT.
 
@@ -72,33 +75,30 @@ If you remember the shaft speed definition I provided earlier, you’d know that
 
 So, what we can see is that whether you increase or decrease shaft speed, the two variables (daily cost and fuel cost) would have an opposing impact on net profit. So we need to identify the sweet spot where the overall Net profit is the highest after considering all the variable costs.
 
-This would be our action item:
+## This would be our action item:
 
 Create a dataset using the data provided
 Calculate the Net Profit for each shaft speed, utilizing the given net profit equation and variable values (daily cost, fuel cost, etc.)
 Identify the Shaft Speed that corresponds with maximum net profit
 Visualize the Net Profit Trend with shaft speed and highlight the shaft speed with maximum Net profit
 
-Code:
+## Code:
 
 Now that we fully understand the problem and how to solve it, coding it up should be very easy:
 
-Create a dataset in pandas
+### Create a dataset in pandas
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Visualization%20Code.png)
 
-Create variables for freight value, fuel cost, and daily cost, and create a Net Profit column
+### Create variables for freight value, fuel cost, and daily cost, and create a Net Profit column
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Calculating%20Net%20Profit.png)
 
-
-Identify the shaft speed with maximum Net Profit
-
-Create a function to visualize a line graph
+### Create a function to visualize a line graph
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Visualization%20Code.png)
 
-Visualize the findings.
+### Visualize the findings.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Line%20Graph%20-%20Max%20Profit.png)
 
@@ -120,7 +120,9 @@ Adding some emission penalty in the equation and then doing the calculation to i
 Before we do any emission analysis, let’s create a new column for emission, which is derived from the main engine fuel consumption. To do that, we need to know the carbon intensity of the fuel oil used. Since the fuel type and carbon intensity data were not provided to us, let’s assume that the vessel is using Heavy Fuel Oil (HFO) and the Carbon intensity of the fuel is 3.114 MT CO2 / MT HFO. While the carbon intensity of fuel can vary based on fuel composition, energy content (calorific value), and engine efficiency, the variation is fairly narrow, and the number we chose would be very close in most situations.
 
 Carbon intensity of HFO = 3.114 MT CO2 / MT HFO
-Total emission = (Main Engine fuel consumption * carbon intensity of HFO) * Voyage Days
+
+<!-- Emissions Equation -->
+<h3 style="text-align: center;"><b><i>Total Emission = (Main Engine Fuel Consumption × Carbon Intensity of HFO) × Voyage Days</i></b></h3>
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Line%20Graph%20-%20Min%20Emissions.png)
 
@@ -139,14 +141,13 @@ Let’s assume the emission threshold for this voyage, set by the client, is 2,0
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Line%20Graph%20-%20Max%20Profit%20With%20Emissions%20Cap.png)
 
-
-
 We can see that with the emission cap, the optimum shaft speed for maximizing Net Profit is - 66 rpm 
 
 Adding that emissions penalty in the equation and then doing the calculation to identify the shaft speed to maximize net profit with considering the added cost.
 Let’s add an emission penalty in the net profit equation
 
-Net Profit = (Freight Value) - ((Daily Cost * Days) + Fuel Costs) - Total Emissions * Emissions Penalty ($/MT CO2)
+<!-- Emission-Adjusted Net Profit -->
+<h3 style="text-align: center;"><b><i>Net Profit = (Freight Value) - ((Daily Cost * Days) + Fuel Costs) - (Total Emissions × Emission Penalty)</i></b></h3>
 
 Let’s say that the emission penalty is $10/MT CO2.
 

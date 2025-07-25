@@ -57,17 +57,20 @@ subtitle: Maritime Data Analyst
     background: #f0f0f0;
     border-radius: 12px;
   }
-  .slider-main-image {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: contain;
-    transition: opacity 0.5s ease;
-    opacity: 1;
-    cursor: zoom-in;
+
+  .slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
   }
-  .slider-main-image.fade-out {
-    opacity: 0;
+
+  .slider-track img {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: zoom-in;
   }
 
   .arrow {
@@ -82,6 +85,7 @@ subtitle: Maritime Data Analyst
     cursor: pointer;
     z-index: 10;
     transition: transform 0.2s ease;
+    user-select: none;
   }
   .arrow:hover { transform: translateY(-50%) scale(1.2); }
   .arrow-left { left: 10px; }
@@ -104,6 +108,32 @@ subtitle: Maritime Data Analyst
     cursor: pointer;
   }
   .slider-dots span.active { background: white; }
+
+  /* Fullscreen Modal styles */
+  #image-modal {
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #modal-image {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  #close-modal {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+  }
 </style>
 
 <div class="button-container">
@@ -113,10 +143,18 @@ subtitle: Maritime Data Analyst
   <a href="mailto:ekramullahzaki@gmail.com" class="link-button link-email"><i class="fas fa-envelope"></i> Email</a>
 </div>
 
+<!-- Slider container example -->
+<div class="image-slider" 
+  data-images='[
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Early%20Life/Early%20Life%20-%20Fun.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Early%20Life/Early%20Life%20-%20Navy.png"
+  ]'>
+</div>
+
 <!-- Fullscreen Modal -->
-<div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center;">
-  <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
-  <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
+<div id="image-modal">
+  <img id="modal-image" src="" alt="Full Image">
+  <span id="close-modal">&times;</span>
 </div>
 
 <script>
@@ -124,102 +162,100 @@ subtitle: Maritime Data Analyst
     const sliders = document.querySelectorAll(".image-slider");
 
     if (sliders.length === 0) {
+      // Retry shortly if sliders not yet in DOM
       return setTimeout(initSliders, 100);
     }
 
     sliders.forEach(slider => {
       const images = JSON.parse(slider.dataset.images || "[]");
+      if (images.length === 0) return;
+
       let currentIndex = 0;
       let autoSlideInterval;
 
       slider.innerHTML = `
         <div class="arrow arrow-left">&#10094;</div>
         <div class="arrow arrow-right">&#10095;</div>
-        <div class="slider"></div>
+        <div class="slider-track"></div>
         <div class="slider-dots"></div>
       `;
 
-      const sliderDiv = slider.querySelector(".slider");
+      const track = slider.querySelector(".slider-track");
       const dotsContainer = slider.querySelector(".slider-dots");
       const leftArrow = slider.querySelector(".arrow-left");
       const rightArrow = slider.querySelector(".arrow-right");
 
-      function createImage(src) {
+      // Add all images inside track
+      images.forEach(src => {
         const img = document.createElement("img");
-        img.className = "slider-main-image";
         img.src = src;
         img.alt = "Slider Image";
-        img.style.opacity = "1";
-        img.style.transition = "opacity 0.5s ease";
-        img.style.cursor = "zoom-in";
         img.addEventListener("click", () => {
           document.getElementById("modal-image").src = src;
           document.getElementById("image-modal").style.display = "flex";
         });
-        return img;
-      }
+        track.appendChild(img);
+      });
 
-      function updateSlider() {
-        const oldImage = sliderDiv.querySelector(".slider-main-image");
-        if (oldImage) {
-          oldImage.classList.add("fade-out");
-          setTimeout(() => {
-            sliderDiv.innerHTML = "";
-            sliderDiv.appendChild(createImage(images[currentIndex]));
-            updateDots();
-          }, 500);
-        } else {
-          sliderDiv.innerHTML = "";
-          sliderDiv.appendChild(createImage(images[currentIndex]));
-          updateDots();
-        }
-      }
-
+      // Create dots
       function updateDots() {
         dotsContainer.innerHTML = "";
         images.forEach((_, i) => {
           const dot = document.createElement("span");
           dot.className = i === currentIndex ? "active" : "";
           dot.addEventListener("click", () => {
-            clearInterval(autoSlideInterval);
             currentIndex = i;
             updateSlider();
-            autoSlideInterval = startAutoSlide();
+            resetAutoSlide();
           });
           dotsContainer.appendChild(dot);
         });
       }
 
-      function startAutoSlide() {
-        return setInterval(() => {
-          currentIndex = (currentIndex + 1) % images.length;
-          updateSlider();
-        }, 10000);
+      // Update slider position
+      function updateSlider() {
+        const offset = -currentIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
+        updateDots();
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateSlider();
+      }
+
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateSlider();
       }
 
       leftArrow.addEventListener("click", () => {
-        clearInterval(autoSlideInterval);
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        updateSlider();
-        autoSlideInterval = startAutoSlide();
+        prevSlide();
+        resetAutoSlide();
       });
 
       rightArrow.addEventListener("click", () => {
-        clearInterval(autoSlideInterval);
-        currentIndex = (currentIndex + 1) % images.length;
-        updateSlider();
-        autoSlideInterval = startAutoSlide();
+        nextSlide();
+        resetAutoSlide();
       });
 
+      // Auto slide every 10 seconds
+      function resetAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+          nextSlide();
+        }, 10000);
+      }
+
       updateSlider();
-      autoSlideInterval = startAutoSlide();
+      resetAutoSlide();
     });
   }
 
-  // Start when DOM is ready
+  // Initialize sliders on DOM ready
   document.addEventListener("DOMContentLoaded", initSliders);
 
-  // Modal logic (Esc to close)
+  // Modal logic (close on click X or ESC)
   document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("image-modal");
     const closeBtn = document.getElementById("close-modal");

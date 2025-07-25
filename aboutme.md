@@ -152,9 +152,9 @@ subtitle: Maritime Data Analyst
 </div>
 
 <!-- Fullscreen Modal -->
-<div id="image-modal">
-  <img id="modal-image" src="" alt="Full Image">
-  <span id="close-modal">&times;</span>
+<div id="image-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
+  <img id="modal-image" src="" alt="Full Image" style="max-width: 90%; max-height: 90%;">
+  <span id="close-modal" style="position: absolute; top: 30px; right: 40px; font-size: 40px; color: white; cursor: pointer;">&times;</span>
 </div>
 
 <script>

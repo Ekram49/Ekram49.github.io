@@ -112,185 +112,100 @@ subtitle: Maritime Data Analyst
 </div>
 
 <!-- Fullscreen Modal -->
-<div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
-  <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
-  <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
-</div>
-
-<!-- Fullscreen Modal -->
-<div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
+<div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.8); z-index:9999; display:flex; justify-content:center; align-items:center;">
   <img id="modal-image" src="" alt="Full Image" style="max-width:90%; max-height:90%;">
   <span id="close-modal" style="position:absolute; top:30px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const sliders = document.querySelectorAll(".image-slider");
-  const modal = document.getElementById("image-modal");
-  const modalImage = document.getElementById("modal-image");
-  const closeModal = document.getElementById("close-modal");
+  function initSliders() {
+    const sliders = document.querySelectorAll(".image-slider");
 
-  sliders.forEach(slider => {
-    const images = JSON.parse(slider.dataset.images || "[]");
-    if (!images.length) return;
-
-    let currentIndex = 0;
-    let autoSlideInterval = null;
-    let isTransitioning = false;
-
-    slider.setAttribute("role", "region");
-    slider.setAttribute("aria-label", "Image Carousel");
-
-    slider.innerHTML = `
-      <div class="arrow arrow-left" role="button" tabindex="0" aria-label="Previous slide">&#10094;</div>
-      <div class="arrow arrow-right" role="button" tabindex="0" aria-label="Next slide">&#10095;</div>
-      <div class="slider" style="position:relative; overflow:hidden;"></div>
-      <div class="slider-dots" role="tablist"></div>
-    `;
-
-    const leftArrow = slider.querySelector(".arrow-left");
-    const rightArrow = slider.querySelector(".arrow-right");
-    const sliderDiv = slider.querySelector(".slider");
-    const dotsContainer = slider.querySelector(".slider-dots");
-
-    let sliderMainImage = document.createElement("img");
-    sliderMainImage.className = "slider-main-image";
-    sliderMainImage.src = images[0];
-    sliderMainImage.alt = "Slider Image";
-    sliderMainImage.loading = "lazy";
-    sliderMainImage.style.cursor = "zoom-in";
-    sliderMainImage.setAttribute("tabindex", "0");
-
-    sliderDiv.appendChild(sliderMainImage);
-
-    function createDots() {
-      dotsContainer.innerHTML = "";
-      images.forEach((_, i) => {
-        const dot = document.createElement("span");
-        dot.setAttribute("role", "tab");
-        dot.setAttribute("aria-selected", i === currentIndex ? "true" : "false");
-        dot.setAttribute("tabindex", "0");
-
-        dot.addEventListener("click", () => {
-          if (i !== currentIndex && !isTransitioning) {
-            const direction = i > currentIndex ? "left" : "right";
-            changeSlide(i, direction);
-            resetAutoSlide();
-          }
-        });
-
-        dot.addEventListener("keydown", e => {
-          if (e.key === "Enter" || e.key === " ") dot.click();
-        });
-
-        dotsContainer.appendChild(dot);
-      });
+    if (sliders.length === 0) {
+      // Try again in 100ms if no sliders yet (in case they’re rendered late)
+      return setTimeout(initSliders, 100);
     }
 
-    function updateDots() {
-      dotsContainer.querySelectorAll("span").forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentIndex);
-        dot.setAttribute("aria-selected", i === currentIndex ? "true" : "false");
-      });
-    }
+    sliders.forEach(slider => {
+      const images = JSON.parse(slider.dataset.images || "[]");
+      let currentIndex = 0;
 
-    function changeSlide(newIndex, direction = "left") {
-      isTransitioning = true;
-      const nextImage = document.createElement("img");
-      nextImage.src = images[newIndex];
-      nextImage.className = "slider-main-image";
-      nextImage.alt = "Slider Image";
-      nextImage.loading = "lazy";
-      nextImage.style.cursor = "zoom-in";
+      slider.innerHTML = `
+        <div class="arrow arrow-left">&#10094;</div>
+        <div class="arrow arrow-right">&#10095;</div>
+        <div class="slider"></div>
+        <div class="slider-dots"></div>
+      `;
 
-      const offset = direction === "left" ? "100%" : "-100%";
-      nextImage.style.position = "absolute";
-      nextImage.style.top = "0";
-      nextImage.style.left = offset;
-      nextImage.style.transition = "left 0.5s ease";
+      const sliderDiv = slider.querySelector(".slider");
+      const dotsContainer = slider.querySelector(".slider-dots");
+      const leftArrow = slider.querySelector(".arrow-left");
+      const rightArrow = slider.querySelector(".arrow-right");
 
-      sliderDiv.appendChild(nextImage);
+      function createImage(src) {
+        const img = document.createElement("img");
+        img.className = "slider-main-image";
+        img.src = src;
+        img.alt = "Slider Image";
+        img.style.cursor = "zoom-in";
+        img.addEventListener("click", () => {
+          document.getElementById("modal-image").src = src;
+          document.getElementById("image-modal").style.display = "flex";
+        });
+        return img;
+      }
 
-      requestAnimationFrame(() => {
-        nextImage.style.left = "0";
-        sliderMainImage.style.left = direction === "left" ? "-100%" : "100%";
-        sliderMainImage.style.transition = "left 0.5s ease";
-      });
-
-      nextImage.addEventListener("transitionend", () => {
-        sliderDiv.removeChild(sliderMainImage);
-        sliderMainImage = nextImage;
-        currentIndex = newIndex;
-        isTransitioning = false;
+      function updateSlider() {
+        sliderDiv.innerHTML = "";
+        sliderDiv.appendChild(createImage(images[currentIndex]));
         updateDots();
-        setupModalTrigger(sliderMainImage);
+      }
+
+      function updateDots() {
+        dotsContainer.innerHTML = "";
+        images.forEach((_, i) => {
+          const dot = document.createElement("span");
+          dot.className = i === currentIndex ? "active" : "";
+          dot.addEventListener("click", () => {
+            currentIndex = i;
+            updateSlider();
+          });
+          dotsContainer.appendChild(dot);
+        });
+      }
+
+      leftArrow.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateSlider();
       });
-    }
 
-    function nextSlide() {
-      if (isTransitioning) return;
-      const nextIndex = (currentIndex + 1) % images.length;
-      changeSlide(nextIndex, "left");
-    }
-
-    function prevSlide() {
-      if (isTransitioning) return;
-      const prevIndex = (currentIndex - 1 + images.length) % images.length;
-      changeSlide(prevIndex, "right");
-    }
-
-    function startAutoSlide() {
-      autoSlideInterval = setInterval(nextSlide, 5000);
-    }
-
-    function stopAutoSlide() {
-      clearInterval(autoSlideInterval);
-    }
-
-    function resetAutoSlide() {
-      stopAutoSlide();
-      startAutoSlide();
-    }
-
-    function setupModalTrigger(img) {
-      img.addEventListener("click", () => {
-        modalImage.src = img.src;
-        modal.style.display = "flex";
+      rightArrow.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateSlider();
       });
-    }
 
-    // Initial setup
-    createDots();
-    updateDots();
-    startAutoSlide();
-    setupModalTrigger(sliderMainImage);
-
-    leftArrow.addEventListener("click", prevSlide);
-    rightArrow.addEventListener("click", nextSlide);
-
-    leftArrow.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") leftArrow.click();
+      updateSlider();
     });
+  }
 
-    rightArrow.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") rightArrow.click();
-    });
+  // Start when DOM is ready
+  document.addEventListener("DOMContentLoaded", initSliders);
 
-    slider.addEventListener("mouseenter", stopAutoSlide);
-    slider.addEventListener("mouseleave", resetAutoSlide);
-  });
+  // Modal logic (Esc to close)
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("image-modal");
+    const closeBtn = document.getElementById("close-modal");
 
-  // Modal logic
-  closeModal.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
+    closeBtn.addEventListener("click", () => {
       modal.style.display = "none";
-    }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        modal.style.display = "none";
+      }
+    });
   });
-});
 </script>
 
 <!-- Your original content below (unchanged) -->

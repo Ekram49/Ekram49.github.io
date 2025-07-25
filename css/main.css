@@ -420,7 +420,7 @@ footer .theme-by {
 
 .post-preview-link:hover .post-title,
 .post-preview-link:hover .post-subtitle {
-  color: #001F3F; /* Royal Navy */
+  color: #4B0082; /* Indigo */
 }
 
 @media only screen and (min-width: 768px) {

@@ -111,8 +111,6 @@ subtitle: Maritime Data Analyst
   <a href="mailto:ekramullahzaki@gmail.com" class="link-button link-email"><i class="fas fa-envelope"></i> Email</a>
 </div>
 
-<div class="image-slider" data-images='["image1.jpg", "image2.jpg", "image3.jpg"]'></div>
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".image-slider").forEach(slider => {

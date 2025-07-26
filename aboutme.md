@@ -143,14 +143,6 @@ subtitle: Maritime Data Analyst
   <a href="mailto:ekramullahzaki@gmail.com" class="link-button link-email"><i class="fas fa-envelope"></i> Email</a>
 </div>
 
-<!-- Slider container example -->
-<div class="image-slider" 
-  data-images='[
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Early%20Life/Early%20Life%20-%20Fun.png",
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Early%20Life/Early%20Life%20-%20Navy.png"
-  ]'>
-</div>
-
 <!-- Fullscreen Modal -->
 <div id="image-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
   <img id="modal-image" src="" alt="Full Image" style="max-width: 90%; max-height: 90%;">

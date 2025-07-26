@@ -175,7 +175,7 @@ Based on the analysis, my final recommendation to the client would be:
 
 •	If the goal is to maximize profit, <b>68 rpm</b> would be ideal.
 
-•	If the goal is to minimize emissions, <b>66 rpm</b? would be ideal.
+•	If the goal is to minimize emissions, <b>66 rpm</b>? would be ideal.
 
 •	If the goal is to maximize profit with an emissions cap of <b>2200 MT CO2</b>, <b>66 rpm</b> would be ideal.
 

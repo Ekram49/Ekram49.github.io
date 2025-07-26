@@ -5,7 +5,7 @@ subtitle: The Assignment That Landed Me My First Analyst Role
 image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Logo.png
 ---
 
-My journey as a maritime data analyst began at Nautilus Labs, a maritime technology startup that leveraged AI-driven analytics to optimize vessel speed, route, and performance, reduce fuel consumption, and minimize emissions for more sustainable and efficient shipping operations. I joined Nautilus in April 2022 as a Voyage Optimization Analyst, and later on, worked as a Senior Maritime Analyst until the company wound down its operation back in November 2023.
+My journey as a maritime data analyst began at <b>Nautilus Labs</b>, a maritime technology startup that leveraged AI-driven analytics to optimize vessel speed, route, and performance, reduce fuel consumption, and minimize emissions for more sustainable and efficient shipping operations. I joined Nautilus in April 2022 as a <b>Voyage Optimization Analyst</b>, and later on, worked as a <b>Senior Maritime Analyst</b> until the company wound down its operation back in November 2023.
 
 The last stage of my hiring process was a take-home assignment that included a simple data analysis and data-driven decision-making task, and a client communication task. I found the assignment very insightful, as it gave me a good understanding of what day-to-day work as a VO analyst at Nautilus may look like.
 
@@ -19,7 +19,9 @@ This post is primarily aimed towards young professionals trying to get into mari
 
 ## The Assignment:
 
-The assignment contained 2 parts. Part 1 was to derive the optimum shaft speed recommendation to maximize the Net profit of an example vessel and voyage (and some other similar optimization goals), utilizing the vessel’s speed and consumption table and voyage duration estimation (more explanation available below). Part 2 contains a task of difficult client communication regarding admitting a mistake and resolving it. A screenshot of the entire assignment task is provided below:
+The assignment contained 2 parts. Part 1 was to <b>derive the optimum shaft speed recommendation to maximize the Net profit of an example vessel and voyage</b> (and some other similar optimization goals), utilizing the vessel’s speed and consumption table and voyage duration estimation (more explanation available below). Part 2 contains a task of <b>difficult client communication regarding admitting a mistake and resolving it</b>. 
+
+A screenshot of the entire assignment task is provided below:
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment.png)
 
@@ -30,29 +32,31 @@ The assignment contained 2 parts. Part 1 was to derive the optimum shaft speed r
 
 Before diving into the solution, let’s add some definition and explanation regarding some terminology used in the assessment. to help understand the task better.
 
-Shaft Speed: The RPM at which the vessel’s propeller shaft is spinning while the vessel is on the go. The propeller shaft is coupled with the ship’s main engine. Shaft speed is directly proportional to the engine(s) rpm. Just like you can drive your car faster by pressing the pedal and increasing engine rpm, sacrificing fuel efficiency and vice versa, you can also increase a vessel’s speed by increasing the shaft speed at the expense of higher fuel cost and emissions.
+<b>Shaft Speed:</b> The RPM at which the vessel’s propeller shaft is spinning while the vessel is on the go. The propeller shaft is coupled with the ship’s main engine. Shaft speed is directly proportional to the engine(s) rpm. Just like you can drive your car faster by pressing the pedal and increasing engine rpm, sacrificing fuel efficiency and vice versa, you can also increase a vessel’s speed by increasing the shaft speed at the expense of higher fuel cost and emissions.
 
-Freight Value: In maritime transportation, the freight value refers to the price charged by a carrier for transporting goods by sea. This price, often referred to as a freight rate or freight charge, is determined by various factors, including the cargo's characteristics, the distance of the voyage, and the specific route.
+<b>Freight Value:</b> In maritime transportation, the freight value refers to the price charged by a carrier for transporting goods by sea. This price, often referred to as a freight rate or freight charge, is determined by various factors, including the cargo's characteristics, the distance of the voyage, and the specific route.
 
-Net Profit: In maritime transportation, net profit for a voyage refers to the total profit earned from a specific shipping voyage after accounting for all relevant revenues and expenses associated with that voyage.
+<b>Net Profit:</b> In maritime transportation, net profit for a voyage refers to the total profit earned from a specific shipping voyage after accounting for all relevant revenues and expenses associated with that voyage.
 
 <!-- Net Profit Equation -->
 <h3 style="text-align: center;"><b><i>Net Profit (Voyage) = Voyage Revenue – Voyage Expenses</i></b></h3>
 
 
-Source of Voyage Revenue: Freight Value
-Source of Voyage Expenses: Fuel Cost, Port Cost, Miscellaneous Costs (Ship maintenance, crew salary, provisions, etc.)
+<b>Source of Voyage Revenue:</b> Freight Value
 
-Speed Over Ground: Speed over ground (SOG) is the actual speed at which a vessel moves relative to the Earth’s surface, typically measured using GPS. The unit of SOG is Nautical Miles Per Hour or “Knots” (1 Nautical Mile = 1.852 kilometers per hour (km/h) = 1.15078 miles per hour (mph))
+<b>Source of Voyage Expenses:</b> Fuel Cost, Port Cost, Miscellaneous Costs (Ship maintenance, crew salary, provisions, etc.)
+
+<b>Speed Over Ground:</b> Speed over ground (SOG) is the actual speed at which a vessel moves relative to the Earth’s surface, typically measured using GPS. The unit of SOG is Nautical Miles Per Hour or “Knots” (<b>1 Nautical Mile = 1.852 kilometers per hour (km/h) = 1.15078 miles per hour (mph)</b>)
 
 Now that we have more context regarding some of the terminologies used in the assignment, let’s dive deep into it and explain how I solved it.
 
 ## Tools I Used:
 
-If your goal is to simply find the answer to the question asked in this assignment, which is to identify the ideal shaft speed for maximizing net profit,  you can use any commonly used spreadsheet program, like Excel or Google Sheets, or simply use pen and paper and get it done. But the goal of these kinds of assignments is not just to see if you can find the answer, it’s also how you find it, i.e, your entire thought process of understanding the problem, finding a way to solve it that’s not only accurate but also efficient and repeatable. Also, they want to see if you understand the problem and your solution enough that you can explain it to both technical and non-technical audiences.
-This is why, instead of using Excel and PowerPoint, I decided to do the project in Google Colab, a free, cloud-based tool from Google that lets you write and execute code for cleaning, analyzing, and visualizing data, and document the analysis in a single, shareable document.
+If your goal is to simply find the answer to the question asked in this assignment, which is to identify the ideal <b>shaft speed</b> for maximizing <b>net profit</b>, you can use any commonly used spreadsheet program, like <b>Excel</b> or <b>Google Sheets</b>, or simply use pen and paper and get it done. But the goal of these kinds of assignments is not just to see if you can find the answer, it’s also how you find it, i.e, your entire thought process of understanding the problem, finding a way to solve it that’s not only accurate but also efficient and repeatable. Also, they want to see if you understand the problem and your solution enough that you can explain it to both technical and non-technical audiences.
 
-In Google Colab, I used Python for the project, as Python is a simple, beginner-friendly language that also has various analytics-focused libraries, which makes data analysis efficient, robust, and scalable. I primarily used Pandas and Numpy for feature engineering, data cleaning, and data analysis, and Plotly for generating interactive visualizations.
+This is why, instead of using <b>Excel</b> and <b>PowerPoint</b>, I decided to do the project in a <b>Jupyter Notebook</b> <b>Google Colab</b>, a free, cloud-based tool from Google that lets you write and execute code for cleaning, analyzing, and visualizing data, and document the analysis in a single, shareable document.
+
+In Google Colab, I used <b>Python</b> for the project, as Python is a simple, beginner-friendly language that also has various analytics-focused libraries, which makes data analysis efficient, robust, and scalable. I primarily used <b>Pandas</b> and <b>Numpy</b> for feature engineering, data cleaning, and data analysis, and Plotly for generating interactive visualizations.
 
 ## Preparing the Data:
 
@@ -65,7 +69,7 @@ Let’s look at the Net Profit equation one more time:
 <!-- Expanded Net Profit Equation -->
 <h3 style="text-align: center;"><b><i>Net Profit = (Freight Value) - ((Daily Cost * Days) + Fuel Costs)</i></b></h3>
 
-For a given voyage, assume there are no major changes in Voyage, Cargo Plan, and Bunker Price, the Freight Value, Estimated Daily Cost, and Fuel Cost Per Metric Tons (MT) should remain the same. Which we can also see in the information given to us, where the Freight Value is $1,300,000, the Daily cost is $25,000, and the Fuel Cost is $700/MT.
+For a given voyage, assume there are no major changes in Voyage, Cargo Plan, and Bunker Price, the Freight Value, Estimated Daily Cost, and Fuel Cost Per Metric Tons (MT) should remain the same. Which we can also see in the information given to us, where the Freight Value is <b>$1,300,000</b>, the Daily cost is <b>$25,000</b>, and the Fuel Cost is <b>$700/MT</b>.
 
 So you might be wondering, if every cost is the same, then how can we optimize the voyage to maximize profit? Well, if you look closely, you will realize that although the Daily cost is constant, the total daily costs for the voyage will vary, based on how many days the vessel sailed for that voyage. And how many days the vessel would be sailing depends on the vessel’s speed.
 
@@ -75,7 +79,7 @@ If you remember the shaft speed definition I provided earlier, you’d know that
 
 So, what we can see is that whether you increase or decrease shaft speed, the two variables (daily cost and fuel cost) would have an opposing impact on net profit. So we need to identify the sweet spot where the overall Net profit is the highest after considering all the variable costs.
 
-### Action Items:
+## Action Items:
 
 •	Create a dataset using the data provided
 
@@ -87,7 +91,7 @@ So, what we can see is that whether you increase or decrease shaft speed, the tw
 
 ## Code:
 
-Now that we fully understand the problem and how to solve it, coding it up should be very easy:
+Now that we fully understand the problem and how to solve it, coding it up should be very easy
 
 ### Create a dataset in pandas:
 
@@ -106,11 +110,11 @@ Now that we fully understand the problem and how to solve it, coding it up shoul
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Line%20Graph%20-%20Max%20Profit.png)
 
 
-So, from our analysis, we can see that the shaft speed for maximizing net profit is 68 rpm. We have officially solved the problem!
+So, from our analysis, we can see that the shaft speed for maximizing net profit is <b>68 rpm</b>. We have officially solved the problem!
 
-But wait, there’s more!
+<b>But wait, there’s more!</b>
 
-Although we have solved the main problem, there was an additional question - “And also, how might the recommendation change if emission reduction is taken into account as a client goal?”
+Although we have solved the main problem, there was an additional question - <i>“And also, how might the recommendation change if emission reduction is taken into account as a client goal?”</i>
 
 Well, this question is less specific and gives us the opportunity to think. I think that the recommendation would change based on what our client’s emission reduction goal exactly is. Once we know that, we can change our recommendation.
 
@@ -124,7 +128,7 @@ When thinking about the emission reduction goal, I could think of three differen
 
 Before we do any emission analysis, let’s create a new column for emission, which is derived from the main engine fuel consumption. To do that, we need to know the carbon intensity of the fuel oil used. Since the fuel type and carbon intensity data were not provided to us, let’s assume that the vessel is using Heavy Fuel Oil (HFO) and the Carbon intensity of the fuel is 3.114 MT CO2 / MT HFO. While the carbon intensity of fuel can vary based on fuel composition, energy content (calorific value), and engine efficiency, the variation is fairly narrow, and the number we chose would be very close in most situations.
 
-Carbon intensity of HFO = 3.114 MT CO2 / MT HFO
+Carbon intensity of HFO = <b>3.114 MT CO2 / MT HFO</b>
 
 <!-- Emissions Equation -->
 <h3 style="text-align: center;"><b><i>Total Emission = (Main Engine Fuel Consumption × Carbon Intensity of HFO) × Voyage Days</i></b></h3>
@@ -138,15 +142,15 @@ Now that we have the total emission for different shaft speeds, it’s super eas
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Emissions%20Cap%20DataFrame.png)
 
 
-We can see that the emission is minimum at the minimum shaft speed of 66. Which is expected, as minimizing shaft speed should minimize fuel consumption, hence minimize emissions.
+We can see that the emission is minimum at the minimum shaft speed of <b>66</b>. Which is expected, as minimizing shaft speed should minimize fuel consumption, hence minimize emissions.
 
 ### Maximize Net Profit While Keeping Emissions Under a Certain Threshold
 
-Let’s assume the emission threshold for this voyage, set by the client, is 2,000 MT. Considering this cap, we can filter out the shaft speeds that exceed that number and then identify the shaft speed that maximizes net profit is 66 rpm.
+Let’s assume the emission threshold for this voyage, set by the client, is <b>2,000 MT</b>. Considering this cap, we can filter out the shaft speeds that exceed that number and then identify the shaft speed that maximizes net profit is <b>66 rpm</b>.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Line%20Graph%20-%20Max%20Profit%20With%20Emissions%20Cap.png)
 
-We can see that with the emission cap, the optimum shaft speed for maximizing Net Profit is - 66 rpm 
+We can see that with the emission cap, the optimum shaft speed for maximizing Net Profit is - <b>66 rpm</b> 
 
 ### Maximize Net Profit with Added Emission Penalty:
 
@@ -156,7 +160,7 @@ Let’s add an emission penalty in the net profit equation
 <!-- Emission-Adjusted Net Profit -->
 <h3 style="text-align: center;"><b><i>Net Profit = (Freight Value) - ((Daily Cost * Days) + Fuel Costs) - (Total Emissions × Emission Penalty)</i></b></h3>
 
-Let’s say that the emission penalty is $10/MT CO2.
+Let’s say that the emission penalty is <b>$10/MT CO2</b>.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Max%20Profit%20With%20Emissions%20Penalty.png)
 
@@ -169,13 +173,13 @@ So, after adding the emission penalty, the shaft speed of 68 results in maximizi
 
 Based on the analysis, my final recommendation to the client would be:
 
-•	If the goal is to maximize profit, 68 rpm would be ideal.
+•	If the goal is to maximize profit, <b>68 rpm</b> would be ideal.
 
-•	If the goal is to minimize emissions, 66 rpm would be ideal.
+•	If the goal is to minimize emissions, <b>66 rpm</b? would be ideal.
 
-•	If the goal is to maximize profit with an emissions cap of 2200 MT CO2, 66 rpm would be ideal.
+•	If the goal is to maximize profit with an emissions cap of <b>2200 MT CO2</b>, <b>66 rpm</b> would be ideal.
 
-•	If the goal is to maximize profit by adding a 10$/MT CO2 emissions penalty, 68 rpm would be ideal.
+•	If the goal is to maximize profit by adding a <b>10$/MT CO2</b> emissions penalty, <b>68 rpm</b> would be ideal.
 
 ## Presentation Tips from Both Sides of the Table:
 
@@ -229,13 +233,13 @@ Too often, candidates freeze up when asked, “Do you have any questions for us?
 
 <b>Here’s how to avoid that:</b>
 
-Ask questions naturally throughout the interview, when appropriate.
+•	Ask questions naturally throughout the interview, when appropriate.
 
-Prepare a list of potential questions ahead of time so you’re not caught off guard.
+•	Prepare a list of potential questions ahead of time so you’re not caught off guard.
 
-Focus on the company’s culture, team structure, tools, workflows, or future direction—these show you’re thinking about what it would be like to work there.
+•	Focus on the company’s culture, team structure, tools, workflows, or future direction—these show you’re thinking about what it would be like to work there.
 
-And remember: You’re also interviewing them. You have every right to evaluate whether their values, work environment, and projects align with what you're looking for. Asking the right questions is a sign of professionalism—not arrogance.
+<b>And remember:</b> You’re also interviewing them. You have every right to evaluate whether their values, work environment, and projects align with what you're looking for. Asking the right questions is a sign of professionalism—not arrogance.
 
 ## A Few Key Moments from My Presentation
 

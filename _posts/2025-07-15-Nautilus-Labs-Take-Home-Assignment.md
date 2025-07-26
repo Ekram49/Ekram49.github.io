@@ -23,7 +23,7 @@ The assignment contained 2 parts. Part 1 was to derive the optimum shaft speed r
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment.png)
 
-**Future Ekram here — this post ended up much longer than I originally expected. If you’re looking for a shorter version focused mainly on data analysis and visualization, check out the [Jupyter Notebook](https://colab.research.google.com/drive/18_dwLvrVbW5Z_e49HwmS5MFw1KBCtN2e?usp=sharing) where the assignment was completed. However, if you have the time and want to take a deep dive into the thought process and methodology, I highly recommend reading the full post!
+<b>**Future Ekram here —</b> this post ended up much longer than I originally expected. If you’re looking for a shorter version focused mainly on data analysis and visualization, check out the [Jupyter Notebook](https://colab.research.google.com/drive/18_dwLvrVbW5Z_e49HwmS5MFw1KBCtN2e?usp=sharing) where the assignment was completed. However, if you have the time and want to take a deep dive into the thought process and methodology, I highly recommend reading the full post!
 
 
 ## Part 1 Solution:
@@ -47,14 +47,14 @@ Speed Over Ground: Speed over ground (SOG) is the actual speed at which a vessel
 
 Now that we have more context regarding some of the terminologies used in the assignment, let’s dive deep into it and explain how I solved it.
 
-## Tools I used:
+## Tools I Used:
 
 If your goal is to simply find the answer to the question asked in this assignment, which is to identify the ideal shaft speed for maximizing net profit,  you can use any commonly used spreadsheet program, like Excel or Google Sheets, or simply use pen and paper and get it done. But the goal of these kinds of assignments is not just to see if you can find the answer, it’s also how you find it, i.e, your entire thought process of understanding the problem, finding a way to solve it that’s not only accurate but also efficient and repeatable. Also, they want to see if you understand the problem and your solution enough that you can explain it to both technical and non-technical audiences.
 This is why, instead of using Excel and PowerPoint, I decided to do the project in Google Colab, a free, cloud-based tool from Google that lets you write and execute code for cleaning, analyzing, and visualizing data, and document the analysis in a single, shareable document.
 
 In Google Colab, I used Python for the project, as Python is a simple, beginner-friendly language that also has various analytics-focused libraries, which makes data analysis efficient, robust, and scalable. I primarily used Pandas and Numpy for feature engineering, data cleaning, and data analysis, and Plotly for generating interactive visualizations.
 
-## Preparing the data:
+## Preparing the Data:
 
 Since the dataset was given to me in a PDF, and not in a spreadsheet (Excel or CSV format). I decided to copy the data from the speed and consumption table manually and create a pandas dataframe. While it is possible to parse the PDF to extract data automatically using some other Python libraries, I thought I should not shift my focus to data parsing, as that is not the main focus of the project. Plus, doing some manual work makes it simpler and less prone to error.
 
@@ -75,30 +75,33 @@ If you remember the shaft speed definition I provided earlier, you’d know that
 
 So, what we can see is that whether you increase or decrease shaft speed, the two variables (daily cost and fuel cost) would have an opposing impact on net profit. So we need to identify the sweet spot where the overall Net profit is the highest after considering all the variable costs.
 
-## This would be our action item:
+### Action Items:
 
-Create a dataset using the data provided
-Calculate the Net Profit for each shaft speed, utilizing the given net profit equation and variable values (daily cost, fuel cost, etc.)
-Identify the Shaft Speed that corresponds with maximum net profit
-Visualize the Net Profit Trend with shaft speed and highlight the shaft speed with maximum Net profit
+•	Create a dataset using the data provided
+
+•	Calculate the Net Profit for each shaft speed, utilizing the given net profit equation and variable values (daily cost, fuel cost, etc.)
+
+•	Identify the Shaft Speed that corresponds with maximum net profit
+
+•	Visualize the Net Profit Trend with shaft speed and highlight the shaft speed with maximum Net profit
 
 ## Code:
 
 Now that we fully understand the problem and how to solve it, coding it up should be very easy:
 
-### Create a dataset in pandas
+### Create a dataset in pandas:
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Visualization%20Code.png)
 
-### Create variables for freight value, fuel cost, and daily cost, and create a Net Profit column
+### Create Variables for Freight Value, Fuel Cost, and Daily Cost, and Create a Net Profit Column:
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Calculating%20Net%20Profit.png)
 
-### Create a function to visualize a line graph
+### Create a Function to Visualize a Line Graph:
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Visualization%20Code.png)
 
-### Visualize the findings.
+### Visualize the Findings:
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Line%20Graph%20-%20Max%20Profit.png)
 
@@ -113,9 +116,11 @@ Well, this question is less specific and gives us the opportunity to think. I th
 
 When thinking about the emission reduction goal, I could think of three different types of goals.
 
-Minimize emissions for the voyage, regardless of net profit.
-Maximize net profit while keeping emissions under a certain threshold
-Adding some emission penalty in the equation and then doing the calculation to identify the shaft speed to maximize net profit with considering the added cost.
+•	Minimize emissions for the voyage, regardless of net profit.
+
+•	Maximize net profit while keeping emissions under a certain threshold.
+
+•	Adding some emission penalty in the equation and then doing the calculation to identify the shaft speed to maximize net profit with considering the added cost.
 
 Before we do any emission analysis, let’s create a new column for emission, which is derived from the main engine fuel consumption. To do that, we need to know the carbon intensity of the fuel oil used. Since the fuel type and carbon intensity data were not provided to us, let’s assume that the vessel is using Heavy Fuel Oil (HFO) and the Carbon intensity of the fuel is 3.114 MT CO2 / MT HFO. While the carbon intensity of fuel can vary based on fuel composition, energy content (calorific value), and engine efficiency, the variation is fairly narrow, and the number we chose would be very close in most situations.
 
@@ -126,7 +131,7 @@ Carbon intensity of HFO = 3.114 MT CO2 / MT HFO
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Line%20Graph%20-%20Min%20Emissions.png)
 
-Minimize emissions for the voyage, regardless of net profit.
+### Minimize Emissions for the Voyage, Regardless of Net Profit.
 
 Now that we have the total emission for different shaft speeds, it’s super easy to identify the shaft speed that corresponds with the minimum emission.
 
@@ -135,13 +140,15 @@ Now that we have the total emission for different shaft speeds, it’s super eas
 
 We can see that the emission is minimum at the minimum shaft speed of 66. Which is expected, as minimizing shaft speed should minimize fuel consumption, hence minimize emissions.
 
-Maximize net profit while keeping emissions under a certain threshold
+### Maximize Net Profit While Keeping Emissions Under a Certain Threshold
 
 Let’s assume the emission threshold for this voyage, set by the client, is 2,000 MT. Considering this cap, we can filter out the shaft speeds that exceed that number and then identify the shaft speed that maximizes net profit is 66 rpm.
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Take%20Home%20Assignment%20-%20Line%20Graph%20-%20Max%20Profit%20With%20Emissions%20Cap.png)
 
 We can see that with the emission cap, the optimum shaft speed for maximizing Net Profit is - 66 rpm 
+
+### Maximize Net Profit with Added Emission Penalty:
 
 Adding that emissions penalty in the equation and then doing the calculation to identify the shaft speed to maximize net profit with considering the added cost.
 Let’s add an emission penalty in the net profit equation
@@ -158,61 +165,69 @@ Adding that variable, we can identify the shaft speed that maximizes Net Profit
 
 So, after adding the emission penalty, the shaft speed of 68 results in maximizing Net Profit
 
-Final Suggestions:
+<b>Final Suggestions:</b>
 
 Based on the analysis, my final recommendation to the client would be:
 
 •	If the goal is to maximize profit, 68 rpm would be ideal.
+
 •	If the goal is to minimize emissions, 66 rpm would be ideal.
+
 •	If the goal is to maximize profit with an emissions cap of 2200 MT CO2, 66 rpm would be ideal.
+
 •	If the goal is to maximize profit by adding a 10$/MT CO2 emissions penalty, 68 rpm would be ideal.
 
-Presentation Tips from Both Sides of the Table
+## Presentation Tips from Both Sides of the Table:
+
 After completing my data analysis, data visualization, and data-driven decision-making tasks, I had to present my work to a panel of four Nautilus employees. This was the final stage of the interview process and lasted about 30 minutes. During the session, I walked them through how I approached the questions, the methods I used, and the reasoning behind my decisions. The experience was surprisingly conversational—it wasn’t the typical grilling you might expect. Instead of trying to catch me off guard with tricky questions, the panel was more interested in understanding my thought process and how I tackled problems. I even had the chance to ask them questions about their perspectives on different parts of the process, which sparked some insightful discussions.
 
 Before diving into the tips, it’s worth mentioning that a year after joining Nautilus, I was promoted to Senior Maritime Analyst and had the opportunity to sit on the other side of the table. I joined the interview panels and helped make hiring decisions for two new analysts. That means the advice I’m sharing comes from both an interviewee’s and an interviewer’s perspective—what makes a presentation compelling, what draws interviewers in, and what makes someone truly stand out.
 
-1. Understand the Goal of the Presentation
+<b>1. Understand the Goal of the Presentation</b>
+   
 These types of interviews are not about impressing clients or selling a product—they’re about selling yourself. Your goal is to showcase how you think, not just what you found. The interviewers already know the correct answers; they’re assessing whether your approach, mindset, and methodology would be a valuable addition to their team.
 
 So, rather than focusing only on the outcome, emphasize your:
 
-Thought process
+•	Thought process
 
-Analytical methods
+•	Analytical methods
 
-Workflow design
+•	Workflow design
 
-Communication skills
+•	Communication skills
 
-Adaptability and self-awareness
+•	Adaptability and self-awareness
 
 This is your chance to show what it would be like to work with you, especially in real project scenarios.
 
-2. Research the Company Thoroughly
+<b>2. Research the Company Thoroughly</b>
+   
 This might be the single most underrated tip: do your homework. Learn about the company’s mission, products, industry positioning, and values. Watch their product demos, read their blog or press releases, follow their social media, and try to understand what challenges they’re solving.
 
 Doing this shows genuine interest and allows you to:
 
-Align your experience with their goals
+•	Align your experience with their goals
 
-Ask thoughtful, specific questions
+•	Ask thoughtful, specific questions
 
-Demonstrate cultural fit and motivation
+•	Demonstrate cultural fit and motivation
 
-Interviewers are impressed when candidates clearly care about the company—not just the job.
+•	Interviewers are impressed when candidates clearly care about the company—not just the job.
 
-3. Don’t Be Afraid to Stand Out
+<b>3. Don’t Be Afraid to Stand Out</b>
+   
 In competitive interviews, being “qualified” often isn’t enough. Many candidates will have similar skills and experiences. What sets you apart is how memorable you are. Leave a positive impression—not by being flashy, but by being authentic, confident, and personable.
 
 For example, if you make the panel smile, ask an unusually insightful question, or show a unique perspective, that could be the thing they remember when making a decision. Interview panels are human. People tend to root for those they feel connected to.
 
-4. Treat the Interview as a Two-Way Conversation
+<b>4. Treat the Interview as a Two-Way Conversation</b>
+   
 While most questions will come from the panel, don’t miss your chance to ask back. Thoughtful questions not only show your curiosity—they show that you’re taking the opportunity seriously.
 
 Too often, candidates freeze up when asked, “Do you have any questions for us?” If you say no—or worse, don’t prepare any—that can signal a lack of engagement. Even if the rest of your interview went well, someone else who asked smart questions could end up with the edge.
 
-Here’s how to avoid that:
+<b>Here’s how to avoid that:</b>
 
 Ask questions naturally throughout the interview, when appropriate.
 
@@ -222,7 +237,7 @@ Focus on the company’s culture, team structure, tools, workflows, or future di
 
 And remember: You’re also interviewing them. You have every right to evaluate whether their values, work environment, and projects align with what you're looking for. Asking the right questions is a sign of professionalism—not arrogance.
 
-A Few Key Moments from My Presentation
+## A Few Key Moments from My Presentation
 
 For my interview presentation, I made a bold decision: I didn’t use a PowerPoint at all. That might sound risky—and in some ways, it was—but I had a clear reason. The goal of the presentation wasn’t to impress with polished slides. It was to demonstrate how I think, how I work, and how I solve problems. And I realized that the best way to show that wasn’t through static snapshots—it was through the Jupyter Notebook I used to complete the assignment.
 
@@ -236,9 +251,9 @@ One of the questions I asked during the interview was whether the assignment res
 
 Sometimes, doing things a little differently can set you apart in a powerful way—especially when it’s done with intention, clarity, and confidence.
 
-Final Thoughts
+## Final Thoughts
 Presenting in an interview can be nerve-wracking, but it's also one of the few chances you get to truly stand out. By focusing on your process, doing your research, engaging in meaningful dialogue, and bringing your authentic self, you give yourself the best shot at not only impressing your interviewers—but connecting with them.
 
 Good luck—and own your story.
 
-To Be Continued........
+<b>**Part 2 of the assignment coming soon........</b>

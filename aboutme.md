@@ -54,7 +54,7 @@ subtitle: Maritime Data Analyst
     height: 400px;
     margin: 40px auto;
     overflow: hidden;
-    background: #f0f0f0;
+    background: transparent;
     border-radius: 12px;
   }
 

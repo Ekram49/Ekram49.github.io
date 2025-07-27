@@ -467,7 +467,7 @@ But for today, I’ll let the pictures do the talking. Here are a few precious m
   ]'>
 </div>
 
-### Safa: My Niece, Our Joy — the Heartbeat of the Family
+### Safa: MY Niece, OUR Joy — the Heartbeat of the Family!
 <!-- Slider container -->
 <div class="image-slider" 
   data-images='[

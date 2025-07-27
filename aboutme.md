@@ -442,9 +442,9 @@ When I’m not working or geeking out over datasets, you’ll probably find me d
 
 <h2> Life(!) Life </h2>
 
-This is a tough one! I could probably write a dozen pages about the people in my life—friends, family, well-wishers—who make this life worth living and thriving..... Maybe someday I will.
+This is a tough one! I could probably write a dozen pages about the people in my life—friends, family, well-wishers—who make this life worth living and thriving..... Maybe someday I will!
 
-But for today, I’ll let the pictures do the talking. Here are a few moments of me with them.
+But for today, I’ll let the pictures do the talking. Here are a few precious moments with them!
 
 ### Family
 <!-- Slider container -->

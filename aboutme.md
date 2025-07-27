@@ -402,7 +402,7 @@ This blog is where I share some of those explorations—data projects, visualiza
 <!-- Slider container -->
 <div class="image-slider" 
   data-images='[
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Prediction%20Table.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Prediction%20Table%201.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20Prediction%20Table%202.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20ETA%20Simulation.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Nautilus%20-%20YTD%20AER.png",

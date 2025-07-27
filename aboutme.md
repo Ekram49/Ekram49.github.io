@@ -239,6 +239,15 @@ subtitle: Maritime Data Analyst
         }, 10000);
       }
 
+      // Pause on hover
+      slider.addEventListener("mouseenter", () => {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+      });
+
+      slider.addEventListener("mouseleave", () => {
+        resetAutoSlide();
+      });
+
       updateSlider();
       resetAutoSlide();
     });

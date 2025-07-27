@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Nautilus Labs Take Home Assignment
-subtitle: The Assignment That Landed Me My First Analyst Role
+subtitle: The Task That Landed Me My First Analyst Role
 image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Nautilus%20Labs%20Take%20Home%20Assignment/Nautilus%20Labs%20Logo.png
 ---
 

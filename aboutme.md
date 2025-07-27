@@ -301,12 +301,12 @@ I had the privilege of learning from seasoned mariners—Captains and Chief Engi
   data-images='[
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%20Life/Academy%20-%20Me.png",
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%20Life/Academy%20-%20Group.png",
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%20Life/Academy%20-Swimming.png"
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%20Life/Academy%20-Swimming.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Academy%20Life/Academy%20-%20Fun.png"
   ]'>
 </div>
 
 Beyond the technical curriculum, the Academy was where I learned the value of discipline, leadership, and resilience—qualities deeply rooted in maritime and regimental life. The daily routine, the drills, the inspections, and the unspoken codes of conduct shaped not just how I worked but who I was becoming.
-
 
 <!-- Slider container -->
 <div class="image-slider" 

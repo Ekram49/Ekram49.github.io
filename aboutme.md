@@ -435,6 +435,11 @@ When I’m not working or geeking out over datasets, you’ll probably find me d
 
 <h2> Life(!) Life </h2>
 
+This is a tough one! I could probably write a dozen pages about the people in my life—friends, family, well-wishers—who make this life worth living and thriving..... Maybe someday I will.
+
+But for today, I’ll let the pictures do the talking. Here are a few moments of me with them.
+
+### Family
 <!-- Slider container -->
 <div class="image-slider" 
   data-images='[
@@ -444,6 +449,7 @@ When I’m not working or geeking out over datasets, you’ll probably find me d
   ]'>
 </div>
 
+### Extended Family
 <!-- Slider container -->
 <div class="image-slider" 
   data-images='[
@@ -454,6 +460,7 @@ When I’m not working or geeking out over datasets, you’ll probably find me d
   ]'>
 </div>
 
+### Safa: My Niece, Our Joy — the Heartbeat of the Family
 <!-- Slider container -->
 <div class="image-slider" 
   data-images='[
@@ -462,6 +469,8 @@ When I’m not working or geeking out over datasets, you’ll probably find me d
     "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Life%20(!)%20Life/Safa/Life%20-%20Safa%20Fun.png"
   ]'>
 </div>
+
+### Friends: The Family Outside the Family
 
 <!-- Slider container -->
 <div class="image-slider" 

@@ -356,14 +356,15 @@ It was also a chance to reunite with many of my coursemates. We shared our sea s
 
 Alongside the coursework, I also completed a thesis on battery energy storage systems (BESS) and their integration with a ship’s power generation system. The research explored how BESS could address the limitations of conventional marine electrical systems—offering smarter power management, reducing auxiliary engine running hours, and delivering both economic and environmental benefits via fuel savings and reduced blackouts. I analyzed control strategies, engine load responses, and system design, and proposed improvements to enhance efficiency and overcome current limitations.
 
-After successfully defending my thesis, I earned my Bachelor’s in Marine Engineering from [Bangladesh Maritime University](https://bmu.edu.bd/)in 2019.
+After successfully defending my thesis, I earned my Bachelor’s in Marine Engineering from [Bangladesh Maritime University](https://bmu.edu.bd/) in 2019.
 
 
 <h2> Tech Life </h2>
 
 After graduation, I moved to the US and decided to pivot my career toward data analytics within the maritime industry. To build the right skill set, I completed courses in data science and analytics, where I gained expertise in statistical analysis, data visualization, SQL, Python, and tools like Tableau and Excel. Beyond the technical skills, I developed critical problem-solving abilities, effective communication, and project management techniques essential for collaborating across teams.
 
-Combining these new skills with my maritime background helped me secure roles at innovative industry leaders in maritime tech space like Nautilus Labs and Sofar Ocean. There, I had the privilege of working alongside some of the most talented, driven, and forward-thinking professionals I’ve ever known—people passionate about solving complex challenges in shipping and climate tech.
+Combining these new skills with my maritime background helped me secure roles at innovative industry leaders in the maritime tech space like [Nautilus Labs](https://www.danelec.com/newsroom/danelec-acquires-nautilus-labs-ai-technology-platform-to-gain-deeper-insights-within-sustainability-and-safety
+) and [Sofar Ocean]("https://www.sofarocean.com/"). There, I had the privilege of working alongside some of the most talented, driven, and forward-thinking professionals I’ve ever known—people passionate about solving complex challenges in shipping and climate tech.
 
 My work ranged from data analytics and client communications to developing tools and insights focused on voyage simulation and optimization, vessel performance monitoring, process automation, weather routing, and post-voyage reporting. I regularly collaborated with product and engineering teams—contributing to project planning, prototyping software solutions, and serving as a subject matter expert on maritime operations, shipping logistics, and voyage optimization.
 
@@ -383,12 +384,7 @@ My firsthand experience onboard ships proved invaluable, earning me respect from
 
 Outside of work, I’m pretty obsessed with the ocean—not just from a seafarer’s point of view, but also in terms of marine life and sustainability. I'm also curious about aviation, healthcare tech, and renewable energy (particularly battery innovations). Basically, if it’s data-rich and meaningful, I want to explore it.
 
-<!-- Slider container -->
-<div class="image-slider" 
-  data-images='[
-    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20My%20Portfolio%20Website.png"
-  ]'>
-</div>
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20My%20Portfolio%20Website.png)
 
 This blog is where I share some of those explorations—data projects, visualizations, and thoughts on topics I care about.
 

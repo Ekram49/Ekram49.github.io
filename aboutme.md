@@ -384,7 +384,14 @@ My firsthand experience onboard ships proved invaluable, earning me respect from
 
 Outside of work, I’m pretty obsessed with the ocean—not just from a seafarer’s point of view, but also in terms of marine life and sustainability. I'm also curious about aviation, healthcare tech, and renewable energy (particularly battery innovations). Basically, if it’s data-rich and meaningful, I want to explore it.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20My%20Portfolio%20Website.png)
+<!-- Slider container -->
+<div class="image-slider" 
+  data-images='[
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20Portfolio%20Landing%20Page.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20Portfolio%20Post.png",
+    "https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/About%20Me/Geek%20Life/Geek%20-%20Portfolio%20Contact.png"
+  ]'>
+</div>
 
 This blog is where I share some of those explorations—data projects, visualizations, and thoughts on topics I care about.
 

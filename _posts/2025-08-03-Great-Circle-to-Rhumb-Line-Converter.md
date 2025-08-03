@@ -38,7 +38,7 @@ Another term for Great Circle. It represents the true shortest distance between 
 <b>TCE (Time Charter Equivalent):</b>
 A performance metric used in the shipping industry to calculate a vessel’s daily earnings, allowing for comparison across different voyage types.
 
-<h4 style="text-align: center;"><b><i>TCE = (Voyage Revenue – Voyage Expenses) / Voyage Duration (days)</i></b></h3>
+<h4 style="text-align: center;"><b><i>TCE = (Voyage Revenue – Voyage Expenses) / Voyage Duration (days)</i></b></h4>
 
 <b>Net Profit:</b>
 The remaining earnings after subtracting all voyage-related expenses from total revenue. These expenses can include fuel, port fees, crew wages, and insurance.

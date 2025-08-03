@@ -77,7 +77,7 @@ While manageable for a route with one or two GC segments, this process became in
 
 This bottleneck presented an opportunity for automation.
 
-### Mapping the Pain Points and Solutions
+### Mapping the Pain Points and Solutions:
 
 I realized that the most technically complex step—converting Great Circle tracks into Rhumb Line approximations—was already handled by a script we had in an existing internal tool. The real inefficiencies lay in the manual steps: checking the route, running conversions one-by-one, integrating them manually, and ensuring proper formatting.
 
@@ -93,7 +93,7 @@ To streamline this, I set out to map the pain points and design a solution to ad
 | Visual validation       | No way to visually validate whether the converted route matches the original intent.            | Script plots both original and converted routes on an interactive map.     |
 | File compatibility     | Separate workflows are required for different route file formats (e.g., CSV vs RTZ).             | Script supports multiple formats with a unified workflow.                   |
 
-### Route Conversion Script Workflow
+### Route Conversion Script Workflow:
 
 I wrote a script in a <b>Jupyter Notebook</b> to automate and streamline the route processing workflow. Here's what the script does:
 
@@ -102,9 +102,13 @@ I wrote a script in a <b>Jupyter Notebook</b> to automate and streamline the rou
 - Identifies the uploaded file type by calling the `identify_file_type()` function.
 
 - Converts the file into a standardized internal format using the appropriate function based on file type:
-  - `Convert_RTZ()` for `.rtz` files  
-  - `Convert_CSV()` for `.csv` files  
-  - `Convert_TXT()` for `.txt` files  
+  
+  - `Convert_RTZ()` for `.rtz` files
+    
+  - `Convert_CSV()` for `.csv` files
+    
+  - `Convert_TXT()` for `.txt` files
+    
   - The conversion retains all relevant data such as waypoint number, latitude, longitude, and RL/GC segment type.
 
 - Performs GC to RL conversion using the standardized format:
@@ -121,11 +125,15 @@ I wrote a script in a <b>Jupyter Notebook</b> to automate and streamline the rou
 I designed the tool with usability in mind, recognizing that it would be used by individuals from diverse backgrounds—including analysts, engineers, and product managers—many of whom may not have advanced technical or coding skills. To make it accessible:
 
 - The user is not required to write or edit any code.
+  
 - All code cells are hidden from view to reduce complexity.
+  
 - The interface is simplified so that the entire workflow can be completed through just a few intuitive steps
 
   - Upload the route file using the <b>built-in UI</b>.
+    
   - View the <b>interactive map</b> to visually compare the original and converted <b>routes</b>.
+    
   - If the route looks correct, copy the <b>printed waypoints</b> and paste them into the designated input area in the platform.
 
   

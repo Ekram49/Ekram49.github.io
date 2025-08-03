@@ -112,12 +112,17 @@ I wrote a script in a <b>Jupyter Notebook</b> to automate and streamline the rou
   - The conversion retains all relevant data such as waypoint number, latitude, longitude, and RL/GC segment type.
 
 - Performs GC to RL conversion using the standardized format:
-  - Detects which waypoints are Great Circle (GC) and which are Rhumb Line (RL) by reading metadata.  
-  - Converts each GC segment into multiple smaller RL segments (approximately <b>50 nautical miles per leg</b>).  
-  - Automatically inserts the converted waypoints into the correct positions in the route sequence.  
+- 
+  - Detects which waypoints are Great Circle (GC) and which are Rhumb Line (RL) by reading metadata.
+    
+  - Converts each GC segment into multiple smaller RL segments (approximately <b>50 nautical miles per leg</b>).
+    
+  - Automatically inserts the converted waypoints into the correct positions in the route sequence.
+    
   - Visualizes both the original and the converted route on an interactive map for comparison, validation, and anomaly detection.
 
 - Outputs the final route:
+  
   - Exports the full list of converted waypoints in structured <b>JSON</b> format.
 
 ### User Guide for the Script

@@ -7,7 +7,7 @@ image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/ma
 
 When I joined <b>Nautilus Labs</b> in 2022, the company was still in its early stages. Like many startups at that phase, Nautilus relied on a combination of quick fixes and auxiliary tools while the core product was still under development. After settling in, I noticed several opportunities to both enhance existing systems and build new ones from scratch.
 
-One of the first tools I developed was <b>Great Circle to Rhumb Line Converter</b>—a Python-based Jupyter Notebook script designed to parse route files (in both <b>RTZ and </b>CSV formats) and automatically convert all <b>Rhumb Line</b> segments to </b>Great Circle</b> tracks.
+One of the first tools I developed was <b>Great Circle to Rhumb Line Converter</b>—a Python-based Jupyter Notebook script designed to parse route files (in both <b>RTZ</b> and <b>CSV</b> formats) and automatically convert all <b>Rhumb Line</b> segments to <b>Great Circle</b> tracks.
 
 Before diving into the tool’s functionality, here are some key navigation terms that provide important context:
 
@@ -24,10 +24,10 @@ A plain text file format that organizes data in a tabular structure, where each 
 A standardized format <b>(IEC 61174:2015)</b> used for exchanging route data between ships and shore-based systems. It includes waypoints, legs, safety parameters, and metadata, ensuring consistency across different <b>ECDIS</b> platforms.
 
 <b>Rhumb Line (RL):</b>
-Also known as a <b>loxodrome</b>, this is a line that maintains a constant compass bearing, crossing all meridians at the same angle. While easy to follow, it is not the shortest route over long distances.
+Also known as a <b>Loxodrome</b>, this is a line that maintains a constant compass bearing, crossing all meridians at the same angle. While easy to follow, it is not the shortest route over long distances.
 
 <b>Great Circle (GC):</b>
-The shortest path between two points on a sphere. Unlike a rhumb line, a great circle route constantly changes its compass bearing. It is commonly used in long-distance ocean navigation to reduce travel time and fuel consumption. Also known as a <b>orthodrome</b>.
+The shortest path between two points on a sphere. Unlike a rhumb line, a great circle route constantly changes its compass bearing. It is commonly used in long-distance ocean navigation to reduce travel time and fuel consumption. Also known as a <b>Orthodrome</b>.
 
 <b>Loxodrome:</b>
 A synonym for Rhumb Line—a path of constant compass direction. It is simple to navigate but longer over great distances.
@@ -53,7 +53,7 @@ At Nautilus Labs, one of our core offerings was voyage optimization—the proces
 
 To generate these recommendations, the first essential input was the vessel’s planned route. The route file enabled the platform to calculate the distance to be traveled and evaluate the weather conditions (such as <b>wind</b>, <b>wave</b>, and <b>current</b>) the vessel would encounter. Combined with the vessel’s historical performance data—specifically its speed and fuel consumption—the system could then compute the optimal <b>shaft speed</b> required to achieve the desired outcome.
 
-It became clear that an accurate and realistic route—one the vessel actually intended to follow—was critical for reliable <b>voyage optimization</b>. Without it, the platform couldn’t assess upcoming weather conditions accurately or recommend the appropriate speed strategy. The optimization would be based on flawed assumptions, leading to suboptimal outcomes.
+It should be clear that an accurate and realistic route—one the vessel actually intended to follow—was critical for reliable <b>voyage optimization</b>. Without it, the platform couldn’t assess upcoming weather conditions accurately or recommend the appropriate speed strategy. The optimization would be based on flawed assumptions, leading to suboptimal outcomes.
 
 Uploading a route to our platform was relatively simple on the surface:
 
@@ -77,42 +77,46 @@ While manageable for a route with one or two GC segments, this process became in
 
 This bottleneck presented an opportunity for automation.
 
+### Mapping the Pain Points and Solutions
+
 I realized that the most technically complex step—converting Great Circle tracks into Rhumb Line approximations—was already handled by a script we had in an existing internal tool. The real inefficiencies lay in the manual steps: checking the route, running conversions one-by-one, integrating them manually, and ensuring proper formatting.
 
 To streamline this, I set out to map the pain points and design a solution to address each of them. My goal was to fully automate the process from file input to ready-to-upload route, eliminating time-consuming manual interventions and minimizing the risk of human error.
 
-Here’s a summary of the key pain points and potential solutions I identified:
+<b>Here’s a summary of the key pain points and potential solutions I identified:</b>
 
+| **Processes**           | **Manual Step / Pain Point**                                                                    | **Automated Solution**                                                      |
+|------------------------|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| Identifying segment types | Manually read the metadata to determine which waypoints are Rhumb Line (RL) and which are Great Circle (GC). | Script automatically reads metadata and identifies RL and GC waypoints.    |
+| Converting GC segments  | Manually convert each GC segment into a corresponding RL segment, one at a time.                 | Script converts all GC segments to RL segments in batch.                    |
+| Integrating waypoints   | Manually insert the converted waypoints into the original route at the correct positions.       | Script auto-merges converted waypoints into correct positions.             |
+| Visual validation       | No way to visually validate whether the converted route matches the original intent.            | Script plots both original and converted routes on an interactive map.     |
+| File compatibility     | Separate workflows are required for different route file formats (e.g., CSV vs RTZ).             | Script supports multiple formats with a unified workflow.                   |
 
-| **Manual Step / Pain Point** | **Automated Solution** |
-|------------------------------|-------------------------|
-| Manually read the metadata to determine which waypoints are Rhumb Line (RL) and which are Great Circle (GC). | Implement a script that automatically reads the metadata and identifies RL and GC waypoints. |
-| Manually convert each GC segment into a corresponding RL segment, one at a time. | Add functionality to the script to automatically convert all GC segments into RL segments in batch. |
-| Manually insert the converted waypoints into the original route at the correct positions. | Enhance the script to automatically merge converted waypoints into their correct positions within the route. |
-| No way to visually validate whether the converted route matches the original intent. | Integrate visualization to plot both the original and converted routes for easy comparison and validation. |
-| Separate workflows are required for different route file formats (e.g., CSV vs RTZ). | Make the script compatible with both CSV and RTZ formats, removing the need for format-specific workflows. |
+### Route Conversion Script Workflow
 
-
-I wrote a script in a Jupyter Notebook to automate and streamline the route processing workflow. Here's what the script does:
+I wrote a script in a <b>Jupyter Notebook</b> to automate and streamline the route processing workflow. Here's what the script does:
 
 - Uses a simple UI to accept route files in `.rtz`, `.csv`, or `.txt` format.
 
 - Identifies the uploaded file type by calling the `identify_file_type()` function.
 
 - Converts the file into a standardized internal format using the appropriate function based on file type:
-  -- `Convert_RTZ()` for `.rtz` files  
-  -- `Convert_CSV()` for `.csv` files  
-  -- `Convert_TXT()` for `.txt` files  
-  -- The conversion retains all relevant data such as waypoint number, latitude, longitude, and RL/GC segment type.
+  - `Convert_RTZ()` for `.rtz` files  
+  - `Convert_CSV()` for `.csv` files  
+  - `Convert_TXT()` for `.txt` files  
+  - The conversion retains all relevant data such as waypoint number, latitude, longitude, and RL/GC segment type.
 
-- Performs GC-to-RL conversion using the standardized format:
-  -- Detects which waypoints are Great Circle (GC) and which are Rhumb Line (RL) by reading metadata.  
-  -- Converts each GC segment into multiple smaller RL segments (approximately <b>50 nautical miles per leg</b>).  
-  -- Automatically inserts the converted waypoints into the correct positions in the route sequence.  
-  -- Visualizes both the original and the converted route on an interactive map for comparison, validation, and anomaly detection.
+- Performs GC to RL conversion using the standardized format:
+  - Detects which waypoints are Great Circle (GC) and which are Rhumb Line (RL) by reading metadata.  
+  - Converts each GC segment into multiple smaller RL segments (approximately <b>50 nautical miles per leg</b>).  
+  - Automatically inserts the converted waypoints into the correct positions in the route sequence.  
+  - Visualizes both the original and the converted route on an interactive map for comparison, validation, and anomaly detection.
 
 - Outputs the final route:
-  -- Exports the full list of converted waypoints in structured <b>JSON</b> format.
+  - Exports the full list of converted waypoints in structured <b>JSON</b> format.
+
+### User Guide for the Script
 
 I designed the tool with usability in mind, recognizing that it would be used by individuals from diverse backgrounds—including analysts, engineers, and product managers—many of whom may not have advanced technical or coding skills. To make it accessible:
 
@@ -120,18 +124,18 @@ I designed the tool with usability in mind, recognizing that it would be used by
 - All code cells are hidden from view to reduce complexity.
 - The interface is simplified so that the entire workflow can be completed through just a few intuitive steps
 
-  -- Upload the route file using the <b>built-in UI</b>.
-  -- View the <b>interactive map</b> to visually compare the original and converted <b>routes</b>.
-  -- If the route looks correct, copy the <b>printed waypoints</b> and paste them into the designated input area in the platform.
+  - Upload the route file using the <b>built-in UI</b>.
+  - View the <b>interactive map</b> to visually compare the original and converted <b>routes</b>.
+  - If the route looks correct, copy the <b>printed waypoints</b> and paste them into the designated input area in the platform.
 
   
-### Route File Uploader UI
+### Route File Uploader UI:
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/Route%20Upload.png)
 
-### Interactive Map
+### Interactive Map:
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/GC%20to%20RL.png)
 
-### Original vs Converted Waypoints
+### Original vs Converted Waypoints:
 
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/Original%20vs%20Converted.png)
 

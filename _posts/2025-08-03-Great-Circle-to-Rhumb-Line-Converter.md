@@ -43,7 +43,7 @@ A performance metric used in the shipping industry to calculate a vessel’s dai
 <b>Net Profit:</b>
 The remaining earnings after subtracting all voyage-related expenses from total revenue. These expenses can include fuel, port fees, crew wages, and insurance.
 
-<h3 style="text-align: center;"><b><i>Net Profit = Voyage Revenue – Voyage Expenses</i></b></h3>
+<h4 style="text-align: center;"><b><i>Net Profit = Voyage Revenue – Voyage Expenses</i></b></h4>
 
 <b>ETA (Estimated Time of Arrival):</b>
 The expected arrival time of a vessel at a specific waypoint, port, or destination. ETA is critical for voyage planning, logistics, and port coordination.

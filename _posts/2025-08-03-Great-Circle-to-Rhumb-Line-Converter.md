@@ -7,7 +7,7 @@ image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/ma
 
 When I joined <b>Nautilus Labs</b> in 2022, the company was still in its early stages. Like many startups at that phase, Nautilus relied on a combination of quick fixes and auxiliary tools while the core product was still under development. After settling in, I noticed several opportunities to both enhance existing systems and build new ones from scratch.
 
-One of the first tools I developed was <b>Great Circle to Rhumb Line Converter</b>—a Python-based Jupyter Notebook script designed to parse route files (in both <b>RTZ</b> and <b>CSV</b> formats) and automatically convert all <b>Rhumb Line</b> segments to <b>Great Circle</b> tracks.
+One of the first tools I developed was <b>Great Circle to Rhumb Line Converter</b>—a Python-based <b>Jupyter Notebook</b> script designed to parse route files (in both <b>RTZ</b> and <b>CSV</b> formats) and automatically convert all <b>Rhumb Line</b> segments to <b>Great Circle</b> tracks.
 
 Before diving into the tool’s functionality, here are some key navigation terms that provide important context:
 

@@ -79,7 +79,7 @@ This bottleneck presented an opportunity for automation.
 
 ### Mapping the Pain Points and Solutions:
 
-I realized that the most technically complex step—converting Great Circle tracks into Rhumb Line approximations—was already handled by a script we had in an existing internal tool. The real inefficiencies lay in the manual steps: checking the route, running conversions one-by-one, integrating them manually, and ensuring proper formatting.
+I realized that the most technically complex step—converting Great Circle tracks into Rhumb Line approximations—was already handled by a script we had in an existing internal tool. The real inefficiencies lie in the manual steps: checking the route, running conversions one-by-one, integrating them manually, and ensuring proper formatting.
 
 To streamline this, I set out to map the pain points and design a solution to address each of them. My goal was to fully automate the process from file input to ready-to-upload route, eliminating time-consuming manual interventions and minimizing the risk of human error.
 
@@ -101,7 +101,7 @@ I wrote a script in a <b>Jupyter Notebook</b> to automate and streamline the rou
 
 - Identifies the uploaded file type by calling the `identify_file_type()` function.
 
-- Converts the file into a standardized internal format using the appropriate function based on file type:
+- Converts the file into a standardized format using the appropriate function based on file type:
   
   - `Convert_RTZ()` for `.rtz` files
     
@@ -112,7 +112,7 @@ I wrote a script in a <b>Jupyter Notebook</b> to automate and streamline the rou
   - The conversion retains all relevant data such as waypoint number, latitude, longitude, and RL/GC segment type.
 
 - Performs GC to RL conversion using the standardized format:
-- 
+  
   - Detects which waypoints are Great Circle (GC) and which are Rhumb Line (RL) by reading metadata.
     
   - Converts each GC segment into multiple smaller RL segments (approximately <b>50 nautical miles per leg</b>).

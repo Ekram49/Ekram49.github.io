@@ -63,6 +63,9 @@ Uploading a route to our platform was relatively simple on the surface:
 
 However, there was a key limitation: the platform’s parser didn’t differentiate between Rhumb Line (RL) and Great Circle (GC) tracks. It failed to read metadata specifying the segment type, defaulting to interpreting all waypoints as Rhumb Line.
 
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/CSV%20file.png)
+https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/CSV%20file.png
+
 This posed a significant problem. If the original route contained Great Circle segments (which it often did), the platform would misinterpret them, resulting in inaccurate route modeling. To correct this, analysts had to:
 
 - Open the original route file and manually identify Great Circle segments using metadata.

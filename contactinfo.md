@@ -142,6 +142,56 @@ permalink: /contactinfo/
     color: gray;
     text-align: center;
   }
+
+  /* Resume dropdown styles */
+  .resume-dropdown {
+    position: relative;
+    width: 100%;
+  }
+
+  .resume-dropdown .contact-button {
+    width: 100%;
+  }
+
+  .resume-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: #594de8;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+    z-index: 1000;
+  }
+
+  .resume-dropdown:hover .resume-dropdown-content {
+    display: flex;
+  }
+
+  .resume-dropdown-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: white !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(145deg, #594de8, #6c63ff);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .resume-dropdown-content a:hover {
+    background: linear-gradient(145deg, #483ed2, #5952f5);
+    transform: scale(1.03);
+  }
 </style>
 
 <div class="contact-intro">
@@ -166,9 +216,20 @@ permalink: /contactinfo/
     <i class="fab fa-whatsapp"></i> WhatsApp
   </a>
 
-  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank" rel="noopener noreferrer">
-    <i class="fas fa-file-alt"></i> Resume
-  </a>
+  <!-- Resume dropdown -->
+  <div class="resume-dropdown">
+    <a href="#" class="contact-button resume">
+      <i class="fas fa-file-alt"></i> Resume
+    </a>
+    <div class="resume-dropdown-content">
+      <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-database"></i> Data Analyst Resume
+      </a>
+      <a href="https://drive.google.com/drive/u/0/folders/1iDV7KioS6XGMh7HPPegkewaYGXQAF7SR" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-ship"></i> Marine Engineer Resume
+      </a>
+    </div>
+  </div>
 
   <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank" rel="noopener noreferrer">
     <i class="fas fa-book"></i> Portfolio

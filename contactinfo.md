@@ -48,7 +48,7 @@ permalink: /contactinfo/
     color: white !important;
     border: 2.5px solid transparent;
     border-radius: 12px;
-    background: linear-gradient(145deg, #005582, #0077b5); /* fallback color, overridden by platform classes */
+    background: linear-gradient(145deg, #005582, #0077b5);
     box-shadow:
       0 4px 6px rgba(0,0,0,0.15),
       inset 0 -3px 5px rgba(255,255,255,0.2);
@@ -68,7 +68,6 @@ permalink: /contactinfo/
     filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
   }
 
-  /* Remove old grid hover opacity */
   .button-grid:hover .contact-button {
     opacity: 1 !important;
   }
@@ -84,56 +83,17 @@ permalink: /contactinfo/
     outline: none;
   }
 
-  /* Platform color gradients and border colors */
-  .linkedin {
-    background: linear-gradient(145deg, #005582, #0077b5);
-    border-color: #004466;
-  }
-
-  .github {
-    background: linear-gradient(145deg, #222, #444);
-    border-color: #111;
-  }
-
-  .email {
-    background: linear-gradient(145deg, #b5392f, #d44638);
-    border-color: #8b2d24;
-  }
-
-  .whatsapp {
-    background: linear-gradient(145deg, #1ebd56, #25D366);
-    border-color: #198c40;
-  }
-
-  .resume {
-    background: linear-gradient(145deg, #594de8, #6c63ff);
-    border-color: #4a3ecf;
-  }
-
-  .portfolio {
-    background: linear-gradient(145deg, #002244, #003366);
-    border-color: #001a33;
-  }
-
-  .facebook {
-    background: linear-gradient(145deg, #0f62c7, #1877f2);
-    border-color: #0b4b9a;
-  }
-
-  .instagram {
-    background: linear-gradient(145deg, #b73661, #e1306c);
-    border-color: #8c274a;
-  }
-
-  .x-twitter {
-    background: linear-gradient(145deg, #111, #000000);
-    border-color: #222;
-  }
-
-  .about {
-    background: linear-gradient(145deg, #444, #666);
-    border-color: #333;
-  }
+  /* Platform gradients */
+  .linkedin { background: linear-gradient(145deg, #005582, #0077b5); border-color: #004466; }
+  .github { background: linear-gradient(145deg, #222, #444); border-color: #111; }
+  .email { background: linear-gradient(145deg, #b5392f, #d44638); border-color: #8b2d24; }
+  .whatsapp { background: linear-gradient(145deg, #1ebd56, #25D366); border-color: #198c40; }
+  .resume { background: linear-gradient(145deg, #594de8, #6c63ff); border-color: #4a3ecf; }
+  .portfolio { background: linear-gradient(145deg, #002244, #003366); border-color: #001a33; }
+  .facebook { background: linear-gradient(145deg, #0f62c7, #1877f2); border-color: #0b4b9a; }
+  .instagram { background: linear-gradient(145deg, #b73661, #e1306c); border-color: #8c274a; }
+  .x-twitter { background: linear-gradient(145deg, #111, #000000); border-color: #222; }
+  .about { background: linear-gradient(145deg, #444, #666); border-color: #333; }
 
   .disclaimer {
     margin-top: 30px;
@@ -143,7 +103,7 @@ permalink: /contactinfo/
     text-align: center;
   }
 
-  /* Resume dropdown styles */
+  /* Resume dropdown */
   .resume-dropdown {
     position: relative;
     width: 100%;
@@ -156,13 +116,11 @@ permalink: /contactinfo/
   .resume-dropdown-content {
     display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 8px);
     left: 0;
     width: 100%;
     flex-direction: column;
-    background: #594de8;
-    border-radius: 0 0 12px 12px;
-    overflow: hidden;
+    gap: 10px;
     z-index: 1000;
   }
 
@@ -171,26 +129,36 @@ permalink: /contactinfo/
   }
 
   .resume-dropdown-content a {
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 16px 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 14px 20px;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 600;
-    font-size: 16px;
+    gap: 12px;
     color: white !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    background: linear-gradient(145deg, #594de8, #6c63ff);
-    border-top: 1px solid rgba(255,255,255,0.2);
     text-decoration: none;
-    transition: background 0.3s ease, transform 0.2s ease;
+    background: linear-gradient(145deg, #594de8, #6c63ff);
+    border: 2.5px solid #4a3ecf;
+    box-shadow:
+      0 4px 6px rgba(0,0,0,0.15),
+      inset 0 -3px 5px rgba(255,255,255,0.2);
+    transition: 
+      transform 0.25s cubic-bezier(.4,0,.2,1),
+      box-shadow 0.3s ease,
+      background 0.3s ease,
+      border-color 0.3s ease;
   }
 
   .resume-dropdown-content a:hover {
-    background: linear-gradient(145deg, #483ed2, #5952f5);
-    transform: scale(1.03);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+      0 8px 15px rgba(0,0,0,0.3),
+      inset 0 -3px 8px rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.6);
   }
 </style>
 

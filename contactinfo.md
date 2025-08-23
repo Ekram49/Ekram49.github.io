@@ -225,7 +225,7 @@ permalink: /contactinfo/
       <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" target="_blank" rel="noopener noreferrer">
         <i class="fas fa-database"></i> Data Analyst Resume
       </a>
-      <a href="https://drive.google.com/drive/u/0/folders/1iDV7KioS6XGMh7HPPegkewaYGXQAF7SR" target="_blank" rel="noopener noreferrer">
+      <a href="https://drive.google.com/file/d/1JYqaB26nayFT5bfprRoiOq_jn5MVklvY/view?usp=sharing" target="_blank" rel="noopener noreferrer">
         <i class="fas fa-ship"></i> Marine Engineer Resume
       </a>
     </div>
@@ -256,3 +256,4 @@ permalink: /contactinfo/
 <div class="disclaimer">
   *No actual AI was harmed (or used) in the making of this assistant. But hey, everyone’s claiming to use AI these days 🤫🤖
 </div>
+

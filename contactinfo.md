@@ -142,16 +142,6 @@ permalink: /contactinfo/
     color: gray;
     text-align: center;
   }
-
-  /* ✅ Rounded dropdown menu edges */
-  .navbar .dropdown-menu {
-    border-radius: 12px; /* same as contact buttons */
-    overflow: hidden; /* keep items inside the curve */
-  }
-
-  .navbar .dropdown-menu .dropdown-item {
-    border-radius: 8px; /* optional: slight rounding on each item */
-  }
 </style>
 
 <div class="contact-intro">
@@ -205,3 +195,4 @@ permalink: /contactinfo/
 <div class="disclaimer">
   *No actual AI was harmed (or used) in the making of this assistant. But hey, everyone’s claiming to use AI these days 🤫🤖
 </div>
+

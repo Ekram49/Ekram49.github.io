@@ -48,7 +48,7 @@ permalink: /contactinfo/
     color: white !important;
     border: 2.5px solid transparent;
     border-radius: 12px;
-    background: linear-gradient(145deg, #005582, #0077b5);
+    background: linear-gradient(145deg, #005582, #0077b5); /* fallback color, overridden by platform classes */
     box-shadow:
       0 4px 6px rgba(0,0,0,0.15),
       inset 0 -3px 5px rgba(255,255,255,0.2);
@@ -68,6 +68,7 @@ permalink: /contactinfo/
     filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
   }
 
+  /* Remove old grid hover opacity */
   .button-grid:hover .contact-button {
     opacity: 1 !important;
   }
@@ -83,17 +84,56 @@ permalink: /contactinfo/
     outline: none;
   }
 
-  /* Platform gradients */
-  .linkedin { background: linear-gradient(145deg, #005582, #0077b5); border-color: #004466; }
-  .github { background: linear-gradient(145deg, #222, #444); border-color: #111; }
-  .email { background: linear-gradient(145deg, #b5392f, #d44638); border-color: #8b2d24; }
-  .whatsapp { background: linear-gradient(145deg, #1ebd56, #25D366); border-color: #198c40; }
-  .resume { background: linear-gradient(145deg, #594de8, #6c63ff); border-color: #4a3ecf; }
-  .portfolio { background: linear-gradient(145deg, #002244, #003366); border-color: #001a33; }
-  .facebook { background: linear-gradient(145deg, #0f62c7, #1877f2); border-color: #0b4b9a; }
-  .instagram { background: linear-gradient(145deg, #b73661, #e1306c); border-color: #8c274a; }
-  .x-twitter { background: linear-gradient(145deg, #111, #000000); border-color: #222; }
-  .about { background: linear-gradient(145deg, #444, #666); border-color: #333; }
+  /* Platform color gradients and border colors */
+  .linkedin {
+    background: linear-gradient(145deg, #005582, #0077b5);
+    border-color: #004466;
+  }
+
+  .github {
+    background: linear-gradient(145deg, #222, #444);
+    border-color: #111;
+  }
+
+  .email {
+    background: linear-gradient(145deg, #b5392f, #d44638);
+    border-color: #8b2d24;
+  }
+
+  .whatsapp {
+    background: linear-gradient(145deg, #1ebd56, #25D366);
+    border-color: #198c40;
+  }
+
+  .resume {
+    background: linear-gradient(145deg, #594de8, #6c63ff);
+    border-color: #4a3ecf;
+  }
+
+  .portfolio {
+    background: linear-gradient(145deg, #002244, #003366);
+    border-color: #001a33;
+  }
+
+  .facebook {
+    background: linear-gradient(145deg, #0f62c7, #1877f2);
+    border-color: #0b4b9a;
+  }
+
+  .instagram {
+    background: linear-gradient(145deg, #b73661, #e1306c);
+    border-color: #8c274a;
+  }
+
+  .x-twitter {
+    background: linear-gradient(145deg, #111, #000000);
+    border-color: #222;
+  }
+
+  .about {
+    background: linear-gradient(145deg, #444, #666);
+    border-color: #333;
+  }
 
   .disclaimer {
     margin-top: 30px;
@@ -103,62 +143,14 @@ permalink: /contactinfo/
     text-align: center;
   }
 
-  /* Resume dropdown */
-  .resume-dropdown {
-    position: relative;
-    width: 100%;
+  /* ✅ Rounded dropdown menu edges */
+  .navbar .dropdown-menu {
+    border-radius: 12px; /* same as contact buttons */
+    overflow: hidden; /* keep items inside the curve */
   }
 
-  .resume-dropdown .contact-button {
-    width: 100%;
-  }
-
-  .resume-dropdown-content {
-    display: none;
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1000;
-  }
-
-  .resume-dropdown:hover .resume-dropdown-content {
-    display: flex;
-  }
-
-  .resume-dropdown-content a {
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    padding: 16px 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    color: white !important;
-    text-decoration: none;
-    background: linear-gradient(145deg, #594de8, #6c63ff);
-    border: 2.5px solid #4a3ecf;
-    box-shadow:
-      0 4px 6px rgba(0,0,0,0.15),
-      inset 0 -3px 5px rgba(255,255,255,0.2);
-    transition: 
-      transform 0.25s cubic-bezier(.4,0,.2,1),
-      box-shadow 0.3s ease,
-      background 0.3s ease,
-      border-color 0.3s ease;
-  }
-
-  .resume-dropdown-content a:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow:
-      0 8px 15px rgba(0,0,0,0.3),
-      inset 0 -3px 8px rgba(255,255,255,0.3);
-    border-color: rgba(255,255,255,0.6);
+  .navbar .dropdown-menu .dropdown-item {
+    border-radius: 8px; /* optional: slight rounding on each item */
   }
 </style>
 
@@ -184,20 +176,9 @@ permalink: /contactinfo/
     <i class="fab fa-whatsapp"></i> WhatsApp
   </a>
 
-  <!-- Resume dropdown -->
-  <div class="resume-dropdown">
-    <a href="#" class="contact-button resume">
-      <i class="fas fa-file-alt"></i> Resume
-    </a>
-    <div class="resume-dropdown-content">
-      <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-        <i class="fas fa-database"></i> Data Analyst Resume
-      </a>
-      <a href="https://drive.google.com/drive/u/0/folders/1iDV7KioS6XGMh7HPPegkewaYGXQAF7SR" target="_blank" rel="noopener noreferrer">
-        <i class="fas fa-ship"></i> Marine Engineer Resume
-      </a>
-    </div>
-  </div>
+  <a href="https://drive.google.com/file/d/1HnU5TD-siw7CX4ezt4imaF2FTCv6M6pR/view?usp=sharing" class="contact-button resume" target="_blank" rel="noopener noreferrer">
+    <i class="fas fa-file-alt"></i> Resume
+  </a>
 
   <a href="https://ekram49.github.io/" class="contact-button portfolio" target="_blank" rel="noopener noreferrer">
     <i class="fas fa-book"></i> Portfolio

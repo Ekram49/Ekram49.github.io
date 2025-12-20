@@ -10,7 +10,9 @@ One of the core services Nautilus Labs offered was <b>Voyage optimization</b>. A
 At Nautilus, we offered Voyage optimization with 3 different goals in mind:
 
 - TCE Optimization
+  
 - Net Profit Optimization
+  
 - ETA Optimization
 
 <b>TCE Optimization:</b> 
@@ -57,10 +59,14 @@ When working on it, I immediately saw how there was room for improvement and inc
 clients want. They want - 
 
 - To see predicted metrics for multiple shaft speeds, not only the recommended shaft speed.
-- Different clients want to see different predicted metrics, not only the ones we typically share (speed over ground, fuel consumption, ETA, etc.)
-- Clients want to see the weather forecasts (wind, wave, and current) and how the weather affects the vessel’s speed and consumption
-- Some clients want to see the vessel’s predicted positions in a given interval, not only the ETA at the arrival port
-- Some Clients want to see how often we send them recommendations, and how often the captain adheres to our recommendations
+  
+- Different clients want to see different predicted metrics, not only the ones we typically share (speed over ground, fuel consumption, ETA, etc.).
+  
+- Clients want to see the weather forecasts (wind, wave, and current) and how the weather affects the vessel’s speed and consumption.
+  
+- Some clients want to see the vessel’s predicted positions in a given interval, not only the ETA at the arrival port.
+  
+- Some Clients want to see how often we send them recommendations, and how often the captain adheres to our recommendations.
 
 Taking all that into consideration, I decided to make a tool that would automatically run the models, pull relevant data (historical and predicted) from various api’s, clean, merge them, generate the desired data table and visualizations, and generate and download a PDF report that would contain all those data tables and visualizations. This would save so much time, make our VO process easier, less the room for error, as there is practically no manual work, and make the service look standard and better.
 

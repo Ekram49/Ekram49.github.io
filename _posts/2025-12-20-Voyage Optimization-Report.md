@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Voyage Optimization Report
-subtitle: How I streamlined voyage optimization workflow with automated analytics and visualization.
+subtitle: Streamlining Voyage Optimization Workflow with Automated Analytics and Visualization.
 image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/Voyage%20Optimization%20Report%20Thumbnail.png
 ---
 

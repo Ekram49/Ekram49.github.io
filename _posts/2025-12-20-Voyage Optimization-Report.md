@@ -45,7 +45,7 @@ When I joined the company as an analyst, we only shared the <b>recommended shaft
 
 The platform offered so much more in terms of showing data and visualization, but that couldn’t be utilized.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/Platform%20Weather.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/Platform%20Weather.gif)
 ![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/Platform%20Metrics.png)
 
 

@@ -2,7 +2,7 @@
 layout: post
 title: Voyage Optimization Report
 subtitle: How I streamlined voyage optimization workflow with automated analytics and visualization.
-image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/GC%20to%20RL%20Thumbnail.png
+image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/Voyage%20Optimization%20Report%20Thumbnail.png
 ---
 
 One of the core services Nautilus Labs offered was <b>Voyage optimization</b>. A client could use the Nautilus platform to optimize their voyages to improve efficiency and meet their voyage goals.

@@ -41,11 +41,13 @@ Originally, the platform was intended to be used by the client directly. But the
 
 When I joined the company as an analyst, we only shared the <b>recommended shaft speeds</b> and a few <b>predicted metrics</b> (predicted speed over ground, main engine fuel consumption, predicted ETA, etc) in a tabular format via email. No additional data or visualization was shared.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/CSV%20file.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/Old%20VO%20Example.png)
 
 The platform offered so much more in terms of showing data and visualization, but that couldn’t be utilized.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/CSV%20file.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/Platform%20Weather.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/Platform%20Metrics.png)
+
 
 Also, the limited data and lack of visualization caused a lot of issues. The clients often would have questions about the legitimacy of our recommendation, as they couldn’t see the full picture, wanted to see more than just the predicted shaft speed, wanted to see the predicted metrics in other shaft speeds, the weather forecast, etc.
 
@@ -70,23 +72,21 @@ For designing the <b>PDF</b>, I figured out which piece of data/visualization th
 
 Page 1 included some of the <b>vessel’s metadata</b> - Vessel’s name, voyage ID, condition (ballast or laden), departure and arrival port, etc. It also contains one or multiple predicted metrics tables, containing the predicted metrics (predicted speed over ground, fuel consumption, fuel cost, estimated time of arrival, etc.) for various shaft speeds
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/CSV%20file.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/VO%20PDF%20Page%201.png)
 
 ### Page 2:
 
 Page 2 includes a <b>map</b>, containing the vessel’s current position and the route the vessel took for the voyage (for <b>live VO</b>) and the rest of the route remaining for the voyage.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/CSV%20file.png)
-
 For <b>multi-instruction VO</b>, the remainder of the route is separated and color-coded to express different segments of the voyage.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/CSV%20file.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/VO%20PDF%20Page%202.png)
 
 ### Page 3:
 
 Page 3 contains weather graphs, visualizing how different weather metrics (relative winds, relative currents, and wave heights) affect speed over ground and fuel consumption.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/GC%20to%20RL/CSV%20file.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/VO%20PDF%20Page%203.png)
 
 ### Final Thoughts
 

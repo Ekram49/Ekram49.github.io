@@ -2,7 +2,7 @@
 layout: post
 title: Post Voyage Report
 subtitle: Streamlining Post Voyage Analysis Workflow with Automated Analytics and Visualization.
-image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Optimization%20Report/Voyage%20Optimization%20Report%20Thumbnail.png
+image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Post%20Voyage%20Report/Post%20Voyage%20Report%20Thumbnail.png
 ---
 
 ## Post-Voyage Report

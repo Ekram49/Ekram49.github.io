@@ -5,7 +5,7 @@ subtitle: Streamlining Post Voyage Analysis Workflow with Automated Analytics an
 image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Post%20Voyage%20Report/Post%20Voyage%20Report%20Thumbnail.png
 ---
 
-At Nautilus, <b>voyage optimization</> was the core service we provided. The goal of the service was to help client vessels achieve specific operational objectives—such as maximizing <b>TCE</b> or <b>net profit</b>, minimizing <b>fuel consumption</b>, or meeting a target <b>ETA</b>. To build trust and demonstrate the value of our recommendations, we produced Post-Voyage Reports (also referred to as Counterfactual Reports) after each voyage or on a monthly basis, depending on client preference.
+At Nautilus, <b>voyage optimization</b> was the core service we provided. The goal of the service was to help client vessels achieve specific operational objectives—such as maximizing <b>TCE</b> or <b>net profit</b>, minimizing <b>fuel consumption</b>, or meeting a target <b>ETA</b>. To build trust and demonstrate the value of our recommendations, we produced Post-Voyage Reports (also referred to as Counterfactual Reports) after each voyage or on a monthly basis, depending on client preference.
 
 These reports quantified the impact of following our recommendations by comparing a vessel’s actual performance—<b>fuel consumption</b>, <b>speed over ground</b>, and other key metrics—against a baseline. That baseline could be the vessel’s historical performance prior to using our service or a simulated “business-as-usual” scenario that assumed the vessel continued operating as it had before receiving our guidance.
 

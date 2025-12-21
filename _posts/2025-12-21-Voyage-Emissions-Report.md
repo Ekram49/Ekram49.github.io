@@ -2,7 +2,7 @@
 layout: post
 title: Voyage Emissions Report
 subtitle: A Vessel Performance Report Focusing on Tracking Vessel's Emissions, CII, and AER Scores.
-image: https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Emissions%20Report/Voyage%20Emissions%20Report%20Thumbnail.png
+image: https://https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Emissions%20Report/Voyage%20Emissions%20Report%20Thumbnail.png
 ---
 
 In recent years, emissions control has become a major focus for shipping companies. With the implementation of <b>CII</b> requirements and the <b>EU ETS</b>, operators are increasingly interested in tracking the CII score and AER of each vessel in their fleet.

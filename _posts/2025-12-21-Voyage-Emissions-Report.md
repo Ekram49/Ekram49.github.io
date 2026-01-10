@@ -33,7 +33,7 @@ The second page is the core of the report. It features an executive summary acco
 
 The final page focuses on key performance indicators. It includes a map showing the vessel’s voyage track, summary voyage metrics such as fuel consumption, emissions, and distance traveled, as well as weather-related graphs illustrating how different conditions influenced vessel speed and fuel consumption.
 
-![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Emissions%20Report/Voyage%20Emissions%20Report%20Page%201.png)
+![Crepe](https://raw.githubusercontent.com/Ekram49/Ekram49.github.io/refs/heads/master/img/Voyage%20Emissions%20Report/Voyage%20Emissions%20Report%20Page%203.png)
 
 ## Final Thoughts
 
